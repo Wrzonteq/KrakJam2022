@@ -1,0 +1,27 @@
+{
+    "name": "Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:029c1c1b674aaae47a6841a0b89ad80e",
+        "GUID:dc47925d1a5fa2946bdd37746b2b5d48",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:f06555f75b070af458a003d92f9efb00",
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
+        "GUID:73a61a380edacb34795f31a3ec21c2ef",
+        "GUID:41524c21c95e5fe4dbc5b48bd21995a4",
+        "GUID:88f14d179e7c91c4eac28302d69f32e1",
+        "GUID:d8b63aba1907145bea998dd612889d6b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
