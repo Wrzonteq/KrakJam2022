@@ -20,8 +20,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         
         // Update is called once per frame
         void Update() {
-            selfRigidbody2D.MovePosition(transform.position + move * movementSpeed / 10.0f);
-            //this.transform.Translate(move * (movementSpeed * Time.deltaTime));
+            selfRigidbody2D.velocity = move * movementSpeed;
         }
         
         public void OnMove(InputValue value) {
