@@ -19,7 +19,7 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
         }
 
         void HandleNewGame() {
-            GameSystems.GetSystem<GameplaySystem>().StartNewGame();
+            GameSystems.GetSystem<GameplaySystem>().StartNewGame().Forget();
         }
 
         void HandleCredits() {

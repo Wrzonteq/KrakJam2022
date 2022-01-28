@@ -7,15 +7,15 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public override void OnCreate() { }
         public override void Initialise() { }
 
-        public void StartNewGame() {
-            LoadGameplaySceneAndShowProgress().Forget();
-
+        public async UniTaskVoid StartNewGame() {
+            await LoadGameplaySceneAndShowProgress();
+            GameSystems.GetSystem<InputSystem>().SwitchToGameplayInput();
             GameSystems.GetSystem<GameStateSystem>().ResetGameState();
 
             //todo load map, player etc. using GameStateSystem's runtimeGameState
         }
 
-        async UniTaskVoid LoadGameplaySceneAndShowProgress() {
+        async UniTask LoadGameplaySceneAndShowProgress() {
             GameSystems.GetSystem<UISystem>().GetScreen<MainMenuScreen>().Hide(true).Forget();
             var sceneLoadingSystem = GameSystems.GetSystem<SceneLoadingSystem>();
             GameSystems.GetSystem<UISystem>().GetScreen<LoadingScreen>().Show(true).Forget();
