@@ -26,6 +26,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField]
         List<EnemySettings> enemySettings = new List<EnemySettings>();
 
+        public override void OnCreate() { }
+
         public override void Initialise() {
             CalculateSpawnPoints();
             SpawnEnemy();
