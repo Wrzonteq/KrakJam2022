@@ -10,6 +10,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
             DisableInput();
         }
 
+        public override void Initialise() { }
+
         public void DisableInput() {
             Bindings.Disable();
         }

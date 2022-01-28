@@ -16,6 +16,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
             SceneLoadingProgress = new Observable<float>();
         }
 
+        public override void Initialise() { }
+
         public async UniTask LoadSceneAsync(string sceneName, Action onCompleteCallback = null) {
             var loadingOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
             SceneLoadingProgress.Set(0, true);
@@ -23,7 +25,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 SceneLoadingProgress.Value = loadingOperation.progress;
                 UnityEngine.Debug.Log($"LOAD PROGRESS: {SceneLoadingProgress.Value}");
                 await UniTask.DelayFrame(1);
-                await UniTask.Delay(500);
             }
             await UniTask.Delay(500); //tymczasowo - zeby bylo widac, ze sie w ogole pokazuje loading screen
             onCompleteCallback?.Invoke();

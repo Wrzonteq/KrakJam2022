@@ -3,16 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace PartTimeKamikaze.KrakJam2022.UI {
-    public class LoadingScreen : MonoBehaviour {
+    public class LoadingScreen : UiScreenBase {
         [SerializeField] TextMeshProUGUI label;
         [SerializeField] Image loadingBarFill;
 
         int lastProgress = -1;
 
-
-        public void Show() {
-            gameObject.SetActive(true);
-        }
 
         public void SetProgress(float progress) {
             var percentage = Mathf.CeilToInt(progress * 100);
@@ -23,8 +19,8 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
             loadingBarFill.fillAmount = progress;
         }
 
-        public void Hide() {
-            gameObject.SetActive(false);
+        protected override void OnHide() {
+            
         }
     }
 }

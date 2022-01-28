@@ -45,4 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCanvasPrefab: {fileID: 5359466070982243743, guid: aaa02bf538e82c94eb432967c2499916, type: 3}
-  loadingScreenPrefab: {fileID: 6587760239720659056, guid: 5f7d9b82f5970e14e8ccaf398d4be972, type: 3}
+  screensPrefabs:
+  - {fileID: 6587760239720659056, guid: 5f7d9b82f5970e14e8ccaf398d4be972, type: 3}
+  - {fileID: 5745219966519465083, guid: 8bcef2cf2009dbb4387446a0f1a3f607, type: 3}

@@ -1,44 +1,49 @@
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using PartTimeKamikaze.KrakJam2022.UI;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class GameInitialiser : MonoBehaviour {
         [SerializeField] BaseGameSystem[] systemPrefabs;
         [SerializeField] Transform systemsRoot;
+        [SerializeField] LoadingScreen gameStartLoadingScreen;
 
 
         void Awake() {
-            InitialiseGameSystems();
-            LoadMainMenuScene().Forget();
+            gameStartLoadingScreen.Initialise();
+            gameStartLoadingScreen.Show(true).Forget();
+            gameStartLoadingScreen.SetProgress(0);
+            InitialiseGameSystems().Forget();
         }
 
-        void InitialiseGameSystems() {
+        async UniTaskVoid InitialiseGameSystems() {
             var systemsInstances = new List<BaseGameSystem>();
             DontDestroyOnLoad(systemsRoot.gameObject);
-            foreach (var prefab in systemPrefabs) {
+            var loadingProgressCounter = 0f;
+            var stuffToLoad = systemPrefabs.Length * 2;
+            for (var i = 0; i < systemPrefabs.Length; i++) {
+                var prefab = systemPrefabs[i];
                 var instance = Instantiate(prefab, systemsRoot, false);
                 instance.OnCreate();
                 systemsInstances.Add(instance);
+                loadingProgressCounter++;
+                gameStartLoadingScreen.SetProgress(loadingProgressCounter / stuffToLoad);
+                await UniTask.Delay(500);
             }
 
             foreach (var instance in systemsInstances) {
                 instance.Initialise();
+                loadingProgressCounter++;
+                gameStartLoadingScreen.SetProgress(loadingProgressCounter / stuffToLoad);
             }
 
             GameSystems.Init(systemsInstances);
-        }
-
-        async UniTaskVoid LoadMainMenuScene() {
-            var loadingScreen = GameSystems.GetSystem<UISystem>().LoadingScreen;
-            loadingScreen.Show();
-            var sceneLoadingSystem = GameSystems.GetSystem<SceneLoadingSystem>();
-            sceneLoadingSystem.SceneLoadingProgress.ChangedValue += OnProgressChanged;
-            await sceneLoadingSystem.LoadSceneAsync(Consts.ScenesNames.MainMenu);
-            sceneLoadingSystem.SceneLoadingProgress.ChangedValue -= OnProgressChanged;
-            loadingScreen.Hide();
-            void OnProgressChanged(float progress) => loadingScreen.SetProgress(progress);
+            await UniTask.Delay(500);
+            await gameStartLoadingScreen.Hide(true);
+            Destroy(gameStartLoadingScreen.transform.parent.gameObject);
+            await GameSystems.GetSystem<UISystem>().ShowScreen<MainMenuScreen>(true);
         }
     }
 

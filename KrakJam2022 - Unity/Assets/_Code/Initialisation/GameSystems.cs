@@ -21,14 +21,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
     // nie jest abstract, zeby mozna bylo stworzyc serializowana liste, ale po tej klasie dziedziczymy wszystkie inne systemy
     // ale dziala jak abstract, bo nie mozna podpiac jako komponent, jesli nie jest w pliku o tej samej nazwie, BANG
-    public class BaseGameSystem : MonoBehaviour {
-
-        public virtual void OnCreate() {
-            // tutaj wstepna logika inicjalizacyjna - przed odwolaniem sie do innych systemow
-        }
-
-        public virtual void Initialise() {
-            // tutaj glowna logika inicjalizacji - wszystkie systemy sa juz stworzone, wiec mozna sie do nich odwolac
-        }
+    public abstract class BaseGameSystem : MonoBehaviour {
+        public abstract void OnCreate(); // tutaj wstepna logika inicjalizacyjna - przed odwolaniem sie do innych systemow
+        public abstract void Initialise(); // tutaj glowna logika inicjalizacji - wszystkie systemy sa juz stworzone, wiec mozna sie do nich odwolac 
     }
 }
