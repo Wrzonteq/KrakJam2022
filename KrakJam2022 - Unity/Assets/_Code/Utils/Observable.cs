@@ -18,9 +18,9 @@ namespace PartTimeKamikaze.KrakJam2022.Utils {
             isValueType = typeof(T).IsValueType;
         }
 
-        public void Set(T newValue) {
+        public void Set(T newValue, bool forceUpdate = false) {
             var equals = isValueType ? value.Equals(newValue) : ReferenceEquals(value, newValue);
-            if (equals)
+            if (equals && !forceUpdate)
                 return;
             value = newValue;
             Changed?.Invoke();

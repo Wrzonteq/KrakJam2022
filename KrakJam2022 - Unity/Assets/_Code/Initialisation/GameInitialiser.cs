@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -14,19 +15,23 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void InitialiseGameSystems() {
+            var systemsInstances = new List<BaseGameSystem>();
             DontDestroyOnLoad(systemsRoot.gameObject);
             foreach (var prefab in systemPrefabs) {
-                var systemInstance = Instantiate(prefab, systemsRoot, false);
-                systemInstance.Initialise();
+                var instance = Instantiate(prefab, systemsRoot, false);
+                instance.Initialise();
+                systemsInstances.Add(instance);
             }
+            GameSystems.Init(systemsInstances);
         }
 
         async UniTaskVoid LoadMainMenuScene() {
-            var loadingScreen = GameSystems.ui.LoadingScreen;
+            var loadingScreen = GameSystems.GetSystem<UISystem>().LoadingScreen;
             loadingScreen.Show();
-            GameSystems.sceneLoading.SceneLoadingProgress.ChangedValue += OnProgressChanged;
-            await GameSystems.sceneLoading.LoadSceneAsync(Consts.ScenesNames.MainMenu);
-            GameSystems.sceneLoading.SceneLoadingProgress.ChangedValue -= OnProgressChanged;
+            var sceneLoadingSystem = GameSystems.GetSystem<SceneLoadingSystem>();
+            sceneLoadingSystem.SceneLoadingProgress.ChangedValue += OnProgressChanged;
+            await sceneLoadingSystem.LoadSceneAsync(Consts.ScenesNames.MainMenu);
+            sceneLoadingSystem.SceneLoadingProgress.ChangedValue -= OnProgressChanged;
             loadingScreen.Hide();
             void OnProgressChanged(float progress) => loadingScreen.SetProgress(progress);
         }

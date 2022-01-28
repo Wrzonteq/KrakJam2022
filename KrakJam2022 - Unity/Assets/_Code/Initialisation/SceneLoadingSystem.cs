@@ -12,17 +12,19 @@ namespace PartTimeKamikaze.KrakJam2022 {
         /// When you add a Scene additively (see LoadSceneMode.Additive), the first Scene is still kept as the active Scene."
 
         protected override void OnInitialise() {
-            GameSystems.sceneLoading = this;
             SceneLoadingProgress = new Observable<float>();
         }
 
         public async UniTask LoadSceneAsync(string sceneName, Action onCompleteCallback = null) {
             var loadingOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            SceneLoadingProgress.Set(0, true);
             while (!loadingOperation.isDone) {
                 SceneLoadingProgress.Value = loadingOperation.progress;
                 UnityEngine.Debug.Log($"LOAD PROGRESS: {SceneLoadingProgress.Value}");
                 await UniTask.DelayFrame(1);
+                await UniTask.Delay(1000);
             }
+            await UniTask.Delay(1000);
             onCompleteCallback?.Invoke();
         }
     }

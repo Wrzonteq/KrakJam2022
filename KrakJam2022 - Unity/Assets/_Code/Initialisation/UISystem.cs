@@ -11,7 +11,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
 
         protected override void OnInitialise() {
-            GameSystems.ui = this;
             MainCanvas = Instantiate(mainCanvasPrefab);
             LoadingScreen = Instantiate(loadingScreenPrefab, MainCanvas.transform, false);
             LoadingScreen.Hide();
