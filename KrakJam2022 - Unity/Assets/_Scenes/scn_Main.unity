@@ -189,6 +189,7 @@ MonoBehaviour:
   - {fileID: 6084328082358448610, guid: c93b3c14b66574046b9d47b05d6be7ea, type: 3}
   - {fileID: 6401654548537784625, guid: db6f52c1c1ae6c548a14a21ba2c4f937, type: 3}
   - {fileID: 1552497273746477038, guid: 1b0ef9bdf2957794295ec4fe8fbd7a4e, type: 3}
+  - {fileID: 2491497854325691850, guid: 96d03c63af0b5704db000814d6eb0d2b, type: 3}
   systemsRoot: {fileID: 772045781}
   gameStartLoadingScreen: {fileID: 1238308596}
 --- !u!4 &1186642998
@@ -338,7 +339,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1039241155512590070
 RectTransform:

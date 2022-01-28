@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
+    [CreateAssetMenu(fileName = "GameStateData", menuName = "KrakJam2022/GameStateAsset")]
     public class GameStateDataAsset : ScriptableObject {
         public GameStage stage;
         public EmotionLevelState angerState;

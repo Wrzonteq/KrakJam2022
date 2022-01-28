@@ -41,9 +41,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
             GameSystems.Init(systemsInstances);
             await UniTask.Delay(500);
-            await gameStartLoadingScreen.Hide(true);
-            Destroy(gameStartLoadingScreen.transform.parent.gameObject);
             await GameSystems.GetSystem<UISystem>().ShowScreen<MainMenuScreen>(true);
+            await gameStartLoadingScreen.Hide();
+            Destroy(gameStartLoadingScreen.transform.parent.gameObject);
         }
     }
 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1897036965173186186}
   - component: {fileID: 6587760239720659056}
+  - component: {fileID: -5856694953821470547}
   m_Layer: 5
   m_Name: Loading Screen
   m_TagString: Untagged
@@ -52,9 +53,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba315011b3345e9b6fb1b22ab927c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 0}
+  canvasGroup: {fileID: -5856694953821470547}
   label: {fileID: 5821301679626106386}
   loadingBarFill: {fileID: 7988819907071617571}
+--- !u!225 &-5856694953821470547
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531377012510252296}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1250130616441041540
 GameObject:
   m_ObjectHideFlags: 0

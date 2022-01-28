@@ -27,6 +27,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 await UniTask.DelayFrame(1);
             }
             await UniTask.Delay(500); //tymczasowo - zeby bylo widac, ze sie w ogole pokazuje loading screen
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
             onCompleteCallback?.Invoke();
         }
     }
