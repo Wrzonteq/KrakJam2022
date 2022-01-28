@@ -19,9 +19,14 @@ namespace PartTimeKamikaze.KrakJam2022 {
             DontDestroyOnLoad(systemsRoot.gameObject);
             foreach (var prefab in systemPrefabs) {
                 var instance = Instantiate(prefab, systemsRoot, false);
-                instance.Initialise();
+                instance.OnCreate();
                 systemsInstances.Add(instance);
             }
+
+            foreach (var instance in systemsInstances) {
+                instance.Initialise();
+            }
+
             GameSystems.Init(systemsInstances);
         }
 
@@ -37,23 +42,13 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
     }
 
+    // klasa do dodawania eventów - do kazdego eventu jest potrzebna funkcja NotifyEventName, ktora go wywola
     public static class GameEvents {
-        public static event Action MainMenuLoadedEvent = delegate { };
-    }
+        public static event Action ExampleGameLogicEvent;
 
-    // nie jest abstract, zeby mozna bylo stworzyc serializowana liste, ale po tej klasie dziedziczymy wszystkie inne systemy
-    // ale dziala jak abstract, bo nie mozna podpiac jako komponent, jesli nie jest w pliku o tej samej nazwie, BANG
-    public class BaseGameSystem : MonoBehaviour {
-        public bool IsInitialised { get; private set; }
-
-        public void Initialise() {
-            if (IsInitialised)
-                return;
-            OnInitialise();
-            IsInitialised = true;
+        public static void ExampleNotifyGameLogicEvent() {
+            ExampleGameLogicEvent?.Invoke();
         }
-
-        protected virtual void OnInitialise() { }
     }
 }
 

@@ -7,7 +7,7 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
         [SerializeField] TextMeshProUGUI label;
         [SerializeField] Image loadingBarFill;
 
-        int roundedProgress;
+        int lastProgress = -1;
 
 
         public void Show() {
@@ -16,10 +16,10 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
 
         public void SetProgress(float progress) {
             var percentage = Mathf.CeilToInt(progress * 100);
-            if (percentage == roundedProgress)
+            if (percentage == lastProgress)
                 return; // to optimise gui redraws
-            roundedProgress = percentage;
-            label.text = $"{roundedProgress}%";
+            lastProgress = percentage;
+            label.text = $"{lastProgress}%";
             loadingBarFill.fillAmount = progress;
         }
 

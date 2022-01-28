@@ -1,5 +1,5 @@
 {
-    "name": "DefaultInputActions",
+    "name": "Input Maps",
     "maps": [
         {
             "name": "Gameplay",
@@ -27,6 +27,15 @@
                     "name": "Fire",
                     "type": "Button",
                     "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenMainMenu",
+                    "type": "Button",
+                    "id": "b2858153-0932-48f3-aff1-8619311281c7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -251,6 +260,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01cc0548-ab89-4632-9cdb-be4674c019cb",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "OpenMainMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

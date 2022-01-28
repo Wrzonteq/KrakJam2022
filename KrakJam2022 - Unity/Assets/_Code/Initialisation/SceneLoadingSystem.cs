@@ -11,7 +11,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         /// "The active Scene is the Scene which will be used as the target for new GameObjects instantiated by scripts and from what Scene the lighting settings are used.
         /// When you add a Scene additively (see LoadSceneMode.Additive), the first Scene is still kept as the active Scene."
 
-        protected override void OnInitialise() {
+
+        public override void OnCreate() {
             SceneLoadingProgress = new Observable<float>();
         }
 
@@ -22,9 +23,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 SceneLoadingProgress.Value = loadingOperation.progress;
                 UnityEngine.Debug.Log($"LOAD PROGRESS: {SceneLoadingProgress.Value}");
                 await UniTask.DelayFrame(1);
-                await UniTask.Delay(1000);
+                await UniTask.Delay(500);
             }
-            await UniTask.Delay(1000);
+            await UniTask.Delay(500); //tymczasowo - zeby bylo widac, ze sie w ogole pokazuje loading screen
             onCompleteCallback?.Invoke();
         }
     }

@@ -271,6 +271,7 @@ MonoBehaviour:
   - {fileID: 383819223215440742, guid: d28974c54b52d2d4d9fffca5098ac095, type: 3}
   - {fileID: 5460017915562919027, guid: 095008790b64e8e40bf08ac00c2f0e91, type: 3}
   - {fileID: 6084328082358448610, guid: c93b3c14b66574046b9d47b05d6be7ea, type: 3}
+  - {fileID: 6401654548537784625, guid: db6f52c1c1ae6c548a14a21ba2c4f937, type: 3}
   systemsRoot: {fileID: 772045781}
 --- !u!4 &1186642998
 Transform:

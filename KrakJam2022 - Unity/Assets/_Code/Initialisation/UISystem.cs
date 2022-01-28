@@ -10,7 +10,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public LoadingScreen LoadingScreen { get; private set; }
 
 
-        protected override void OnInitialise() {
+        public override void OnCreate() {
             MainCanvas = Instantiate(mainCanvasPrefab);
             LoadingScreen = Instantiate(loadingScreenPrefab, MainCanvas.transform, false);
             LoadingScreen.Hide();

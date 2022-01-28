@@ -55,9 +55,18 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenMainMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2858153-0932-48f3-aff1-8619311281c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
-            ""bindings"": [
+            ""Bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""978bfe49-cc26-4a3d-ab7b-7d7a29327403"",
@@ -277,6 +286,17 @@ namespace UnityEngine.InputSystem
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01cc0548-ab89-4632-9cdb-be4674c019cb"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""OpenMainMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -375,7 +395,7 @@ namespace UnityEngine.InputSystem
                     ""initialStateCheck"": false
                 }
             ],
-            ""bindings"": [
+            ""Bindings"": [
                 {
                     ""name"": ""Gamepad"",
                     ""id"": ""809f371f-c5e2-4e7a-83a1-d867598f40dd"",
@@ -865,6 +885,7 @@ namespace UnityEngine.InputSystem
             m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
             m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
             m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
+            m_Gameplay_OpenMainMenu = m_Gameplay.FindAction("OpenMainMenu", throwIfNotFound: true);
             // Interface
             m_Interface = asset.FindActionMap("Interface", throwIfNotFound: true);
             m_Interface_Navigate = m_Interface.FindAction("Navigate", throwIfNotFound: true);
@@ -939,6 +960,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Gameplay_Move;
         private readonly InputAction m_Gameplay_Look;
         private readonly InputAction m_Gameplay_Fire;
+        private readonly InputAction m_Gameplay_OpenMainMenu;
         public struct GameplayActions
         {
             private @InputMaps m_Wrapper;
@@ -946,6 +968,7 @@ namespace UnityEngine.InputSystem
             public InputAction @Move => m_Wrapper.m_Gameplay_Move;
             public InputAction @Look => m_Wrapper.m_Gameplay_Look;
             public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
+            public InputAction @OpenMainMenu => m_Wrapper.m_Gameplay_OpenMainMenu;
             public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -964,6 +987,9 @@ namespace UnityEngine.InputSystem
                     @Fire.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
                     @Fire.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
                     @Fire.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
+                    @OpenMainMenu.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenMainMenu;
+                    @OpenMainMenu.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenMainMenu;
+                    @OpenMainMenu.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenMainMenu;
                 }
                 m_Wrapper.m_GameplayActionsCallbackInterface = instance;
                 if (instance != null)
@@ -977,6 +1003,9 @@ namespace UnityEngine.InputSystem
                     @Fire.started += instance.OnFire;
                     @Fire.performed += instance.OnFire;
                     @Fire.canceled += instance.OnFire;
+                    @OpenMainMenu.started += instance.OnOpenMainMenu;
+                    @OpenMainMenu.performed += instance.OnOpenMainMenu;
+                    @OpenMainMenu.canceled += instance.OnOpenMainMenu;
                 }
             }
         }
@@ -1136,6 +1165,7 @@ namespace UnityEngine.InputSystem
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnFire(InputAction.CallbackContext context);
+            void OnOpenMainMenu(InputAction.CallbackContext context);
         }
         public interface IInterfaceActions
         {
