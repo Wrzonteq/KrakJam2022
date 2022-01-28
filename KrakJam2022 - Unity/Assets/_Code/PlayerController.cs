@@ -4,10 +4,11 @@ using UnityEngine.InputSystem;
 namespace PartTimeKamikaze.KrakJam2022 {
     public class PlayerController : MonoBehaviour {
         public static PlayerController Instance { get; private set; }
-        
+
+        [SerializeField] Rigidbody2D selfRigidbody2D;
         [SerializeField] private int movementSpeed = 10;
 
-        Vector2 move;
+        Vector3 move;
         
         protected void Awake()
         {
@@ -19,7 +20,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         
         // Update is called once per frame
         void Update() {
-            this.transform.Translate(move * (movementSpeed * Time.deltaTime));
+            selfRigidbody2D.MovePosition(transform.position + move * movementSpeed / 10.0f);
+            //this.transform.Translate(move * (movementSpeed * Time.deltaTime));
         }
         
         public void OnMove(InputValue value) {
