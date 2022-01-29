@@ -30,7 +30,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void OnTriggerEnter2D(Collider2D other) {
-            Debug.Log($"OnTriggerEnter2D");
             if (other.gameObject.CompareTag("Player"))
                 MovePlayerToArea();
         }

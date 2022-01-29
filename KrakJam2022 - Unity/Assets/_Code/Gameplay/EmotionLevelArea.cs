@@ -13,6 +13,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         EmotionLevelState loadedState;
         public Emotion Emotion => emotion;
+        public bool IsCompleted => loadedState.negativeMemoryCollected && loadedState.positiveMemoryCollected;
+        public bool IsPlayerInside { get; private set; }
 
 
         public void LoadState(EmotionLevelState state) {
@@ -54,6 +56,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             void TeleportPlayer() {
                 var gatePosition = GameSystems.GetSystem<GameplaySystem>().GetGate(emotion).transform.position;
                 GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform.position = gatePosition;
+                IsPlayerInside = false;
             }
 
             void OnTransitionDone() {
@@ -64,6 +67,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public void TeleportPlayerToArea() {
             GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform.position = playerSpawnPoint.position;
             exit.Close();
+            IsPlayerInside = true;
         }
     }
 }
