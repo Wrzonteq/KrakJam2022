@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Collectable
-  - SlidingPuzzleBlock
+  - Ego
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,9 +15,10 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Enemy
   - PassableByPlayer
   - GameplayObjects
+  - Ego
   - 
   - 
   - 
@@ -27,7 +29,6 @@ TagManager:
   - 
   - 
   - 
-  - SlidingPuzzles
   - 
   - 
   - 

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5315246207046401473}
   - component: {fileID: 5315246207046401479}
   - component: {fileID: 5315246207046401472}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ego
-  m_TagString: Untagged
+  m_TagString: Ego
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,8 +85,20 @@ PrefabInstance:
       value: EGO faza szalona
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: de30eecbc755c21418918229c832cb12, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8649436796418805021, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8479548320888091324, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: de30eecbc755c21418918229c832cb12, type: 3}
       propertyPath: m_RootOrder
@@ -132,6 +144,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7034242225889074517, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5895764992755734602, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5799804131438993302, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5661304925830590430, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901530535736718145, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312616194943711135, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820836759076737797, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577339583137096409, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629422292566930580, guid: de30eecbc755c21418918229c832cb12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 4843985084834002234, guid: de30eecbc755c21418918229c832cb12, type: 3}
 --- !u!4 &1605089972521090323 stripped
@@ -149,6 +197,10 @@ PrefabInstance:
     - target: {fileID: -8653719598885068355, guid: d1d6b0dd361e0f348b75eb81fc7efe98, type: 3}
       propertyPath: m_Name
       value: EGO faza spokoju
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: d1d6b0dd361e0f348b75eb81fc7efe98, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: d1d6b0dd361e0f348b75eb81fc7efe98, type: 3}
       propertyPath: m_RootOrder
@@ -205,6 +257,22 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: d1d6b0dd361e0f348b75eb81fc7efe98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7034242225889074517, guid: d1d6b0dd361e0f348b75eb81fc7efe98, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6190249761959800929, guid: d1d6b0dd361e0f348b75eb81fc7efe98, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5895764992755734602, guid: d1d6b0dd361e0f348b75eb81fc7efe98, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069654956467435018, guid: d1d6b0dd361e0f348b75eb81fc7efe98, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 4843985084834002234, guid: d1d6b0dd361e0f348b75eb81fc7efe98, type: 3}

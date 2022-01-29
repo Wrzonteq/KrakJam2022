@@ -21,7 +21,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         void DrawWindow() {
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Start enemies spawning")) {
-                GameSystems.GetSystem<EnemiesSystem>().StartEnemySpawning().Forget();
+                GameSystems.GetSystem<EnemiesSystem>().Test();
             }
             GUILayout.EndHorizontal();
         }

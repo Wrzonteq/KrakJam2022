@@ -29,8 +29,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public override void OnCreate() { }
 
-        public override void Initialise() {
+        public override void Initialise() { }
+
+        public void Test() {
             CalculateSpawnPoints();
+            StartEnemySpawning();
         }
 
         private List<Waypoint> spawningWaypoints;
@@ -39,18 +42,16 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 spawningWaypoints = FindObjectsOfType<Waypoint>().Where(w => w.spawnPoint).ToList();
             }
         }
-        // TODO : maybe use const here
-        float planeZ = 0f;
 
         private void SpawnEnemy() {
             Waypoint spawningWaypoint = spawningWaypoints[Random.Range(0, spawningWaypoints.Count)];
             EnemySettings settings = enemySettings[Random.Range(0, enemySettings.Count)];
-            Enemy enemy = Instantiate(settings.enemy, Camera.main.transform);
+            Enemy enemy = Instantiate(settings.enemy);
             enemy.Initialize(spawningWaypoint);
             enemy.transform.position = new Vector3(
                 spawningWaypoint.transform.position.x,
                 spawningWaypoint.transform.position.y,
-                planeZ
+                0f // TODO : maybe use const here
                 );
         }
 

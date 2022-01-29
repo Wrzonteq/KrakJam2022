@@ -26,10 +26,10 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public Waypoint SelectNextWaypoint() {
             if (nextWaypoints.Count == 0) {
-                Debug.Log("waypoint: finished enemy move");
+                //Debug.Log("waypoint: finished enemy move");
                 return null;
             }
-            Debug.Log("waypoint: selecting next enemy waypoint");
+            //Debug.Log("waypoint: selecting next enemy waypoint");
 
             int sum = nextWaypoints.Sum(w => w.chance);
             if (sum != 100) {
