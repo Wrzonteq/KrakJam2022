@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6030672221122124280}
   - component: {fileID: 8112178014186104043}
+  - component: {fileID: 7195964541778237162}
   m_Layer: 5
   m_Name: Transition Screen
   m_TagString: Untagged
@@ -50,10 +51,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab4e099e79046758fb5185c9e9c9d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 0}
+  canvasGroup: {fileID: 7195964541778237162}
   black: {fileID: 4155440543156208503}
   fadeDurationMiliseconds: 500
   delayMiliseconds: 200
+--- !u!225 &7195964541778237162
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500123327515959572}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2531139522401232761
 GameObject:
   m_ObjectHideFlags: 0
