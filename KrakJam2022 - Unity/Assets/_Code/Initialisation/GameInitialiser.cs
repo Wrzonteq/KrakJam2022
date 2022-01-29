@@ -11,7 +11,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
 
         void Awake() {
-            gameStartLoadingScreen.Initialise();
+            gameStartLoadingScreen.Initialise(null);
             gameStartLoadingScreen.Show(true).Forget();
             gameStartLoadingScreen.SetProgress(0);
             InitialiseGameSystems().Forget();

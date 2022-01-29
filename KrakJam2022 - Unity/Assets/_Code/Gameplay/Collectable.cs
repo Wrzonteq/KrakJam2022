@@ -3,11 +3,13 @@ using UnityEngine;
 namespace PartTimeKamikaze.KrakJam2022 {
     public class Collectable : MonoBehaviour, IInteractable {
         void OnTriggerEnter2D(Collider2D col) {
-            GameSystems.GetSystem<GameplaySystem>().PlayerInstance.RegisterInteractable(this);
+            if(col.CompareTag("Player"))
+                GameSystems.GetSystem<GameplaySystem>().PlayerInstance.RegisterInteractable(this);
         }
 
         void OnTriggerExit2D(Collider2D col) {
-            GameSystems.GetSystem<GameplaySystem>().PlayerInstance.UnregisterInteractable(this);
+            if(col.CompareTag("Player"))
+                GameSystems.GetSystem<GameplaySystem>().PlayerInstance.UnregisterInteractable(this);
         }
 
         public void Interact() {
@@ -15,9 +17,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
             
             GameSystems.GetSystem<GameplaySystem>().PlayerInstance.UnregisterInteractable(this);
             GameSystems.GetSystem<GameplaySystem>().PlayerInstance.PickupCollectable(this);
-                
+
+            OnInteract();
+
             Destroy(gameObject);
-            // TODO: UI Show image of this memory
         }
+
+        protected virtual void OnInteract() { }
     }
 }

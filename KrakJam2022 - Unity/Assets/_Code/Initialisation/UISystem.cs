@@ -22,7 +22,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public override void Initialise() {
             foreach (var sp in screensPrefabs) {
                 var instance = Instantiate(sp, MainCanvas.transform, false);
-                instance.Initialise();
+                instance.Initialise(this);
                 screensInstances[sp.GetType()] = instance;
             }
         }
@@ -45,6 +45,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
     public class UiScreenBase : MonoBehaviour {
         [SerializeField] protected CanvasGroup canvasGroup;
+
+        protected UISystem uiSystem;
 
         bool isInitialised;
 
@@ -72,9 +74,10 @@ namespace PartTimeKamikaze.KrakJam2022 {
             gameObject.SetActive(false);
         }
 
-        public void Initialise() {
+        public void Initialise(UISystem uiSystem) {
             if (isInitialised)
                 return;
+            this.uiSystem = uiSystem;
             IsVisible = false;
             gameObject.SetActive(false);
             OnInitialise();

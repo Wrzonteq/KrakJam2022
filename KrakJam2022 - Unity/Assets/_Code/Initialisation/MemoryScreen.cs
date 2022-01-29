@@ -13,14 +13,14 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
         [SerializeField] Sprite negativeIcon;
 
 
-        public async UniTaskVoid DisplayMemory(Emotion emotion) {
+        public async UniTaskVoid DisplayMemory(MemoryData memory) {
             var input = GameSystems.GetSystem<InputSystem>();
             input.DisableInput();
-            var memory = GameSystems.GetSystem<MemoryStorageSystem>().MemoriesDict[emotion];
             memoryImage.gameObject.SetActive(memory.sprite != null);
             memoryImage.sprite = memory.sprite;
             text.text = memory.description;
             iconImage.sprite = memory.type == MemoryType.Positive ? positiveIcon : negativeIcon;
+            uiSystem.GetScreen<HUDScreen>().Hide().Forget();
             await Show();
             input.SwitchToInterfaceInput();
             input.Bindings.Interface.Submit.performed += HandleInput;
@@ -37,6 +37,7 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
 
         async UniTaskVoid Close() {
             await Hide();
+            await uiSystem.GetScreen<HUDScreen>().Show();
             GameSystems.GetSystem<InputSystem>().SwitchToGameplayInput();
         }
     }
