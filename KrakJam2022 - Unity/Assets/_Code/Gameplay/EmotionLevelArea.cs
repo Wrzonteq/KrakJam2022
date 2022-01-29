@@ -39,7 +39,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
             else if (memory.type == MemoryType.Negative)
                 loadedState.negativeMemoryCollected = true;
             if (loadedState.positiveMemoryCollected && loadedState.negativeMemoryCollected)
-                exit.Open();
+                HandleLevelComplete();
+        }
+
+        void HandleLevelComplete() {
+            exit.Open();
         }
 
         void ReturnPlayerToGate() {

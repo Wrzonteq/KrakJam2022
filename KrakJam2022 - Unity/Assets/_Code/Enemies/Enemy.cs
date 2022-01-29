@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class Enemy : MonoBehaviour {
-        [SerializeField]
-        public int hp;
-        [SerializeField]
-        public int damage;
+        [SerializeField] int health;
+        [SerializeField] int damage;
+        [SerializeField] int insanityReduction;
+        [SerializeField] float speed = 5f;
 
-        private float speed = 5f;
-
+        public int HealthPoints => health;
+        public int Damage => damage;
         public Waypoint NextWaypoint { get; private set; }
         public Vector3 NextWaypointPosition { get; private set; }
+
 
         public void Initialize(Waypoint currentWaypoint) {
             this.NextWaypoint = currentWaypoint;
@@ -32,14 +31,16 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void Update() {
+            if (health <= 0)
+                return;
             Move();
         }
 
-        private void Move() {
+        void Move() {
             if (NextWaypoint == null) {
                 return;
             }
-            Vector3 newPosition = Vector3.MoveTowards(transform.position, NextWaypointPosition, speed * Time.deltaTime);
+            var newPosition = Vector3.MoveTowards(transform.position, NextWaypointPosition, speed * Time.deltaTime);
             if (newPosition == NextWaypointPosition) {
                 UpdateToNextWaypoint();
             } else {
@@ -48,11 +49,13 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public void TakeDamage() {
-            if (hp < 1)
+            if (health < 1)
                 return;
-            hp -= 1;
-            if (hp < 1)
+            health--;
+            if (health < 1) {
+                GameSystems.GetSystem<GameStateSystem>().Insanity.Value -= insanityReduction;
                 Kill().Forget();
+            }
         }
 
         public async UniTaskVoid Kill() {

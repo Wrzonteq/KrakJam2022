@@ -35,12 +35,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 MovePlayerToArea();
         }
 
-        void OnCollisionEnter2D(Collision2D other) {
-            Debug.Log($"OnCollisionEnter2D");
-            if (other.gameObject.CompareTag("Player"))
-                MovePlayerToArea();
-        }
-
         void MovePlayerToArea() {
             var transitionScreen = GameSystems.GetSystem<UISystem>().GetScreen<TransitionScreen>();
             transitionScreen.Show().Forget();
@@ -52,6 +46,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
             void OnTransitionDone() {
                 transitionScreen.Hide().Forget();
+                Close();
             }
         }
 
@@ -60,7 +55,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 Close();
             else if (state.insanityStarted)
                 GoInsane();
-            else if (state.doorUnlocked)
+            else if (state.gateUnlocked)
                 Activate();
             else
                 Close();

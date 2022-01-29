@@ -36,9 +36,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
     [Serializable]
     public class EmotionLevelState {
+        public bool gateUnlocked;
         public bool negativeMemoryCollected;
         public bool positiveMemoryCollected;
-        public bool doorUnlocked;
         public bool insanityStarted;
         public bool insanitySurvived;
     }

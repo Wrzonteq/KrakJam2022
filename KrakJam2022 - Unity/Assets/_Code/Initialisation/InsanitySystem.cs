@@ -6,6 +6,15 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public override void OnCreate() {
             InsanityLevel = new Observable<float>();
+            InsanityLevel.ChangedValue += HandleInsanityValueChanged;
+        }
+
+        void HandleInsanityValueChanged(float insanity) {
+            if (insanity <= 0) {
+                GameSystems.GetSystem<GameplaySystem>().EndInsanityStage();
+            } else if (insanity >= 100) {
+                GameSystems.GetSystem<GameplaySystem>().HandleGameOver();
+            }
         }
 
         public override void Initialise() {
@@ -26,7 +35,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void EndInsanity() {
-            //todo
             GameSystems.GetSystem<EnemiesSystem>().StopEnemySpawning();
         }
     }

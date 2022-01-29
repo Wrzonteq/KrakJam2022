@@ -97,13 +97,15 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public void BeginInsanityStage() {
-            GameSystems.GetSystem<GameStateSystem>().Stage.Value = GameStage.Insanity;
-            //todo
+            var gameStateSystem = GameSystems.GetSystem<GameStateSystem>();
+            gameStateSystem.Stage.Value = GameStage.Insanity;
+            gameStateSystem.runtimeGameState.GetStateForEmotion(CurrentEmotionLevel).insanityStarted = true;
         }
 
         public void EndInsanityStage() {
             var gameStateSystem = GameSystems.GetSystem<GameStateSystem>();
             gameStateSystem.Stage.Value = GameStage.Sanity;
+            gameStateSystem.runtimeGameState.GetStateForEmotion(CurrentEmotionLevel).insanitySurvived = true;
             gameStateSystem.ClosedGatesCount.Value++;
             if (gameStateSystem.ClosedGatesCount.Value < Consts.TOTAL_GATES_COUNT)
                 HandleInsanityCompleted();
@@ -112,13 +114,17 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void HandleInsanityCompleted() {
-
+            OpenNextUnopenedGate();
         }
 
         void HandleAllGatesClosed() {
+            Debug.LogError($"YOU WIN MAI BOI!!");
             //TODO - WIN, End game
         }
-        //TODO - WARUNKI PRZEGRANEJ
+
+        public void HandleGameOver() {
+            //TODO - WARUNKI PRZEGRANEJ
+        }
 
         public EmotionLevelArea GetLevelArea(Emotion emotion) {
             return areasDict[emotion];

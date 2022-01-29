@@ -50,8 +50,7 @@ MonoBehaviour:
   inactive: {fileID: 8501364661663005791}
   insane: {fileID: 5446247560668762795}
   active: {fileID: 6147158861298275028}
-  assignedArea: {fileID: 0}
-  emotion: 2
+  emotion: 1
 --- !u!61 &7302431713154888332
 BoxCollider2D:
   m_ObjectHideFlags: 0
