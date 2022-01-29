@@ -46,20 +46,29 @@ namespace PartTimeKamikaze.KrakJam2022 {
             return nextWaypoints.Last().waypoint;
         }
 
-        // void OnDrawGizmosSelected() {
-        void OnDrawGizmos() {
+        void OnDrawGizmosSelected() {
+        //void OnDrawGizmos() {
             Gizmos.DrawSphere(transform.position, 0.3f);
             GUIStyle style = new GUIStyle();
-            Vector3 labelPosition = new Vector3(transform.position.x + 0.1f, transform.position.y + Camera.main.orthographicSize / 2f, transform.position.z);
+            Vector3 labelPosition = new Vector3(transform.position.x, transform.position.y + 2.2f, transform.position.z);
             UnityEditor.Handles.Label(labelPosition, gameObject.name, style);
 
             if (nextWaypoints.Count == 0)
                 return;
 
-            Gizmos.color = new Color(0.0f, 0.0f, 0.0f);
-
+            int sum = 0;
             foreach (var waypointData in nextWaypoints) {
                 if (waypointData != null) {
+                    sum += waypointData.chance;
+                }
+            }
+            foreach (var waypointData in nextWaypoints) {
+                if (sum != 100) {
+                    Gizmos.color = new Color(1f, 0.0f, 0.0f);
+                } else
+                    Gizmos.color = new Color(0.0f, 0.0f, 0.0f);
+
+                if (waypointData != null && waypointData.waypoint != null) {
                     Gizmos.DrawLine(transform.position, waypointData.waypoint.transform.position);
                 }
 

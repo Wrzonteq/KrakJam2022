@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class EnemiesSystem : BaseGameSystem {
@@ -30,7 +31,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public override void Initialise() {
             CalculateSpawnPoints();
-            SpawnEnemy();
         }
 
         private List<Waypoint> spawningWaypoints;
@@ -54,12 +54,22 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 );
         }
 
-        public void StartEnemySpawning() {
+        bool isSpawning = false;
+        public async UniTaskVoid StartEnemySpawning() {
             //todo 
+            isSpawning = true;
+            while (isSpawning) {
+                SpawnEnemy();
+                await UniTask.Delay(1000);
+            }
         }
 
         public void StopEnemySpawning() {
-            //todo stop spawning + kill remaining enemies
+            isSpawning = false;
+            List<Enemy> enemies = FindObjectsOfType<Enemy>().ToList();
+            foreach(Enemy enemy in enemies) {
+                Destroy(enemy.gameObject);
+            }
         }
     }
 }
