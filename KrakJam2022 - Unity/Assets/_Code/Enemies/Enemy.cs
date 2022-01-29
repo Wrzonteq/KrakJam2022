@@ -47,6 +47,13 @@ namespace PartTimeKamikaze.KrakJam2022 {
             }
         }
 
+        public void TakeDamage() {
+            if (hp < 1) { return; }
+            
+            hp -= 1;
+            if (hp < 1) { Kill(); }
+        }
+
         public async UniTaskVoid Kill() {
             var animTimeMiliseconds = 0;
             //todo perform animation

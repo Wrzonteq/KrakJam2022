@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1012838934207738513}
   - component: {fileID: 1012838934207738512}
   - component: {fileID: -316264207691572623}
-  m_Layer: 20
+  m_Layer: 12
   m_Name: PuzzleBlock
   m_TagString: SlidingPuzzleBlock
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 6657745061277323727}
   - component: {fileID: 3605448147251020185}
   - component: {fileID: 4328826251997265774}
-  m_Layer: 20
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

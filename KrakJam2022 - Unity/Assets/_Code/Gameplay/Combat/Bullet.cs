@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022.Combat {
     public class Bullet : MonoBehaviour {
@@ -14,6 +15,14 @@ namespace PartTimeKamikaze.KrakJam2022.Combat {
 
         public void Fire(Vector2 direction, float power) {
             selfRigidbody2d.AddForce(direction.normalized * power, ForceMode2D.Impulse);
+        }
+
+        public void OnTriggerEnter2D(Collider2D col) {
+            
+            
+            if (col.CompareTag("Enemy")) {
+                col.GetComponent<Enemy>().TakeDamage();
+            }
         }
     }
 }
