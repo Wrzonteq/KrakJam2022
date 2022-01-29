@@ -17,14 +17,15 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public override void OnCreate() {
             MainCanvas = Instantiate(mainCanvasPrefab);
             screensInstances = new Dictionary<Type, UiScreenBase>();
+        }
+
+        public override void Initialise() {
             foreach (var sp in screensPrefabs) {
                 var instance = Instantiate(sp, MainCanvas.transform, false);
                 instance.Initialise();
                 screensInstances[sp.GetType()] = instance;
             }
         }
-
-        public override void Initialise() { }
 
         public T GetScreen<T>() where T : UiScreenBase {
             return (T)screensInstances[typeof(T)];

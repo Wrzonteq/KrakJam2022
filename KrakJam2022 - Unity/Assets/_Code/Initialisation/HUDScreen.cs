@@ -8,8 +8,8 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
         protected override float FadeOutDuration => 0f;
 
         protected override void OnInitialise() {
-            var playerDataSystem = GameSystems.GetSystem<GameStateSystem>();
-            playerDataSystem.Sanity.ChangedValue += SetProgress;
+            var gameStateSystem = GameSystems.GetSystem<GameStateSystem>();
+            gameStateSystem.Sanity.ChangedValue += SetProgress;
         }
 
         void SetProgress(int percentage) {

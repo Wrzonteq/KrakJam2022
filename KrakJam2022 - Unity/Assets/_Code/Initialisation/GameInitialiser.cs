@@ -25,6 +25,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             for (var i = 0; i < systemPrefabs.Length; i++) {
                 var prefab = systemPrefabs[i];
                 var instance = Instantiate(prefab, systemsRoot, false);
+                Debug.Log($"Created System: {instance.name}");
                 instance.OnCreate();
                 systemsInstances.Add(instance);
                 loadingProgressCounter++;
@@ -32,13 +33,15 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 await UniTask.Delay(100);
             }
 
+            GameSystems.Init(systemsInstances);
+
             foreach (var instance in systemsInstances) {
+                Debug.Log($"Initialising System: {instance.name}");
                 instance.Initialise();
                 loadingProgressCounter++;
                 gameStartLoadingScreen.SetProgress(loadingProgressCounter / stuffToLoad);
             }
 
-            GameSystems.Init(systemsInstances);
             await UniTask.Delay(200);
             await GameSystems.GetSystem<UISystem>().ShowScreen<MainMenuScreen>(true);
             await gameStartLoadingScreen.Hide();
