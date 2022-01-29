@@ -36,9 +36,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
     [Serializable]
     public class EmotionLevelState {
+        public bool negativeMemoryCollected;
+        public bool positiveMemoryCollected;
         public bool doorUnlocked;
-        public int minigamesCount;
-        public int minigamesCompleted; // jak juz bedziemy miec level controller to sie tu cos lepszego wymysli, zeby wiedziec ktore konkretnie sa zrobione
         public bool insanityStarted;
         public bool insanitySurvived;
     }

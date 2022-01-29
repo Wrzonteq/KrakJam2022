@@ -5,9 +5,8 @@ using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class SlidingPuzzleController : MonoBehaviour {
-        [SerializeField] Collectable collectable;
+        [SerializeField] CollectibleMemory reward;
 
-        [SerializeField] GameObject memoryContainer;
         [SerializeField] GameObject container;
         [SerializeField] GameObject background;
         [SerializeField] PuzzleElement puzzlePrefab; // TODO: Desired position
@@ -25,6 +24,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         bool won = false;
 
         public void Start() {
+            reward.gameObject.SetActive(false);
             int colSize = rows.Length / rowSize;
             
             background.transform.localScale = new Vector3(rowSize * 2, colSize * 2);
@@ -93,12 +93,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public void WinPuzzle(int row, int col) {
             won = true;
-            SpawnCollectable();
+            EnableReward();
             MovePuzzlesToPosition(row, col);
         }
 
-        public void SpawnCollectable() {
-            Instantiate(collectable, memoryContainer.transform);
+        public void EnableReward() {
+            reward.gameObject.SetActive(true);
         }
 
         public void MovePuzzlesToPosition(int row, int col) {

@@ -19,8 +19,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             GameSystems.GetSystem<GameplaySystem>().PlayerInstance.PickupCollectable(this);
 
             OnInteract();
-
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         protected virtual void OnInteract() { }
