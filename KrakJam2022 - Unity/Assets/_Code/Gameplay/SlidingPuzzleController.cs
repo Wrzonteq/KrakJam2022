@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using PartTimeKamikaze.KrakJam2022.SlidingPuzzles;
 using UnityEngine;
@@ -11,7 +12,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] CollectibleMemory reward;
 
         [SerializeField] GameObject container;
-        [SerializeField] GameObject background;
+        [SerializeField] GameObject boundaries;
+        [SerializeField] SpriteRenderer backgroundRenderer;
         [SerializeField] PuzzleElement puzzlePrefab;
 
         [SerializeField] GameObject blockadePrefab; 
@@ -30,8 +32,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
             reward.gameObject.SetActive(false);
             int colSize = rows.Length / rowSize;
             
-            background.transform.localScale = new Vector3(rowSize * 2, colSize * 2);
-            background.transform.localPosition = new Vector2(rowSize - 1, -colSize + 1);
+            boundaries.transform.localScale = new Vector3(rowSize * 2, colSize * 2);
+            backgroundRenderer.size = new Vector2(rowSize, colSize);
+            
+            backgroundRenderer.transform.localPosition = 
+                boundaries.transform.localPosition = new Vector2(rowSize - 1, -colSize + 1);
+            
             fields = new FieldTile[colSize, rowSize];
             
             for (int i = 0; i < rows.Length; i++) {
@@ -70,10 +76,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
             block.transform.localPosition = new Vector3(2 * col, -2 * row, 0);
         }
 
-        public void CheckWinCondition() {
-            if (won) { return; }
-            
+        public IEnumerator CheckWinCondition() {
+            if (won) { yield break; }
             FieldTile currentField;
+
+            yield return new WaitForSeconds(1);
+            Debug.Log("Checking result");
             
             for (int i = 0; i < fields.Length; i++) {
                 int col = i % rowSize;
@@ -85,13 +93,19 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 
                 if (currentField.CurrentPuzzleId > 1) { break; } // If starts with something else than 1, dont bother
                 if (col == rowSize - 1) { break; } // Same if that's last element in row
-                    
-                if (fields[row, col + 1].CurrentPuzzleId == 2 &&
-                    fields[row + 1, col].CurrentPuzzleId == 3 &&
-                    fields[row + 1, col + 1].CurrentPuzzleId == 4) {
+
+                Debug.Log("CHECKING Fields around");
+                
+                if (FieldContainsPuzzle(fields[row, col + 1], 2) &&
+                    FieldContainsPuzzle(fields[row + 1, col], 3) &&
+                    FieldContainsPuzzle(fields[row + 1, col + 1], 4)) {
                     WinPuzzle(row, col);
                 }
             }
+        }
+
+        private bool FieldContainsPuzzle(FieldTile fieldTile, int expectedPuzzleId) {
+            return fieldTile != null && fieldTile.CurrentPuzzleId == expectedPuzzleId;
         }
 
         public void WinPuzzle(int row, int col) {

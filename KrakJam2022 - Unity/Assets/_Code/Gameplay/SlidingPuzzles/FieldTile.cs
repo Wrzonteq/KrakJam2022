@@ -24,7 +24,7 @@ namespace PartTimeKamikaze.KrakJam2022.SlidingPuzzles {
             CurrentPuzzleId = 0;
             
             if (col.gameObject.tag == "SlidingPuzzleBlock") {
-                board.CheckWinCondition();
+                StartCoroutine(board.CheckWinCondition());
             }
         }
 
