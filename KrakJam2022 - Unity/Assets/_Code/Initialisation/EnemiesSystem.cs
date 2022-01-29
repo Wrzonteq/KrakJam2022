@@ -32,7 +32,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public override void Initialise() { }
 
         public void Test() {
-            enemiesCount = 0;
             CalculateSpawnPoints();
             StartEnemySpawning();
         }
@@ -44,12 +43,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             }
         }
 
-        private int enemiesCount = 0;
         private void SpawnEnemy() {
-            if (enemiesCount > 20)
-                return;
-
-            enemiesCount++;
             Waypoint spawningWaypoint = spawningWaypoints[Random.Range(0, spawningWaypoints.Count)];
             EnemySettings settings = enemySettings[Random.Range(0, enemySettings.Count)];
             Enemy enemy = Instantiate(settings.enemy);
