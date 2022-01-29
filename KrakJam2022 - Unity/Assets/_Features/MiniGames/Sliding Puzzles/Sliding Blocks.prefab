@@ -251,6 +251,11 @@ MonoBehaviour:
     state: 0
   - puzzleElementId: 4
     state: 2
+  sprites:
+  - {fileID: -5760936160756666841, guid: 0f19442963d26ab4c98ae49a39b610a0, type: 3}
+  - {fileID: -2691306362096952985, guid: 0f19442963d26ab4c98ae49a39b610a0, type: 3}
+  - {fileID: 5004570625869558852, guid: 0f19442963d26ab4c98ae49a39b610a0, type: 3}
+  - {fileID: 6424281135949200744, guid: 0f19442963d26ab4c98ae49a39b610a0, type: 3}
 --- !u!1 &5196420872927020404
 GameObject:
   m_ObjectHideFlags: 0

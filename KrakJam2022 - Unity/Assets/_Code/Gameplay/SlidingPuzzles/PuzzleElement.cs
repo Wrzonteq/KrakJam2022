@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022.SlidingPuzzles {
     public class PuzzleElement : MonoBehaviour {
-        public BoxCollider2D selfBoxCollider2D;
         public TextMeshPro text;
+        public SpriteRenderer image;
 
         public int Id { get; private set; }
 
@@ -22,16 +22,16 @@ namespace PartTimeKamikaze.KrakJam2022.SlidingPuzzles {
             }
         }
 
-        public void SetId(int id) {
-            this.Id = id;
-            text.text = id.ToString();
-            // TODO: Set image
-        }
-
         public void PlayEndSequence(Vector2 pos) {
             Destroy(gameObject.GetComponent<Rigidbody2D>());
             desiredPos = pos;
             finishingAnimation = true;
+        }
+
+        public void SetPuzzle(int puzzleElementId, Sprite sprite) {
+            this.Id = puzzleElementId;
+            //text.text = puzzleElementId.ToString();
+            image.sprite = sprite;
         }
     }
 }

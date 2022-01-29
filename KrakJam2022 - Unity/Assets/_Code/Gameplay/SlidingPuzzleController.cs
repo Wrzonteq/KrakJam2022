@@ -17,6 +17,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         [SerializeField] int rowSize = 4;
         [SerializeField] Field[] rows;
+        [SerializeField] Sprite[] sprites;
 
         List<PuzzleElement> puzzles = new();
         FieldTile[,] fields;
@@ -49,7 +50,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public void SpawnPuzzleElement(int puzzleElementId, int row, int col) {
             PuzzleElement block = Instantiate(puzzlePrefab, container.transform);
             block.transform.localPosition = new Vector3(2 * col, -2 * row, 0);
-            block.SetId(puzzleElementId);
+            block.SetPuzzle(puzzleElementId, sprites[puzzleElementId - 1]);
             puzzles.Add(block);
         }
 
