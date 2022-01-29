@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1567181838840537808}
   - component: {fileID: 5106574823815270130}
   m_Layer: 5
-  m_Name: Sanity Display
+  m_Name: Insanity Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 6224832062405842453}
-  sanityDisplay: {fileID: 5240816072050336602}
+  insanityDisplay: {fileID: 5240816072050336602}
 --- !u!225 &6224832062405842453
 CanvasGroup:
   m_ObjectHideFlags: 0

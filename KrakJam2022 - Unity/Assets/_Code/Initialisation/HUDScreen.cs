@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022.UI {
     public class HUDScreen : UiScreenBase {
-        [SerializeField] SanityDisplay sanityDisplay;
+        [SerializeField] InsanityDisplay insanityDisplay;
 
         protected override float FadeInDuration => 0f;
         protected override float FadeOutDuration => 0f;
@@ -13,7 +13,7 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
         }
 
         void SetProgress(int percentage) {
-            sanityDisplay.SetFill(percentage / 100f);
+            insanityDisplay.SetFill(percentage / 100f);
         }
     }
 }

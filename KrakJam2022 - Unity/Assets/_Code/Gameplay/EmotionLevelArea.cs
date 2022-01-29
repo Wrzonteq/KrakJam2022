@@ -4,12 +4,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
     public class EmotionLevelArea : MonoBehaviour {
         [SerializeField] Emotion emotion;
         [SerializeField] Transform playerSpawnPoint;
-        [SerializeField] GameObject entrance;
-
-
-        public Emotion Emotion => emotion;
+        [SerializeField] GameObject exit;
 
         int completedMinigames;
+
+        public Emotion Emotion => emotion;
 
 
         public void LoadState(EmotionLevelState state) {
@@ -28,7 +27,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void EnableExitDoor(bool canExit) {
-//            exitDoor.SetActive(canExit);
+            exit.SetActive(canExit);
         }
     }
 }
