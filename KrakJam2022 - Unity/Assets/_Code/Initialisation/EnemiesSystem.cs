@@ -39,6 +39,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 spawningWaypoints = FindObjectsOfType<Waypoint>().Where(w => w.spawnPoint).ToList();
             }
         }
+        // TODO : maybe use const here
         float planeZ = 0f;
 
         private void SpawnEnemy() {
