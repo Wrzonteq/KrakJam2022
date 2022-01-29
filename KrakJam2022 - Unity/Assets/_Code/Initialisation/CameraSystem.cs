@@ -12,15 +12,14 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public override void OnCreate() {
             MainCamera = Instantiate(mainCameraPrefab);
-            crosshairInstance = Instantiate(crosshairPrefab, MainCamera.transform, false);
         }
 
         public override void Initialise() {
-            
+            crosshairInstance = Instantiate(crosshairPrefab, MainCamera.transform, false);
         }
 
         public void SetupCrosshairFollowTarget(Transform followTarget) {
-            crosshairInstance.SetupFollow(followTarget);
+            crosshairInstance.Setup(MainCamera, followTarget);
         }
     }
 }

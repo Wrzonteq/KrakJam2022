@@ -9,7 +9,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] GameObject insane;
         [SerializeField] GameObject active;
 
-        [SerializeField] EmotionLevelArea assignedArea;
         [SerializeField] Emotion emotion;
 
         public Emotion Emotion => emotion;
@@ -48,7 +47,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             transitionScreen.FadeInAndOut(TeleportPlayer, OnTransitionDone).Forget();
 
             void TeleportPlayer() {
-                GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform.position = assignedArea.PlayerSpawnPoint.position;
+                GameSystems.GetSystem<GameplaySystem>().GetLevelArea(emotion).TeleportPlayerToArea();
             }
 
             void OnTransitionDone() {

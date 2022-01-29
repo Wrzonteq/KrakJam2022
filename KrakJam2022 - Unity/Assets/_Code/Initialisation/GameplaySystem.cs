@@ -7,15 +7,22 @@ using UnityEngine.InputSystem;
 namespace PartTimeKamikaze.KrakJam2022 {
     public class GameplaySystem : BaseGameSystem {
         [SerializeField] PlayerController playerPrefab;
-        [SerializeField] Transform playerSpawnPoint;
 
         Dictionary<Emotion, EmotionLevelArea> areasDict;
         Dictionary<Emotion, LevelGate> gatesDict;
 
         public PlayerController PlayerInstance { get; private set; }
 
-
-        public bool IsInGameplay { get; private set; }
+        bool isInGameplay;
+        public bool IsInGameplay { get =>  isInGameplay;
+            private set {
+                isInGameplay = value;
+                if (value)
+                    OnGameplayStart();
+                else
+                    OnGameplayEnd();
+            }
+        }
 
         public override void OnCreate() {
             areasDict = new Dictionary<Emotion, EmotionLevelArea>();
@@ -23,6 +30,14 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public override void Initialise() { }
+
+        void OnGameplayStart() {
+            GameSystems.GetSystem<InputSystem>().Bindings.Gameplay.OpenPauseMenu.performed += OpenPauseScreen;
+        }
+
+        void OnGameplayEnd() {
+            GameSystems.GetSystem<InputSystem>().Bindings.Gameplay.OpenPauseMenu.performed -= OpenPauseScreen;
+        }
 
         public void StartNewGame() {
             GameSystems.GetSystem<GameStateSystem>().ResetGameState();
@@ -65,8 +80,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
             OpenNextUnopenedGate();
 
             IsInGameplay = true;
-            //todo load map, player etc. using gameState
-            GameSystems.GetSystem<InputSystem>().Bindings.Gameplay.OpenPauseMenu.performed += OpenPauseScreen;
         }
 
         void OpenNextUnopenedGate() {
@@ -75,19 +88,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
 
-        void OpenPauseScreen(InputAction.CallbackContext obj) {
+        void OpenPauseScreen(InputAction.CallbackContext _) {
             GameSystems.GetSystem<UISystem>().GetScreen<PauseMenuScreen>().Show().Forget();
-        }
-
-        public async UniTaskVoid ReturnToMenu() {
-            GameSystems.GetSystem<UISystem>().GetScreen<LoadingScreen>().Show(true).Forget();
-            GameSystems.GetSystem<UISystem>().HideScreen<HUDScreen>().Forget();
-            var sceneLoadingSystem = GameSystems.GetSystem<SceneLoadingSystem>();
-            sceneLoadingSystem.SceneLoadingProgress.ChangedValue += DisplayProgress;
-            await sceneLoadingSystem.UnloadSceneAsync(Consts.ScenesNames.Gameplay);
-            sceneLoadingSystem.SceneLoadingProgress.ChangedValue -= DisplayProgress;
-            GameSystems.GetSystem<UISystem>().GetScreen<MainMenuScreen>().Show(true).Forget();
-            await GameSystems.GetSystem<UISystem>().GetScreen<LoadingScreen>().Hide();
         }
 
         void DisplayProgress(float progress) {
@@ -116,8 +118,22 @@ namespace PartTimeKamikaze.KrakJam2022 {
         void HandleAllGatesClosed() {
             //TODO - WIN, End game
         }
-
-
         //TODO - WARUNKI PRZEGRANEJ
+
+        public EmotionLevelArea GetLevelArea(Emotion emotion) {
+            return areasDict[emotion];
+        }
+
+        public async UniTaskVoid ReturnToMenu() {
+            IsInGameplay = false;
+            GameSystems.GetSystem<UISystem>().GetScreen<LoadingScreen>().Show(true).Forget();
+            GameSystems.GetSystem<UISystem>().HideScreen<HUDScreen>().Forget();
+            var sceneLoadingSystem = GameSystems.GetSystem<SceneLoadingSystem>();
+            sceneLoadingSystem.SceneLoadingProgress.ChangedValue += DisplayProgress;
+            await sceneLoadingSystem.UnloadSceneAsync(Consts.ScenesNames.Gameplay);
+            sceneLoadingSystem.SceneLoadingProgress.ChangedValue -= DisplayProgress;
+            GameSystems.GetSystem<UISystem>().GetScreen<MainMenuScreen>().Show(true).Forget();
+            await GameSystems.GetSystem<UISystem>().GetScreen<LoadingScreen>().Hide();
+        }
     }
 }

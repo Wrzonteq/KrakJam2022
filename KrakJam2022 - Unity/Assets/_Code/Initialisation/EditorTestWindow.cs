@@ -8,7 +8,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         [MenuItem("KrakJam2022/Test Window", false, 0)]
         static void OpenTheWindow() {
-            GetWindow<TestingWindow>("HF2 Toolbox");
+            GetWindow<TestingWindow>("Testing Window");
         }
 
         void OnGUI() {

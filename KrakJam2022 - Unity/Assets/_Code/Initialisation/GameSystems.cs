@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public static class GameSystems {
+        public static bool IsInitialised { get; private set; }
+
         static Dictionary<Type, BaseGameSystem> systemsDict;
 
 
@@ -15,6 +17,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             systemsDict = new Dictionary<Type, BaseGameSystem>();
             foreach (var s in systems)
                 systemsDict[s.GetType()] = s;
+            IsInitialised = true;
         }
     }
 
