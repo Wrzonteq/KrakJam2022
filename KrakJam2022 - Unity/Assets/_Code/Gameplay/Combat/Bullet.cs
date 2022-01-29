@@ -18,8 +18,6 @@ namespace PartTimeKamikaze.KrakJam2022.Combat {
         }
 
         public void OnTriggerEnter2D(Collider2D col) {
-            
-            
             if (col.CompareTag("Enemy")) {
                 col.GetComponent<Enemy>().TakeDamage();
             }

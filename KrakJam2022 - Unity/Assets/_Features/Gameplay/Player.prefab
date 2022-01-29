@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 240242360}
   - component: {fileID: 240242362}
   - component: {fileID: 240242363}
+  - component: {fileID: 984257545288350885}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -67,6 +68,23 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!114 &984257545288350885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240242359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &930734436
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +231,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3381995, y: 1}
+    m_SensorSize: {x: 1.6002907, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -276,8 +294,9 @@ MonoBehaviour:
   movementSpeed: 5
   crosshairFollowTarget: {fileID: 930734437}
   bulletPrefab: {fileID: 1726365612486645448, guid: ba65399cd6d1301459e4307af8ba04e3, type: 3}
-  bulletSpeed: 6.66
-  shootEveryInSec: 0.2
+  playerCamera: {fileID: 1199553985}
+  bulletSpeed: 10
+  shootEveryInSec: 0.15
 --- !u!114 &7839566317245767509
 MonoBehaviour:
   m_ObjectHideFlags: 0

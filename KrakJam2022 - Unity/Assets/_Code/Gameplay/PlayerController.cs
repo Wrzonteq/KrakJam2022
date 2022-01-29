@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cinemachine;
 using PartTimeKamikaze.KrakJam2022.Combat;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,24 +10,32 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] int movementSpeed = 10;
         [SerializeField] Transform crosshairFollowTarget;
         [SerializeField] Bullet bulletPrefab;
+        [SerializeField] CinemachineVirtualCamera playerCamera;
 
         List<IInteractable> InteractablesInRange { get; } = new();
-
         
         [SerializeField] float bulletSpeed = 6.66f;
         [SerializeField] float shootEveryInSec = 0.5f;
 
+        float shakeTimer;
         float nextShotIn = 0;
-        
-        Vector3 move;
+        bool isShooting = false;
 
-        bool isShooting = false; // Range?
+        Vector3 move;
 
         public Transform CrosshairFollowTarget => crosshairFollowTarget;
 
         void Update() {
             selfRigidbody2D.velocity = move * movementSpeed;
 
+            if (shakeTimer > 0) {
+                shakeTimer -= Time.deltaTime;
+            
+                if (shakeTimer <= 0) {
+                    ShakeCamera(0, 0);
+                }
+            }
+            
             if (isShooting && nextShotIn <= 0) { // && GameSystems.GetSystem<GameStateSystem>().runtimeGameState.stage == GameStage.Insanity) {
                 Shoot();
                 nextShotIn = shootEveryInSec;
@@ -56,6 +65,13 @@ namespace PartTimeKamikaze.KrakJam2022 {
             bullet.transform.position = transform.position;
 
             bullet.Fire(GameSystems.GetSystem<CameraSystem>().CrosshairInstance.transform.localPosition, bulletSpeed);
+            ShakeCamera(2f, .1f);
+        }
+
+        public void ShakeCamera(float intensity, float time) {
+            var channelPerlin = playerCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            channelPerlin.m_AmplitudeGain = intensity;
+            shakeTimer = time;
         }
 
         public void RegisterInteractable(IInteractable interactable) {
