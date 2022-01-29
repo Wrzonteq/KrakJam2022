@@ -10,7 +10,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField]
         public int damage;
 
-        public float speed = 0.04f;
+        private float speed = 5f;
 
         public Waypoint NextWaypoint { get; private set; }
         public Vector3 NextWaypointPosition { get; private set; }
@@ -35,23 +35,10 @@ namespace PartTimeKamikaze.KrakJam2022 {
             Move();
         }
 
-        void OnCollisionEnter(Collision collision) {
-            // TODO : put variable here
-            if (collision.gameObject.name == "Ego") {
-                DecreaseSanity();
-            }
-        }
-
-        void DecreaseSanity() {
-            var playerDataSystem = GameSystems.GetSystem<PlayerDataSystem>();
-            playerDataSystem.Sanity.Value += damage;
-        }
-
         private void Move() {
             if (NextWaypoint == null) {
                 return;
             }
-
             Vector3 newPosition = Vector3.MoveTowards(transform.position, NextWaypointPosition, speed * Time.deltaTime);
             if (newPosition == NextWaypointPosition) {
                 UpdateToNextWaypoint();
