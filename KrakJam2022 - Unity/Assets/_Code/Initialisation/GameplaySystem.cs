@@ -6,12 +6,14 @@ using UnityEngine.InputSystem;
 namespace PartTimeKamikaze.KrakJam2022 {
     public class GameplaySystem : BaseGameSystem {
 
-        List<LevelGate> gates;
+        Dictionary<Emotion, LevelGate> gatesDict;
 
 
         public bool IsInGameplay { get; private set; }
 
-        public override void OnCreate() { }
+        public override void OnCreate() {
+            gatesDict = new Dictionary<Emotion, LevelGate>();
+        }
 
         public override void Initialise() { }
 
@@ -34,9 +36,25 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void LoadGame(GameStateDataAsset gameState) {
+            gatesDict.Clear();
+            var gates = FindObjectsOfType<LevelGate>();
+            foreach (var gate in gates)
+                gatesDict[gate.Emotion] = gate;
+            InitGatesWithGameState(gameState);
+
+
+
             IsInGameplay = true;
             //todo load map, player etc. using gameState
             GameSystems.GetSystem<InputSystem>().Bindings.Gameplay.OpenPauseMenu.performed += OpenPauseScreen;
+        }
+
+        void InitGatesWithGameState(GameStateDataAsset gameState) {
+            gatesDict[Emotion.Anger].InitialiseFromSavedState(gameState.angerState);
+            gatesDict[Emotion.Fear].InitialiseFromSavedState(gameState.fearState);
+            gatesDict[Emotion.Sadness].InitialiseFromSavedState(gameState.sadnessState);
+            gatesDict[Emotion.Loneliness].InitialiseFromSavedState(gameState.lonelinessState);
+            gatesDict[Emotion.Despair].InitialiseFromSavedState(gameState.despairState);
         }
 
         void OpenPauseScreen(InputAction.CallbackContext obj) {
