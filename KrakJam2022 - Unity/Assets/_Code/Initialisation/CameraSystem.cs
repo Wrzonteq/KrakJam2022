@@ -5,9 +5,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] Camera mainCameraPrefab;
         [SerializeField] CrosshairController crosshairPrefab;
 
-        CrosshairController crosshairInstance;
-
         public Camera MainCamera { get; private set; }
+        public CrosshairController CrosshairInstance { get; private set; }
 
 
         public override void OnCreate() {
@@ -15,11 +14,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public override void Initialise() {
-            crosshairInstance = Instantiate(crosshairPrefab, MainCamera.transform, false);
+            CrosshairInstance = Instantiate(crosshairPrefab, MainCamera.transform, false);
         }
 
         public void SetupCrosshairFollowTarget(Transform followTarget) {
-            crosshairInstance.Setup(MainCamera, followTarget);
+            CrosshairInstance.Setup(MainCamera, followTarget);
         }
     }
 }
