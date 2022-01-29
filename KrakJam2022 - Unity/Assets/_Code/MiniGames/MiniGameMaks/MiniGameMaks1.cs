@@ -29,20 +29,24 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField]
         Tilemap tilemap;
 
-        [SerializeField]
         BoundsInt tileMapSettings;
 
         void Start() {
             teleport1.AddCollisionCallback(TouchTeleport1);
-            teleport2.AddCollisionCallback(TouchTeleport2);
+            //teleport2.AddCollisionCallback(TouchTeleport2);
             teleport3.AddCollisionCallback(TouchTeleport3);
             exitTeleport.AddCollisionCallback(ExitMiniGame);
+            tilemap.CompressBounds();  // to recalculate cell bounds
+            tileMapSettings = tilemap.cellBounds;
+            Debug.Log(tileMapSettings.size.x);
+            Debug.Log(tileMapSettings.max.x);
             StartMiniGame();
         }
 
         bool collapsing = false;
         private void StartMiniGame() {
             StoreOriginalTileMap();
+            ResetFloorState();
             collapsing = true;
 
         }
@@ -57,8 +61,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
             if (!collapsing) return;
 
             miliseconds += Time.deltaTime;
-            if (miliseconds > 1f) { // every second - maybe less?
-                miliseconds -= 1f;
+            if (miliseconds > 0.4f) { // every second - maybe less?
+                miliseconds -= 0.4f;
                 CollapseTheFloorByCol();
             }
             CheckIfPlayerStoppedOnCollapsedTile();
@@ -79,10 +83,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         private void TouchTeleport1() {
             MovePlayerToTeleport(teleport2);
-        }
-
-        private void TouchTeleport2() {
-            MovePlayerToTeleport(teleport3);
         }
 
         private void TouchTeleport3() {
@@ -113,32 +113,28 @@ namespace PartTimeKamikaze.KrakJam2022 {
             }
         }
 
-        int collapsedTilesCol = 0;
-        bool leftToRight = true;
+        int collapsedTilesCol;
+        bool leftToRight;
 
         private void ResetFloorState() {
-            collapsedTilesCol = 0;
+            leftToRight = true;
+            collapsedTilesCol = tileMapSettings.min.x;
         }
 
         private void CollapseTheFloorByCol() {
             RestoreOriginalTileMap();
 
-            if (collapsedTilesCol > tileMapSettings.size.x - 1) {
+            if (collapsedTilesCol >= tileMapSettings.max.x - 1) {
                 leftToRight = false;  // turned the collapsing the other way
             }
 
-            if (collapsedTilesCol < 0) {
+            if (collapsedTilesCol <= tileMapSettings.min.x) {
                 leftToRight = true;  // turned the collapsing the other way
             }
 
-            int collapsingTileCol = collapsedTilesCol % tileMapSettings.size.x;
-
-            //// floor is disappearing from right to left and the from left to right
-
-            if (leftToRight) {
-                for (int y = tileMapSettings.yMin; y <= tileMapSettings.yMax; y++) {
-                    tilemap.SetTile(new Vector3Int(collapsingTileCol + tileMapSettings.xMin, y), null);
-                }
+            // floor is disappearing from right to left and then from left to right
+            for (int y = tileMapSettings.yMin; y <= tileMapSettings.yMax; y++) {
+                tilemap.SetTile(new Vector3Int(collapsedTilesCol, y), null);
             }
 
             collapsedTilesCol = leftToRight ? collapsedTilesCol + 1 : collapsedTilesCol - 1;

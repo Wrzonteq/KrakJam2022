@@ -12,9 +12,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
             this.collisionCallback = collisionCallback;
         }
 
-        void OnCollisionEnter(Collision collision) {
-            // TODO : put variable here
-            if (collision.gameObject.name == "Player") {
+        void OnTriggerEnter2D(Collider2D collider) {
+            Debug.Log($"collistion {collider.gameObject.tag}");
+            if (collider.gameObject.CompareTag("Player")) {
                 this.collisionCallback?.Invoke();
             }
         }
