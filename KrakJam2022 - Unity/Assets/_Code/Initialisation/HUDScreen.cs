@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace PartTimeKamikaze.KrakJam2022.UI {
     public class HUDScreen : UiScreenBase {
@@ -16,15 +15,6 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
 
         void SetProgress(int percentage) {
             sanityDisplay.SetFill(percentage / 100f);
-        }
-    }
-
-    public class SanityDisplay : MonoBehaviour {
-        [SerializeField] Image fillImage;
-
-
-        public void SetFill(float value) {
-            fillImage.fillAmount = value;
         }
     }
 }
