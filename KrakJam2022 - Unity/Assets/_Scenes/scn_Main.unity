@@ -192,7 +192,6 @@ MonoBehaviour:
   - {fileID: 2491497854325691850, guid: 96d03c63af0b5704db000814d6eb0d2b, type: 3}
   - {fileID: 5531234120759844241, guid: 0d49def089d1d254e89e461a1ddc34f3, type: 3}
   - {fileID: 2916802356930076845, guid: 5fb4131b6a4c14e5493e10c83d556b39, type: 3}
-  - {fileID: 5867120758385356493, guid: 8232a8f6cd338cf4c8676ead8b1ec33c, type: 3}
   systemsRoot: {fileID: 772045781}
   gameStartLoadingScreen: {fileID: 1238308596}
 --- !u!4 &1186642998
