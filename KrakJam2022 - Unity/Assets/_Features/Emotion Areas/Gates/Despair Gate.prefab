@@ -51,6 +51,7 @@ MonoBehaviour:
   openedGateSprite: {fileID: 21300000, guid: 7c5941d5cf4743d4793bba99751e3881, type: 3}
   closedGateSprite: {fileID: 21300000, guid: 0991e28c2deac0542a95c3b9c46b896a, type: 3}
   assignedArea: {fileID: 0}
+  emotion: 16
 --- !u!1 &1572611601499850669
 GameObject:
   m_ObjectHideFlags: 0

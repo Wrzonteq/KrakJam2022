@@ -26,6 +26,15 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public bool insanitySurvived;
     }
 
+    [Flags]
+    public enum Emotion {
+        Anger = 1,
+        Fear = 2,
+        Sadness = 4,
+        Loneliness = 8,
+        Despair = 16,
+    }
+
     public enum GameStage {
         Unset = -1,
         Sanity,

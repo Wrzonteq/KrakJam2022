@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 namespace PartTimeKamikaze.KrakJam2022 {
     public class GameplaySystem : BaseGameSystem {
 
-//        List<LevelGate>
+        List<LevelGate> gates;
 
 
         public bool IsInGameplay { get; private set; }

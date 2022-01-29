@@ -7,6 +7,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] Sprite openedGateSprite;
         [SerializeField] Sprite closedGateSprite;
         [SerializeField] EmotionLevelArea assignedArea;
+        [SerializeField] Emotion emotion;
+
+        public Emotion Emotion => emotion;
 
 
         public void Close() {
@@ -21,7 +24,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         void OnCollisionEnter2D(Collision2D other) {
             if (other.gameObject.CompareTag("Player")) {
-                PlayerController.Instance.transform.position = assignedArea.playerSpawnPoint.position;
+                PlayerController.Instance.transform.position = assignedArea.PlayerSpawnPoint.position;
             }
         }
     }
