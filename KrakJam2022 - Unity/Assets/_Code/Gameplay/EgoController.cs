@@ -4,18 +4,18 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
     public class EgoController : MonoBehaviour, IInteractable {
         void OnTriggerEnter2D(Collider2D col) {
-            PlayerController.Instance.RegisterInteractable(this);
+            GameSystems.GetSystem<GameplaySystem>().PlayerInstance.RegisterInteractable(this);
         }
 
         void OnTriggerExit2D(Collider2D col) {
-            PlayerController.Instance.UnregisterInteractable(this);
+            GameSystems.GetSystem<GameplaySystem>().PlayerInstance.UnregisterInteractable(this);
         }
 
         public void Interact() {
             Debug.Log("Interacting with EGO");
             
             if (GameSystems.GetSystem<GameStateSystem>().CollectedMemoriesCount.Value >= Consts.MEMORIES_TO_COLLECT) {
-                PlayerController.Instance.ClearCollectables();
+                GameSystems.GetSystem<GameplaySystem>().PlayerInstance.ClearCollectables();
                 GameSystems.GetSystem<GameplaySystem>().BeginInsanityStage();
             }
         }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1406345147287873132}
   - component: {fileID: 1406345147287873135}
+  - component: {fileID: 7627017330365461102}
   m_Layer: 0
   m_Name: Loneliness Gate
   m_TagString: Untagged
@@ -25,12 +26,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406345147287873134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.1, y: 2.9, z: -1.610932}
+  m_LocalPosition: {x: -20.1, y: 2.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4357996493046262068}
-  - {fileID: 6319177146573276252}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,55 +46,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1abcf64219c02004f928a5a0bb15474f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entranceTrigger: {fileID: 7770263166775677974}
+  entranceTrigger: {fileID: 7627017330365461102}
   inactive: {fileID: 141342070517455241}
   insane: {fileID: 4582477003768625021}
   active: {fileID: 2396996547757586178}
   assignedArea: {fileID: 0}
   emotion: 3
---- !u!1 &1572611601499850669
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6319177146573276252}
-  - component: {fileID: 7770263166775677974}
-  m_Layer: 0
-  m_Name: Entrance Trigger Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6319177146573276252
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1572611601499850669}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1406345147287873132}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &7770263166775677974
+--- !u!61 &7627017330365461102
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1572611601499850669}
+  m_GameObject: {fileID: 1406345147287873134}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.13341999, y: 2.10825}

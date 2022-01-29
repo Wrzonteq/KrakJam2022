@@ -4,20 +4,16 @@ using UnityEngine.InputSystem;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class PlayerController : MonoBehaviour {
-        public static PlayerController Instance { get; private set; }
-
         [SerializeField] Rigidbody2D selfRigidbody2D;
         [SerializeField] int movementSpeed = 10;
+        [SerializeField] Transform crosshairFollowTarget;
 
         List<IInteractable> InteractablesInRange { get; } = new List<IInteractable>();
 
         Vector3 move;
-        
-        protected void Awake()
-        {
-            if (Instance == null)
-                Instance = this;
-        }
+
+        public Transform CrosshairFollowTarget => crosshairFollowTarget;
+
 
         void Update() {
             selfRigidbody2D.velocity = move * movementSpeed;

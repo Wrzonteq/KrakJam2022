@@ -30,7 +30,14 @@ namespace PartTimeKamikaze.KrakJam2022 {
             SetGateState(GateState.Insane);;
         }
 
+        void OnTriggerEnter2D(Collider2D other) {
+            Debug.Log($"OnTriggerEnter2D");
+            if (other.gameObject.CompareTag("Player"))
+                MovePlayerToArea();
+        }
+
         void OnCollisionEnter2D(Collision2D other) {
+            Debug.Log($"OnCollisionEnter2D");
             if (other.gameObject.CompareTag("Player"))
                 MovePlayerToArea();
         }
@@ -41,7 +48,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             transitionScreen.FadeInAndOut(TeleportPlayer, OnTransitionDone).Forget();
 
             void TeleportPlayer() {
-                PlayerController.Instance.transform.position = assignedArea.PlayerSpawnPoint.position;
+                GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform.position = assignedArea.PlayerSpawnPoint.position;
             }
 
             void OnTransitionDone() {

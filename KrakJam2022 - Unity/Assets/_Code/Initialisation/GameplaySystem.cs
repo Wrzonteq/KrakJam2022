@@ -1,13 +1,18 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using PartTimeKamikaze.KrakJam2022.UI;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class GameplaySystem : BaseGameSystem {
+        [SerializeField] PlayerController playerPrefab;
+        [SerializeField] Transform playerSpawnPoint;
 
         Dictionary<Emotion, EmotionLevelArea> areasDict;
         Dictionary<Emotion, LevelGate> gatesDict;
+
+        public PlayerController PlayerInstance { get; private set; }
 
 
         public bool IsInGameplay { get; private set; }
@@ -43,6 +48,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         void LoadGame(GameStateDataAsset gameState) {
             GameSystems.GetSystem<GameStateSystem>().LoadCurrentStateToProperties();
+            PlayerInstance = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            GameSystems.GetSystem<CameraSystem>().SetupCrosshairFollowTarget(PlayerInstance.CrosshairFollowTarget);
             gatesDict.Clear();
             var gates = FindObjectsOfType<LevelGate>();
             foreach (var gate in gates) {
