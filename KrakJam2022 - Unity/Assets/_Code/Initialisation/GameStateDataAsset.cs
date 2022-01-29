@@ -11,6 +11,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public EmotionLevelState lonelinessState;
         public EmotionLevelState despairState;
 
+        public int currentSanity = Consts.DefaultValues.DefaultSanity;
+
         //tutaj bedziemy tez trzymac info o tym ile mamy "amunicji" w danym momencie etc.
     }
 

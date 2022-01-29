@@ -30,5 +30,15 @@ namespace PartTimeKamikaze.KrakJam2022 {
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
             onCompleteCallback?.Invoke();
         }
+
+        public async UniTask UnloadSceneAsync(string sceneName) {
+            var unloadingOperation = SceneManager.UnloadSceneAsync(sceneName, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+            SceneLoadingProgress.Set(0, true);
+            while (!unloadingOperation.isDone) {
+                SceneLoadingProgress.Value = unloadingOperation.progress;
+                UnityEngine.Debug.Log($"LOAD PROGRESS: {SceneLoadingProgress.Value}");
+                await UniTask.DelayFrame(1);
+            }
+        }
     }
 }

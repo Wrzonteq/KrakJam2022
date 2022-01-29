@@ -35,6 +35,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
             screen.transform.SetAsLastSibling();
             return screen.Show(instant);
         }
+
+        public UniTask HideScreen<T>(bool instant = false) where T : UiScreenBase {
+            var screen = GetScreen<T>();
+            return screen.Hide(instant);
+        }
     }
 
     public class UiScreenBase : MonoBehaviour {
