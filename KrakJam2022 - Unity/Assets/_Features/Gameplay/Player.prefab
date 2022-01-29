@@ -213,7 +213,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3880779, y: 1}
+    m_SensorSize: {x: 1.3381995, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -424,6 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90e6abdcf9167744bb3f2bec63fbfb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crosshairPrefab: {fileID: 1444822703}
   selfRigidbody2D: {fileID: 3609700340745382393}
   movementSpeed: 5
 --- !u!114 &7839566317245767509
