@@ -15,6 +15,23 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public int closedGatesCount;
 
         //tutaj bedziemy tez trzymac info o tym ile mamy "amunicji" w danym momencie etc.
+
+        public EmotionLevelState GetStateForEmotion(Emotion emotion) {
+            switch (emotion) {
+                case Emotion.Anger:
+                    return angerState;
+                case Emotion.Fear:
+                    return fearState;
+                case Emotion.Sadness:
+                    return sadnessState;
+                case Emotion.Loneliness:
+                    return lonelinessState;
+                case Emotion.Despair:
+                    return despairState;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(emotion), emotion, null);
+            }
+        }
     }
 
     [Serializable]
@@ -26,13 +43,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public bool insanitySurvived;
     }
 
-    [Flags]
     public enum Emotion {
-        Anger = 1,
-        Fear = 2,
-        Sadness = 4,
-        Loneliness = 8,
-        Despair = 16,
+        Anger = 0,
+        Fear = 1,
+        Sadness = 2,
+        Loneliness = 3,
+        Despair = 4,
     }
 
     public enum GameStage {

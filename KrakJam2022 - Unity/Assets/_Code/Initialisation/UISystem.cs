@@ -43,7 +43,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
     }
 
     public class UiScreenBase : MonoBehaviour {
-        [SerializeField] CanvasGroup canvasGroup;
+        [SerializeField] protected CanvasGroup canvasGroup;
 
         bool isInitialised;
 

@@ -11,5 +11,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         // przypisac minigierki
         // zrobic brame do wyjscia
+
+        public void LoadState(EmotionLevelState state) {
+            //todo load state - ustawic minigierki odpowiednio wg state
+        }
     }
 }

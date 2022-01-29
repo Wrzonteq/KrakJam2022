@@ -29,7 +29,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 systemsInstances.Add(instance);
                 loadingProgressCounter++;
                 gameStartLoadingScreen.SetProgress(loadingProgressCounter / stuffToLoad);
-                await UniTask.Delay(500);
+                await UniTask.Delay(100);
             }
 
             foreach (var instance in systemsInstances) {
@@ -39,7 +39,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             }
 
             GameSystems.Init(systemsInstances);
-            await UniTask.Delay(500);
+            await UniTask.Delay(200);
             await GameSystems.GetSystem<UISystem>().ShowScreen<MainMenuScreen>(true);
             await gameStartLoadingScreen.Hide();
             Destroy(gameStartLoadingScreen.transform.parent.gameObject);

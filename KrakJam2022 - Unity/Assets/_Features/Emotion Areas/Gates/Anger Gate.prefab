@@ -51,7 +51,7 @@ MonoBehaviour:
   insane: {fileID: 4786244605838813081}
   active: {fileID: 6681025429937924070}
   assignedArea: {fileID: 0}
-  emotion: 1
+  emotion: 0
 --- !u!1 &1572611601499850669
 GameObject:
   m_ObjectHideFlags: 0

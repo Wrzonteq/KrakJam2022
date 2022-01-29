@@ -6,22 +6,28 @@ using UnityEngine.InputSystem;
 namespace PartTimeKamikaze.KrakJam2022 {
     public class GameplaySystem : BaseGameSystem {
 
+        Dictionary<Emotion, EmotionLevelArea> areasDict;
         Dictionary<Emotion, LevelGate> gatesDict;
 
 
         public bool IsInGameplay { get; private set; }
 
         public override void OnCreate() {
+            areasDict = new Dictionary<Emotion, EmotionLevelArea>();
             gatesDict = new Dictionary<Emotion, LevelGate>();
         }
 
         public override void Initialise() { }
 
-        public async UniTaskVoid StartNewGame() {
+        public void StartNewGame() {
+            GameSystems.GetSystem<GameStateSystem>().ResetGameState();
+            LoadSavedGame(GameSystems.GetSystem<GameStateSystem>().runtimeGameState).Forget();
+        }
+
+        public async UniTaskVoid LoadSavedGame(GameStateDataAsset gameState) {
             await LoadGameplaySceneAndShowProgress();
             GameSystems.GetSystem<InputSystem>().SwitchToGameplayInput();
-            GameSystems.GetSystem<GameStateSystem>().ResetGameState();
-            LoadGame(GameSystems.GetSystem<GameStateSystem>().runtimeGameState);
+            LoadGame(gameState);
         }
 
         async UniTask LoadGameplaySceneAndShowProgress() {
@@ -36,26 +42,31 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void LoadGame(GameStateDataAsset gameState) {
+            GameSystems.GetSystem<GameStateSystem>().LoadCurrentStateToProperties();
             gatesDict.Clear();
             var gates = FindObjectsOfType<LevelGate>();
-            foreach (var gate in gates)
+            foreach (var gate in gates) {
                 gatesDict[gate.Emotion] = gate;
-            InitGatesWithGameState(gameState);
-
-
+                gate.InitialiseFromSavedState(gameState.GetStateForEmotion(gate.Emotion));
+            }
+            areasDict.Clear();
+            var levels = FindObjectsOfType<EmotionLevelArea>();
+            foreach (var area in levels) {
+                areasDict[area.Emotion] = area;
+                area.LoadState(gameState.GetStateForEmotion(area.Emotion));
+            }
+            OpenNextUnopenedGate();
 
             IsInGameplay = true;
             //todo load map, player etc. using gameState
             GameSystems.GetSystem<InputSystem>().Bindings.Gameplay.OpenPauseMenu.performed += OpenPauseScreen;
         }
 
-        void InitGatesWithGameState(GameStateDataAsset gameState) {
-            gatesDict[Emotion.Anger].InitialiseFromSavedState(gameState.angerState);
-            gatesDict[Emotion.Fear].InitialiseFromSavedState(gameState.fearState);
-            gatesDict[Emotion.Sadness].InitialiseFromSavedState(gameState.sadnessState);
-            gatesDict[Emotion.Loneliness].InitialiseFromSavedState(gameState.lonelinessState);
-            gatesDict[Emotion.Despair].InitialiseFromSavedState(gameState.despairState);
+        void OpenNextUnopenedGate() {
+            var unopenedEmotion = (Emotion) GameSystems.GetSystem<GameStateSystem>().runtimeGameState.closedGatesCount;
+            gatesDict[unopenedEmotion].Activate();
         }
+
 
         void OpenPauseScreen(InputAction.CallbackContext obj) {
             GameSystems.GetSystem<UISystem>().GetScreen<PauseMenuScreen>().Show().Forget();

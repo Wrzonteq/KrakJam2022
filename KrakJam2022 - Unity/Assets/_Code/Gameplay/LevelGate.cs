@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using PartTimeKamikaze.KrakJam2022.UI;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
@@ -29,8 +31,21 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void OnCollisionEnter2D(Collision2D other) {
-            if (other.gameObject.CompareTag("Player")) {
+            if (other.gameObject.CompareTag("Player"))
+                MovePlayerToArea();
+        }
+
+        void MovePlayerToArea() {
+            var transitionScreen = GameSystems.GetSystem<UISystem>().GetScreen<TransitionScreen>();
+            transitionScreen.Show().Forget();
+            transitionScreen.FadeInAndOut(TeleportPlayer, OnTransitionDone).Forget();
+
+            void TeleportPlayer() {
                 PlayerController.Instance.transform.position = assignedArea.PlayerSpawnPoint.position;
+            }
+
+            void OnTransitionDone() {
+                transitionScreen.Hide().Forget();
             }
         }
 

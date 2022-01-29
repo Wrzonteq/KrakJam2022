@@ -29,13 +29,18 @@ namespace PartTimeKamikaze.KrakJam2022 {
             //TODO
         }
 
-        public override void Initialise() {
-            
-        }
+        public override void Initialise() { }
 
         public void ResetGameState() {
             var json = JsonUtility.ToJson(defaultGameState);
             JsonUtility.FromJsonOverwrite(json, runtimeGameState);
+        }
+
+        public void LoadCurrentStateToProperties() {
+            Sanity.SilentSet(runtimeGameState.currentSanity);
+            Stage.SilentSet(runtimeGameState.stage);
+            CollectedMemoriesCount.SilentSet(0);
+            ClosedGatesCount.SilentSet(runtimeGameState.closedGatesCount);
         }
     }
 }

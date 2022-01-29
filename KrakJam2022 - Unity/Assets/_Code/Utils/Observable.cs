@@ -26,5 +26,9 @@ namespace PartTimeKamikaze.KrakJam2022.Utils {
             Changed?.Invoke();
             ChangedValue?.Invoke(value);
         }
+
+        public void SilentSet(T newValue) {
+            value = newValue;
+        }
     }
 }
