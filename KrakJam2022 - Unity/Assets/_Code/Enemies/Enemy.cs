@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
@@ -57,6 +58,13 @@ namespace PartTimeKamikaze.KrakJam2022 {
             } else {
                 transform.position = newPosition;
             }
+        }
+
+        public async UniTaskVoid Kill() {
+            var animTimeMiliseconds = 0;
+            //todo perform animation
+            await UniTask.Delay(animTimeMiliseconds);
+            Destroy(gameObject);
         }
     }
 }

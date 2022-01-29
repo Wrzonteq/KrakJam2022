@@ -45,8 +45,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public async UniTaskVoid LoadSavedGame(GameStateDataAsset gameState) {
-            await LoadGameplaySceneAndShowProgress();
             GameSystems.GetSystem<InputSystem>().SwitchToGameplayInput();
+            await LoadGameplaySceneAndShowProgress();
             LoadGame(gameState);
         }
 

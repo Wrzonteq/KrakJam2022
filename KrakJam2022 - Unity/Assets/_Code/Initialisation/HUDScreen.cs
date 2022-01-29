@@ -9,7 +9,7 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
 
         protected override void OnInitialise() {
             var gameStateSystem = GameSystems.GetSystem<GameStateSystem>();
-            gameStateSystem.Sanity.ChangedValue += SetProgress;
+            gameStateSystem.Insanity.ChangedValue += SetProgress;
         }
 
         void SetProgress(int percentage) {

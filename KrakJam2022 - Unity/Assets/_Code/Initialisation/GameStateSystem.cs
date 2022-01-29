@@ -7,7 +7,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public GameStateDataAsset runtimeGameState { get; private set; }
 
-        public Observable<int> Sanity { get; private set; }
+        public Observable<int> Insanity { get; private set; }
         public Observable<GameStage> Stage { get; private set; }
         public Observable<int> CollectedMemoriesCount { get; private set; }
         public Observable<int> ClosedGatesCount { get; private set; }
@@ -15,12 +15,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public override void OnCreate() {
             runtimeGameState = ScriptableObject.CreateInstance<GameStateDataAsset>();
-            Sanity = new Observable<int>(100);
+            Insanity = new Observable<int>();
             Stage = new Observable<GameStage>();
             CollectedMemoriesCount = new Observable<int>();
             ClosedGatesCount = new Observable<int>();
 
-            Sanity.ChangedValue += x => runtimeGameState.currentSanity = x;
+            Insanity.ChangedValue += x => runtimeGameState.currentSanity = x;
             Stage.ChangedValue += x => runtimeGameState.stage = x;
             CollectedMemoriesCount.ChangedValue += HandleMemoryCollected; //mark proper level as complete when all memories are c
         }
@@ -37,7 +37,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public void LoadCurrentStateToProperties() {
-            Sanity.SilentSet(runtimeGameState.currentSanity);
+            Insanity.SilentSet(runtimeGameState.currentSanity);
             Stage.SilentSet(runtimeGameState.stage);
             CollectedMemoriesCount.SilentSet(0);
             ClosedGatesCount.SilentSet(runtimeGameState.closedGatesCount);
