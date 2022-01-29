@@ -10,10 +10,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] Transform playerTransform;
         [SerializeField] Transform followPointTransform;
         
-        void Start() {
-
-        }
-
         // Update is called once per frame
         void Update() {
             Vector2 mousePosition = Mouse.current.position.ReadValue();

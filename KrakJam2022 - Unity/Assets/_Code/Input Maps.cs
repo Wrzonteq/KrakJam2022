@@ -64,9 +64,18 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""58f12330-e291-4115-9189-05241af6c91b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
-            ""Bindings"": [
+            ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""978bfe49-cc26-4a3d-ab7b-7d7a29327403"",
@@ -297,6 +306,39 @@ namespace UnityEngine.InputSystem
                     ""action"": ""OpenMainMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93e958ff-1fa1-4f2b-b099-4c75139be34d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df581cc3-b05a-4a01-b708-ac9ba56ba70a"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5414b11-c894-471a-a686-5e3291a8784e"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -395,7 +437,7 @@ namespace UnityEngine.InputSystem
                     ""initialStateCheck"": false
                 }
             ],
-            ""Bindings"": [
+            ""bindings"": [
                 {
                     ""name"": ""Gamepad"",
                     ""id"": ""809f371f-c5e2-4e7a-83a1-d867598f40dd"",
@@ -886,6 +928,7 @@ namespace UnityEngine.InputSystem
             m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
             m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
             m_Gameplay_OpenMainMenu = m_Gameplay.FindAction("OpenMainMenu", throwIfNotFound: true);
+            m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
             // Interface
             m_Interface = asset.FindActionMap("Interface", throwIfNotFound: true);
             m_Interface_Navigate = m_Interface.FindAction("Navigate", throwIfNotFound: true);
@@ -961,6 +1004,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Gameplay_Look;
         private readonly InputAction m_Gameplay_Fire;
         private readonly InputAction m_Gameplay_OpenMainMenu;
+        private readonly InputAction m_Gameplay_Interact;
         public struct GameplayActions
         {
             private @InputMaps m_Wrapper;
@@ -969,6 +1013,7 @@ namespace UnityEngine.InputSystem
             public InputAction @Look => m_Wrapper.m_Gameplay_Look;
             public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
             public InputAction @OpenMainMenu => m_Wrapper.m_Gameplay_OpenMainMenu;
+            public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
             public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -990,6 +1035,9 @@ namespace UnityEngine.InputSystem
                     @OpenMainMenu.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenMainMenu;
                     @OpenMainMenu.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenMainMenu;
                     @OpenMainMenu.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenMainMenu;
+                    @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                    @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                    @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 }
                 m_Wrapper.m_GameplayActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1006,6 +1054,9 @@ namespace UnityEngine.InputSystem
                     @OpenMainMenu.started += instance.OnOpenMainMenu;
                     @OpenMainMenu.performed += instance.OnOpenMainMenu;
                     @OpenMainMenu.canceled += instance.OnOpenMainMenu;
+                    @Interact.started += instance.OnInteract;
+                    @Interact.performed += instance.OnInteract;
+                    @Interact.canceled += instance.OnInteract;
                 }
             }
         }
@@ -1166,6 +1217,7 @@ namespace UnityEngine.InputSystem
             void OnLook(InputAction.CallbackContext context);
             void OnFire(InputAction.CallbackContext context);
             void OnOpenMainMenu(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
         }
         public interface IInterfaceActions
         {
