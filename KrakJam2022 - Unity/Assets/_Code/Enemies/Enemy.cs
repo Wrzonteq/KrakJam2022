@@ -25,7 +25,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 this.NextWaypointPosition = new Vector3(
                     this.NextWaypoint.transform.position.x,
                     this.NextWaypoint.transform.position.y,
-                    0f); // for some reason I have to reset Z to 0 value
+                    // TODO : maybe use const here
+                    0f); // for some reason I have to reset Z to 0 value - otherwise enemies are disapearring
             }
         }
 
@@ -34,6 +35,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         /*void OnCollisionEnter(Collision collision) {
+            // TODO : put variable here
             if (collision.gameObject.name == "GiantHead") {
                 DecreaseSanity();
             }
