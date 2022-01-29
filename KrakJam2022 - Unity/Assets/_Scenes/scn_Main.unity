@@ -190,6 +190,8 @@ MonoBehaviour:
   - {fileID: 6401654548537784625, guid: db6f52c1c1ae6c548a14a21ba2c4f937, type: 3}
   - {fileID: 1552497273746477038, guid: 1b0ef9bdf2957794295ec4fe8fbd7a4e, type: 3}
   - {fileID: 2491497854325691850, guid: 96d03c63af0b5704db000814d6eb0d2b, type: 3}
+  - {fileID: 5531234120759844241, guid: 0d49def089d1d254e89e461a1ddc34f3, type: 3}
+  - {fileID: 2916802356930076845, guid: 5fb4131b6a4c14e5493e10c83d556b39, type: 3}
   systemsRoot: {fileID: 772045781}
   gameStartLoadingScreen: {fileID: 1238308596}
 --- !u!4 &1186642998

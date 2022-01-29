@@ -59,7 +59,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public void BeginInsanityStage() {
+            GameSystems.GetSystem<GameStateSystem>().Stage.Value = GameStage.Insanity;
             //todo
+        }
+
+        public void EndInsanityStage() {
+            GameSystems.GetSystem<GameStateSystem>().Stage.Value = GameStage.Sanity;
         }
     }
 }

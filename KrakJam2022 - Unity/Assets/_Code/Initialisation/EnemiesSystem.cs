@@ -52,5 +52,13 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 planeZ
                 );
         }
+
+        public void StartEnemySpawning() {
+            //todo 
+        }
+
+        public void StopEnemySpawning() {
+            //todo stop spawning + kill remaining enemies
+        }
     }
 }

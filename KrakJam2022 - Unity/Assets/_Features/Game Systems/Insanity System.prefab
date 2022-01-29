@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2916802356930076842}
-  - component: {fileID: 2916802356930076845}
+  - component: {fileID: 5531234120759844241}
   m_Layer: 0
-  m_Name: EnemiesManager
+  m_Name: Insanity System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2916802356930076845
+--- !u!114 &5531234120759844241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,16 +41,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2916802356930076844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13cdf072aa61d4c3bb15f44575410684, type: 3}
+  m_Script: {fileID: 11500000, guid: dadaedfc22f340fca8eec5faed928411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySettings:
-  - enemy: {fileID: -5146684050571464465, guid: 0bfc57f3ead6749ce8a5534341b0d8ae, type: 3}
-    hp: 2
-    damage: 10
-  - enemy: {fileID: -6080748384258650134, guid: 2b03f38d4dd894d1ea2236df23d51e66, type: 3}
-    hp: 6
-    damage: 30
-  - enemy: {fileID: -3111732925310432417, guid: 3e116978404d9434b81847986b53d7f3, type: 3}
-    hp: 10
-    damage: 100
