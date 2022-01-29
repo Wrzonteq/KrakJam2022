@@ -1,10 +1,12 @@
+using Cysharp.Threading.Tasks;
+using PartTimeKamikaze.KrakJam2022.UI;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class EmotionLevelArea : MonoBehaviour {
         [SerializeField] Emotion emotion;
         [SerializeField] Transform playerSpawnPoint;
-        [SerializeField] GameObject exit;
+        [SerializeField] LevelExitGate exit;
         [SerializeField] CollectibleMemory positiveMemory;
         [SerializeField] CollectibleMemory negativeMemory;
         [SerializeField] Minigame[] minigames;
@@ -13,29 +15,10 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public Emotion Emotion => emotion;
 
 
-        public void Initialise() {
-            positiveMemory.MemoryCollectedEvent += HandleMemoryCollected;
-            negativeMemory.MemoryCollectedEvent += HandleMemoryCollected;
-        }
-
-        void HandleMemoryCollected(MemoryData memory) {
-            if (memory.type == MemoryType.Positive)
-                loadedState.positiveMemoryCollected = true;
-            else if (memory.type == MemoryType.Negative)
-                loadedState.negativeMemoryCollected = true;
-            if (loadedState.positiveMemoryCollected && loadedState.negativeMemoryCollected)
-                EnableExitDoor(true);
-        }
-
         public void LoadState(EmotionLevelState state) {
             loadedState = state;
             positiveMemory.gameObject.SetActive(!state.positiveMemoryCollected);
             negativeMemory.gameObject.SetActive(!state.negativeMemoryCollected);
-        }
-
-        public void TeleportPlayerToArea() {
-            GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform.position = playerSpawnPoint.position;
-            EnableExitDoor(false);
             InitialiseMinigames();
         }
 
@@ -44,8 +27,39 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 mg.Initialise();
         }
 
-        void EnableExitDoor(bool canExit) {
-            exit.SetActive(canExit);
+        public void Initialise() {
+            positiveMemory.MemoryCollectedEvent += HandleMemoryCollected;
+            negativeMemory.MemoryCollectedEvent += HandleMemoryCollected;
+            exit.GateEnteredEvent += ReturnPlayerToGate;
+        }
+
+        void HandleMemoryCollected(MemoryData memory) {
+            if (memory.type == MemoryType.Positive)
+                loadedState.positiveMemoryCollected = true;
+            else if (memory.type == MemoryType.Negative)
+                loadedState.negativeMemoryCollected = true;
+            if (loadedState.positiveMemoryCollected && loadedState.negativeMemoryCollected)
+                exit.Open();
+        }
+
+        void ReturnPlayerToGate() {
+            var transitionScreen = GameSystems.GetSystem<UISystem>().GetScreen<TransitionScreen>();
+            transitionScreen.Show().Forget();
+            transitionScreen.FadeInAndOut(TeleportPlayer, OnTransitionDone).Forget();
+
+            void TeleportPlayer() {
+                var gatePosition = GameSystems.GetSystem<GameplaySystem>().GetGate(emotion).transform.position;
+                GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform.position = gatePosition;
+            }
+
+            void OnTransitionDone() {
+                transitionScreen.Hide().Forget();
+            }
+        }
+
+        public void TeleportPlayerToArea() {
+            GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform.position = playerSpawnPoint.position;
+            exit.Close();
         }
     }
 }

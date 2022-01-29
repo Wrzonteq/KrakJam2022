@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2398208312407040712}
   - component: {fileID: 2955683184090150575}
+  - component: {fileID: 8782754164043319755}
+  - component: {fileID: 6214765124421709159}
   m_Layer: 0
-  m_Name: Exit Container
+  m_Name: Exit Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,6 +87,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8782754164043319755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975263245285009683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a4b69222d7448eadf27e9060245013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openedGate: {fileID: 4711445409355768016}
+  gateCollider: {fileID: 6214765124421709159}
+--- !u!61 &6214765124421709159
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975263245285009683}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.11592841, y: -0.56452054}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.66, y: 5}
+    newSize: {x: 3.66, y: 5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1700606, y: 3.1451468}
+  m_EdgeRadius: 0
 --- !u!1001 &5081649710743486829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,6 +188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 4843985084834002234, guid: db23047ecb9bda14191bb034dfabc00a, type: 3}
+--- !u!1 &4711445409355768016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: db23047ecb9bda14191bb034dfabc00a, type: 3}
+  m_PrefabInstance: {fileID: 5081649710743486829}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5884642821939460275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: db23047ecb9bda14191bb034dfabc00a, type: 3}

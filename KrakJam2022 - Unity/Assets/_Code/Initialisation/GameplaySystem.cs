@@ -11,6 +11,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         Dictionary<Emotion, EmotionLevelArea> areasDict;
         Dictionary<Emotion, LevelGate> gatesDict;
 
+        public Emotion CurrentEmotionLevel => (Emotion)GameSystems.GetSystem<GameStateSystem>().runtimeGameState.completedLevelsCount;
         public PlayerController PlayerInstance { get; private set; }
 
         bool isInGameplay;
@@ -84,10 +85,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void OpenNextUnopenedGate() {
-            var unopenedEmotion = (Emotion) GameSystems.GetSystem<GameStateSystem>().runtimeGameState.closedGatesCount;
-            gatesDict[unopenedEmotion].Activate();
+            gatesDict[CurrentEmotionLevel].Activate();
         }
-
 
         void OpenPauseScreen(InputAction.CallbackContext _) {
             GameSystems.GetSystem<UISystem>().GetScreen<PauseMenuScreen>().Show().Forget();
@@ -123,6 +122,10 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public EmotionLevelArea GetLevelArea(Emotion emotion) {
             return areasDict[emotion];
+        }
+
+        public LevelGate GetGate(Emotion emotion) {
+            return gatesDict[emotion];
         }
 
         public async UniTaskVoid ReturnToMenu() {

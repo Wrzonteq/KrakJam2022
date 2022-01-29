@@ -48,10 +48,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public void TakeDamage() {
-            if (hp < 1) { return; }
-            
+            if (hp < 1)
+                return;
             hp -= 1;
-            if (hp < 1) { Kill(); }
+            if (hp < 1)
+                Kill().Forget();
         }
 
         public async UniTaskVoid Kill() {

@@ -50,9 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emotion: 2
   playerSpawnPoint: {fileID: 5756935217769665731}
-  exit: {fileID: 5073483041514174695}
+  exit: {fileID: 9144654908073611772}
   positiveMemory: {fileID: 737431454620502828}
   negativeMemory: {fileID: 6773181154477771723}
+  minigames: []
 --- !u!1001 &507441457525692471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,11 +116,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2398208312407040712, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
   m_PrefabInstance: {fileID: 507441457525692471}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5073483041514174695 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4711445409355768016, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
+--- !u!114 &9144654908073611772 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8782754164043319755, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
   m_PrefabInstance: {fileID: 507441457525692471}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a4b69222d7448eadf27e9060245013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2900656608308028174
 PrefabInstance:
   m_ObjectHideFlags: 0

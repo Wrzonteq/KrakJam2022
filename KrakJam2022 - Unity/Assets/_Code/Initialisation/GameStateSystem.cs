@@ -40,7 +40,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             Insanity.SilentSet(runtimeGameState.currentSanity);
             Stage.SilentSet(runtimeGameState.stage);
             CollectedMemoriesCount.SilentSet(0);
-            ClosedGatesCount.SilentSet(runtimeGameState.closedGatesCount);
+            ClosedGatesCount.SilentSet(runtimeGameState.completedLevelsCount);
         }
     }
 }
