@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using PartTimeKamikaze.KrakJam2022.UI;
@@ -44,15 +43,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
             await GameSystems.GetSystem<UISystem>().ShowScreen<MainMenuScreen>(true);
             await gameStartLoadingScreen.Hide();
             Destroy(gameStartLoadingScreen.transform.parent.gameObject);
-        }
-    }
-
-    // klasa do dodawania eventów - do kazdego eventu jest potrzebna funkcja NotifyEventName, ktora go wywola
-    public static class GameEvents {
-        public static event Action ExampleGameLogicEvent;
-
-        public static void ExampleNotifyGameLogicEvent() {
-            ExampleGameLogicEvent?.Invoke();
         }
     }
 }

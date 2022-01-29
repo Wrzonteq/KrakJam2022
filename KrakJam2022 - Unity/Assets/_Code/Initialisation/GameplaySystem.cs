@@ -1,19 +1,19 @@
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using PartTimeKamikaze.KrakJam2022.UI;
 using UnityEngine.InputSystem;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class GameplaySystem : BaseGameSystem {
+
+//        List<LevelGate>
+
+
         public bool IsInGameplay { get; private set; }
 
+        public override void OnCreate() { }
 
-        public override void OnCreate() {
-
-        }
-
-        public override void Initialise() {
-
-        }
+        public override void Initialise() { }
 
         public async UniTaskVoid StartNewGame() {
             await LoadGameplaySceneAndShowProgress();
@@ -64,7 +64,24 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public void EndInsanityStage() {
-            GameSystems.GetSystem<GameStateSystem>().Stage.Value = GameStage.Sanity;
+            var gameStateSystem = GameSystems.GetSystem<GameStateSystem>();
+            gameStateSystem.Stage.Value = GameStage.Sanity;
+            gameStateSystem.ClosedGatesCount.Value++;
+            if (gameStateSystem.ClosedGatesCount.Value < Consts.TOTAL_GATES_COUNT)
+                HandleInsanityCompleted();
+            else
+                HandleAllGatesClosed();
         }
+
+        void HandleInsanityCompleted() {
+
+        }
+
+        void HandleAllGatesClosed() {
+            //TODO - WIN, End game
+        }
+
+
+        //TODO - WARUNKI PRZEGRANEJ
     }
 }

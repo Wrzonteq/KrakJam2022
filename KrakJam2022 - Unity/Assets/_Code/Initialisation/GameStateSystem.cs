@@ -10,6 +10,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public Observable<int> Sanity { get; private set; }
         public Observable<GameStage> Stage { get; private set; }
         public Observable<int> CollectedMemoriesCount { get; private set; }
+        public Observable<int> ClosedGatesCount { get; private set; }
 
 
         public override void OnCreate() {
@@ -17,6 +18,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             Sanity = new Observable<int>(100);
             Stage = new Observable<GameStage>();
             CollectedMemoriesCount = new Observable<int>();
+            ClosedGatesCount = new Observable<int>();
 
             Sanity.ChangedValue += x => runtimeGameState.currentSanity = x;
             Stage.ChangedValue += x => runtimeGameState.stage = x;

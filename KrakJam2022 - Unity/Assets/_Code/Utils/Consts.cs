@@ -9,5 +9,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public const int MEMORIES_TO_COLLECT = 2;
+        public const int TOTAL_GATES_COUNT = 5;
     }
 }
