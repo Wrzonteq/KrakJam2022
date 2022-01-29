@@ -8,16 +8,14 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public GameStateDataAsset runtimeGameState { get; private set; }
 
         public Observable<int> Sanity { get; private set; }
+        public Observable<GameStage> Stage { get; set; }
 
 
         public override void OnCreate() {
             runtimeGameState = ScriptableObject.CreateInstance<GameStateDataAsset>();
             Sanity = new Observable<int>(100);
-            Sanity.ChangedValue += HandleSanityChanged;
-        }
-
-        void HandleSanityChanged(int sanityValue) {
-            runtimeGameState.currentSanity = sanityValue;
+            Sanity.ChangedValue += x => runtimeGameState.currentSanity = x;
+            Stage.ChangedValue += x => runtimeGameState.stage = x;
         }
 
         public override void Initialise() {

@@ -1,0 +1,472 @@
+fileFormatVersion: 2
+guid: de30eecbc755c21418918229c832cb12
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: czerep prawy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 797
+      y: 971
+      width: 380
+      height: 316
+    spriteID: 83d31f16ff0837a4e9d6f303c59fc9d8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 57, y: 160}
+  - name: czerep lewy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1473
+      y: 4
+      width: 466
+      height: 294
+    spriteID: 67c9246ceb103c34582edc020edecc82
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1089, y: -813}
+  - name: kolo zebate male
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1724
+      y: 687
+      width: 144
+      height: 145
+    spriteID: a1536f65d7101d84895f545d2b496eb8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 941, y: -244}
+  - name: kolo zebate
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1473
+      y: 687
+      width: 243
+      height: 256
+    spriteID: e544b946bd7c7314baf55d02fb607861
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1028, y: -144}
+  - name: kolo zebate malutkie
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1843
+      y: 570
+      width: 91
+      height: 93
+    spriteID: bd47dba45cda8a74d9fdb32f55a23225
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 767, y: -361}
+  - name: szalona glowa
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 971
+      width: 785
+      height: 919
+    spriteID: 9e570497d84be494aac9680ddad17eaf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -386, y: 773}
+  - name: sprezynka
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1843
+      y: 306
+      width: 187
+      height: 256
+    spriteID: ec43e7f51c8b4f540b672634356554fe
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 863, y: -671}
+  - name: czapka
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1876
+      y: 687
+      width: 111
+      height: 101
+    spriteID: 9dc92939eeec24143b08288a1aef5d71
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1786, y: -53}
+  - name: kolo zebate duze
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1473
+      y: 306
+      width: 362
+      height: 373
+    spriteID: a2e3d9c28881a0a499dd407d0191164c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 923, y: -625}
+  - name: czapka 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1942
+      y: 570
+      width: 71
+      height: 81
+    spriteID: 40124d012f01932498eee0f0859df49d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 578, y: 85}
+  - name: Warstwa 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1461
+      height: 959
+    spriteID: 1710fc4c44054124692eb15dd72cc1e6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 4}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: czerep prawy
+    spriteName: czerep prawy
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 83d31f16ff0837a4e9d6f303c59fc9d8
+    layerID: 16
+    mosaicPosition: {x: 797, y: 971}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: czerep lewy
+    spriteName: czerep lewy
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 67c9246ceb103c34582edc020edecc82
+    layerID: 15
+    mosaicPosition: {x: 1473, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: kolo zebate male
+    spriteName: kolo zebate male
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a1536f65d7101d84895f545d2b496eb8
+    layerID: 12
+    mosaicPosition: {x: 1724, y: 687}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: kolo zebate
+    spriteName: kolo zebate
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e544b946bd7c7314baf55d02fb607861
+    layerID: 11
+    mosaicPosition: {x: 1473, y: 687}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: kolo zebate malutkie
+    spriteName: kolo zebate malutkie
+    isGroup: 0
+    parentIndex: -1
+    spriteID: bd47dba45cda8a74d9fdb32f55a23225
+    layerID: 10
+    mosaicPosition: {x: 1843, y: 570}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: szalona glowa
+    spriteName: szalona glowa
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9e570497d84be494aac9680ddad17eaf
+    layerID: 9
+    mosaicPosition: {x: 4, y: 971}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: sprezynka
+    spriteName: sprezynka
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ec43e7f51c8b4f540b672634356554fe
+    layerID: 8
+    mosaicPosition: {x: 1843, y: 306}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: czapka
+    spriteName: czapka
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9dc92939eeec24143b08288a1aef5d71
+    layerID: 7
+    mosaicPosition: {x: 1876, y: 687}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: kolo zebate duze
+    spriteName: kolo zebate duze
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a2e3d9c28881a0a499dd407d0191164c
+    layerID: 6
+    mosaicPosition: {x: 1473, y: 306}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: czapka 2
+    spriteName: czapka 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 40124d012f01932498eee0f0859df49d
+    layerID: 5
+    mosaicPosition: {x: 1942, y: 570}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Warstwa 2
+    spriteName: Warstwa 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1710fc4c44054124692eb15dd72cc1e6
+    layerID: 4
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
