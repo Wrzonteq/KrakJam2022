@@ -1,15 +1,18 @@
-using System;
 using System.Collections.Generic;
 using PartTimeKamikaze.KrakJam2022.SlidingPuzzles;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
-    public class SlidingPuzzleController : MonoBehaviour {
+    public abstract class Minigame : MonoBehaviour {
+        public abstract void Initialise();
+    }
+
+    public class SlidingPuzzleController : Minigame {
         [SerializeField] CollectibleMemory reward;
 
         [SerializeField] GameObject container;
         [SerializeField] GameObject background;
-        [SerializeField] PuzzleElement puzzlePrefab; // TODO: Desired position
+        [SerializeField] PuzzleElement puzzlePrefab;
 
         [SerializeField] GameObject blockadePrefab; 
         [SerializeField] FieldTile fieldPrefab;
@@ -23,7 +26,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         bool won = false;
 
-        public void Start() {
+        public override void Initialise() {
             reward.gameObject.SetActive(false);
             int colSize = rows.Length / rowSize;
             

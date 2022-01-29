@@ -7,6 +7,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] GameObject exit;
         [SerializeField] CollectibleMemory positiveMemory;
         [SerializeField] CollectibleMemory negativeMemory;
+        [SerializeField] Minigame[] minigames;
 
         EmotionLevelState loadedState;
         public Emotion Emotion => emotion;
@@ -39,7 +40,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void InitialiseMinigames() {
-            //todo
+            foreach (var mg in minigames)
+                mg.Initialise();
         }
 
         void EnableExitDoor(bool canExit) {

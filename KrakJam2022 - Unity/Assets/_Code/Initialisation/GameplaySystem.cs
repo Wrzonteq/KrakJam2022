@@ -75,6 +75,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             var levels = FindObjectsOfType<EmotionLevelArea>();
             foreach (var area in levels) {
                 areasDict[area.Emotion] = area;
+                area.Initialise();
                 area.LoadState(gameState.GetStateForEmotion(area.Emotion));
             }
             OpenNextUnopenedGate();

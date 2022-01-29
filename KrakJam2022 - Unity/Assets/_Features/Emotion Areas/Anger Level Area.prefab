@@ -54,6 +54,8 @@ MonoBehaviour:
   exit: {fileID: 5214807638670776425}
   positiveMemory: {fileID: 7013612440836603969}
   negativeMemory: {fileID: 1783190532642938607}
+  minigames:
+  - {fileID: 4555286716731358446}
 --- !u!1001 &665650147220043961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -327,6 +329,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7649445114061707053, guid: 517267eb13d517a459feb801a81aecd1, type: 3}
   m_PrefabInstance: {fileID: 7741916604988639088}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4555286716731358446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6072946867511507870, guid: 517267eb13d517a459feb801a81aecd1, type: 3}
+  m_PrefabInstance: {fileID: 7741916604988639088}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7667039172cea974684061cf1f162c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7854618433660909098
 PrefabInstance:
   m_ObjectHideFlags: 0
