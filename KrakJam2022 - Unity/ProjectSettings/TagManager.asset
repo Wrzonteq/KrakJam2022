@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Collectable
+  - SlidingPuzzleBlock
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - SlidingPuzzles
   - 
   - 
   - 

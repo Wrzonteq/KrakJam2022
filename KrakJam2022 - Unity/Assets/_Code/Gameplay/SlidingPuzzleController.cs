@@ -1,0 +1,114 @@
+using System;
+using System.Collections.Generic;
+using PartTimeKamikaze.KrakJam2022.SlidingPuzzles;
+using UnityEngine;
+
+namespace PartTimeKamikaze.KrakJam2022 {
+    public class SlidingPuzzleController : MonoBehaviour {
+        [SerializeField] Collectable collectable;
+
+        [SerializeField] GameObject memoryContainer;
+        [SerializeField] GameObject container;
+        [SerializeField] GameObject background;
+        [SerializeField] PuzzleElement puzzlePrefab; // TODO: Desired position
+
+        [SerializeField] GameObject blockadePrefab; 
+        [SerializeField] FieldTile fieldPrefab;
+
+        [SerializeField] int rowSize = 4;
+        [SerializeField] Field[] rows;
+
+        List<PuzzleElement> puzzles = new();
+        FieldTile[,] fields;
+
+        bool won = false;
+
+        public void Start() {
+            int colSize = rows.Length / rowSize;
+            
+            background.transform.localScale = new Vector3(rowSize * 2, colSize * 2);
+            background.transform.localPosition = new Vector2(rowSize - 1, -colSize + 1);
+            fields = new FieldTile[colSize, rowSize];
+            
+            for (int i = 0; i < rows.Length; i++) {
+                int col = i % rowSize;
+                int row = Mathf.FloorToInt( i / rowSize);
+                
+                if (rows[i].state == FieldState.Disabled) {
+                    SpawnMapObject(blockadePrefab, row, col);
+                } else {
+                    SpawnField(fieldPrefab, row, col);
+                    
+                    if (rows[i].state == FieldState.Occupied) {
+                        SpawnPuzzleElement(rows[i].puzzleElementId, row, col);
+                    }
+                }
+            }
+        }
+
+        public void SpawnPuzzleElement(int puzzleElementId, int row, int col) {
+            PuzzleElement block = Instantiate(puzzlePrefab, container.transform);
+            block.transform.localPosition = new Vector3(2 * col, -2 * row, 0);
+            block.SetId(puzzleElementId);
+            puzzles.Add(block);
+        }
+
+        public void SpawnField(FieldTile prefab, int row, int col) {
+            FieldTile field = Instantiate(prefab, container.transform);
+            field.transform.localPosition = new Vector3(2 * col, -2 * row, 0);
+            field.SetBoard(this);
+            field.SetPosition(row, col);
+            fields[row, col] = field;
+        }
+
+        public void SpawnMapObject(GameObject prefab, int row, int col) {
+            GameObject block = Instantiate(prefab, container.transform);
+            block.transform.localPosition = new Vector3(2 * col, -2 * row, 0);
+        }
+
+        public void CheckWinCondition() {
+            if (won) { return; }
+            
+            FieldTile currentField;
+            
+            for (int i = 0; i < fields.Length; i++) {
+                int col = i % rowSize;
+                int row = i / rowSize;
+
+                currentField = fields[row, col];
+
+                if (currentField == null || currentField.CurrentPuzzleId == 0) continue;
+                
+                if (currentField.CurrentPuzzleId > 1) { break; } // If starts with something else than 1, dont bother
+                if (col == rowSize - 1) { break; } // Same if that's last element in row
+                    
+                if (fields[row, col + 1].CurrentPuzzleId == 2 &&
+                    fields[row + 1, col].CurrentPuzzleId == 3 &&
+                    fields[row + 1, col + 1].CurrentPuzzleId == 4) {
+                    WinPuzzle(row, col);
+                }
+            }
+        }
+
+        public void WinPuzzle(int row, int col) {
+            won = true;
+            SpawnCollectable();
+            MovePuzzlesToPosition(row, col);
+        }
+
+        public void SpawnCollectable() {
+            Instantiate(collectable, memoryContainer.transform);
+        }
+
+        public void MovePuzzlesToPosition(int row, int col) {
+            FieldTile fieldTile;
+            
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 2; j++) {
+                    fieldTile = fields[row + i, col + j];
+                    fieldTile.CurrentPuzzle.PlayEndSequence(new Vector2(fieldTile.Position.y * 2, -fieldTile.Position.x * 2));
+                }
+            }
+        }
+    }
+}
