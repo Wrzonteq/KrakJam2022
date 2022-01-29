@@ -24,6 +24,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 GameSystems.GetSystem<EnemiesSystem>().Test();
             }
             GUILayout.EndHorizontal();
+
+            if (GUILayout.Button("Move to Escape Game 1")) {
+                EscapeGame1 escapeGame1 = FindObjectOfType<EscapeGame1>();
+                escapeGame1.Initialise();
+            }
         }
     }
 }

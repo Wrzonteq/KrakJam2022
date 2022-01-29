@@ -4,71 +4,77 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace PartTimeKamikaze.KrakJam2022 {
-    public class MiniGameMaks1 : MonoBehaviour {
-        [SerializeField]
-        SpriteRenderer mainCharacter;
+    public class EscapeGame1 : Minigame {
+        Transform mainCharacter;
 
         [SerializeField]
-        MiniGameTeleport enterTeleport;
+        EscapeGameTeleport enterTeleport;
 
         [SerializeField]
-        MiniGameTeleport teleport1;
+        EscapeGameTeleport teleport1;
 
         [SerializeField]
-        MiniGameTeleport teleport2;
+        EscapeGameTeleport teleport2;
 
         [SerializeField]
-        MiniGameTeleport teleport3;
+        EscapeGameTeleport teleport3;
 
         [SerializeField]
-        MiniGameTeleport teleport4;
+        EscapeGameTeleport teleport4;
 
         [SerializeField]
-        MiniGameTeleport exitTeleport;
+        EscapeGameTeleport exitTeleport;
+
+        [SerializeField] CollectibleMemory positiveMemory;
+
+        [SerializeField] CollectibleMemory negativeMemory;
 
         [SerializeField]
         Tilemap tilemap;
 
         BoundsInt tileMapSettings;
+        bool runningLevel = false;
+        bool collapsingFloor = false;
 
-        void Start() {
+        public override void Initialise() {
             teleport1.AddCollisionCallback(TouchTeleport1);
-            //teleport2.AddCollisionCallback(TouchTeleport2);
             teleport3.AddCollisionCallback(TouchTeleport3);
             exitTeleport.AddCollisionCallback(ExitMiniGame);
+            exitTeleport.gameObject.SetActive(false);
+
+            positiveMemory.gameObject.SetActive(false); // show it after floor starts collapsing
+            positiveMemory.MemoryCollectedEvent += ShowExitAndStopCollapsing;
+
+            negativeMemory.MemoryCollectedEvent += StartCollapsingFloor;
+
             tilemap.CompressBounds();  // to recalculate cell bounds
             tileMapSettings = tilemap.cellBounds;
-            Debug.Log(tileMapSettings.size.x);
-            Debug.Log(tileMapSettings.max.x);
-            StartMiniGame();
-        }
-
-        bool collapsing = false;
-        private void StartMiniGame() {
             StoreOriginalTileMap();
             ResetFloorState();
-            collapsing = true;
-
+            collapsingFloor = false;
+            runningLevel = true;
+            //MovePlayerToTeleport(enterTeleport);
+            mainCharacter = GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform;
         }
 
         private void ExitMiniGame() {
-            collapsing = false;
+            runningLevel = false;
             RestoreOriginalTileMap();
         }
 
         float miliseconds = 0;
         private void Update() {
-            if (!collapsing) return;
+            if (!runningLevel) return;
 
             miliseconds += Time.deltaTime;
-            if (miliseconds > 0.4f) { // every second - maybe less?
+            if (miliseconds > 0.4f) { // timer for collapsing floor
                 miliseconds -= 0.4f;
                 CollapseTheFloorByCol();
             }
-            CheckIfPlayerStoppedOnCollapsedTile();
+            CheckIfPlayerStoppedOnCollapsedTileOrWall();
         }
 
-        private void CheckIfPlayerStoppedOnCollapsedTile() {
+        private void CheckIfPlayerStoppedOnCollapsedTileOrWall() {
             Vector3Int currentTilePosition = tilemap.WorldToCell(mainCharacter.transform.position);
             TileBase tile = tilemap.GetTile(currentTilePosition);
             if (tile == null) {
@@ -81,6 +87,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
             MovePlayerToTeleport(enterTeleport);
         }
 
+        private void StartCollapsingFloor(MemoryData memoryData) {
+            Debug.Log("start collapsing");
+            collapsingFloor = true;
+        }
+
         private void TouchTeleport1() {
             MovePlayerToTeleport(teleport2);
         }
@@ -89,12 +100,20 @@ namespace PartTimeKamikaze.KrakJam2022 {
             MovePlayerToTeleport(teleport4);
         }
 
-        private void MovePlayerToTeleport(MiniGameTeleport teleport) {
+        private void ShowExitAndStopCollapsing(MemoryData memoryData) {
+            collapsingFloor = false;
+            RestoreOriginalTileMap();
+            exitTeleport.gameObject.SetActive(true);
+        }
+
+        private void MovePlayerToTeleport(EscapeGameTeleport teleport) {
             mainCharacter.transform.position = new Vector3(teleport.transform.position.x, teleport.transform.position.y, teleport.transform.position.z);
         }
 
         Dictionary<Vector3Int, TileBase> originalTilemap = new Dictionary<Vector3Int, TileBase>();
         private void StoreOriginalTileMap() {
+            if (originalTilemap.Count > 0) return;
+
             for (int x = tileMapSettings.xMin; x <= tileMapSettings.xMax; x++) {
                 for (int y = tileMapSettings.yMin; y <= tileMapSettings.yMax; y++) {
                     Vector3Int vector3Int = new Vector3Int(x, y, 0);
@@ -122,14 +141,15 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         private void CollapseTheFloorByCol() {
+            if (!collapsingFloor) return;
+
             RestoreOriginalTileMap();
 
-            if (collapsedTilesCol >= tileMapSettings.max.x - 1) {
-                leftToRight = false;  // turned the collapsing the other way
-            }
+            Vector3Int playerTile = tilemap.WorldToCell(mainCharacter.transform.position);
 
-            if (collapsedTilesCol <= tileMapSettings.min.x) {
-                leftToRight = true;  // turned the collapsing the other way
+            leftToRight = collapsedTilesCol < playerTile.x; // collapsing direction towards player
+            if(!leftToRight) { // when collapsing changes first direction
+                positiveMemory.gameObject.SetActive(true);
             }
 
             // floor is disappearing from right to left and then from left to right

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
-    public class MiniGameTeleport : MonoBehaviour {
+    public class EscapeGameTeleport : MonoBehaviour {
 
         private Action collisionCallback;
 
