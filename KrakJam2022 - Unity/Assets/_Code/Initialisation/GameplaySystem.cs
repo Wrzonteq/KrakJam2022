@@ -36,7 +36,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         void LoadGame(GameStateDataAsset gameState) {
             IsInGameplay = true;
             //todo load map, player etc. using gameState
-            GameSystems.GetSystem<InputSystem>().Bindings.Gameplay.OpenMainMenu.performed += OpenPauseScreen;
+            GameSystems.GetSystem<InputSystem>().Bindings.Gameplay.OpenPauseMenu.performed += OpenPauseScreen;
         }
 
         void OpenPauseScreen(InputAction.CallbackContext obj) {

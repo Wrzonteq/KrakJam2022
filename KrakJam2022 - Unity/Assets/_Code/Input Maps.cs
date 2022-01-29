@@ -57,7 +57,7 @@ namespace UnityEngine.InputSystem
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""OpenMainMenu"",
+                    ""name"": ""OpenPauseMenu"",
                     ""type"": ""Button"",
                     ""id"": ""b2858153-0932-48f3-aff1-8619311281c7"",
                     ""expectedControlType"": ""Button"",
@@ -303,7 +303,7 @@ namespace UnityEngine.InputSystem
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""OpenMainMenu"",
+                    ""action"": ""OpenPauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -927,7 +927,7 @@ namespace UnityEngine.InputSystem
             m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
             m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
             m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
-            m_Gameplay_OpenMainMenu = m_Gameplay.FindAction("OpenMainMenu", throwIfNotFound: true);
+            m_Gameplay_OpenPauseMenu = m_Gameplay.FindAction("OpenPauseMenu", throwIfNotFound: true);
             m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
             // Interface
             m_Interface = asset.FindActionMap("Interface", throwIfNotFound: true);
@@ -1003,7 +1003,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Gameplay_Move;
         private readonly InputAction m_Gameplay_Look;
         private readonly InputAction m_Gameplay_Fire;
-        private readonly InputAction m_Gameplay_OpenMainMenu;
+        private readonly InputAction m_Gameplay_OpenPauseMenu;
         private readonly InputAction m_Gameplay_Interact;
         public struct GameplayActions
         {
@@ -1012,7 +1012,7 @@ namespace UnityEngine.InputSystem
             public InputAction @Move => m_Wrapper.m_Gameplay_Move;
             public InputAction @Look => m_Wrapper.m_Gameplay_Look;
             public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
-            public InputAction @OpenMainMenu => m_Wrapper.m_Gameplay_OpenMainMenu;
+            public InputAction @OpenPauseMenu => m_Wrapper.m_Gameplay_OpenPauseMenu;
             public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
             public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
             public void Enable() { Get().Enable(); }
@@ -1032,9 +1032,9 @@ namespace UnityEngine.InputSystem
                     @Fire.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
                     @Fire.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
                     @Fire.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
-                    @OpenMainMenu.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenMainMenu;
-                    @OpenMainMenu.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenMainMenu;
-                    @OpenMainMenu.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenMainMenu;
+                    @OpenPauseMenu.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenPauseMenu;
+                    @OpenPauseMenu.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenPauseMenu;
+                    @OpenPauseMenu.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOpenPauseMenu;
                     @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                     @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                     @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
@@ -1051,9 +1051,9 @@ namespace UnityEngine.InputSystem
                     @Fire.started += instance.OnFire;
                     @Fire.performed += instance.OnFire;
                     @Fire.canceled += instance.OnFire;
-                    @OpenMainMenu.started += instance.OnOpenMainMenu;
-                    @OpenMainMenu.performed += instance.OnOpenMainMenu;
-                    @OpenMainMenu.canceled += instance.OnOpenMainMenu;
+                    @OpenPauseMenu.started += instance.OnOpenPauseMenu;
+                    @OpenPauseMenu.performed += instance.OnOpenPauseMenu;
+                    @OpenPauseMenu.canceled += instance.OnOpenPauseMenu;
                     @Interact.started += instance.OnInteract;
                     @Interact.performed += instance.OnInteract;
                     @Interact.canceled += instance.OnInteract;
@@ -1216,7 +1216,7 @@ namespace UnityEngine.InputSystem
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnFire(InputAction.CallbackContext context);
-            void OnOpenMainMenu(InputAction.CallbackContext context);
+            void OnOpenPauseMenu(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
         }
         public interface IInterfaceActions
