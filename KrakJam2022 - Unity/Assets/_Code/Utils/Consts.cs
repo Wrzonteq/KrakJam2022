@@ -7,5 +7,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public static class DefaultValues {
             public const int DefaultSanity = 100;
         }
+
+        public const int MEMORIES_TO_COLLECT = 2;
     }
 }

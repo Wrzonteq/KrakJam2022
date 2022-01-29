@@ -57,5 +57,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
         void DisplayProgress(float progress) {
             GameSystems.GetSystem<UISystem>().GetScreen<LoadingScreen>().SetProgress(progress);
         }
+
+        public void BeginInsanityStage() {
+            //todo
+        }
     }
 }

@@ -14,9 +14,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public void Interact() {
             Debug.Log("Interacting with EGO");
             
-            if (PlayerController.Instance.MemoriesCollected.Value >= PlayerController.MEMORIES_TO_COLLECT) {
+            if (GameSystems.GetSystem<GameStateSystem>().CollectedMemoriesCount.Value >= Consts.MEMORIES_TO_COLLECT) {
                 PlayerController.Instance.ClearCollectables();
-                // TODO: Start night phase
+                GameSystems.GetSystem<GameplaySystem>().BeginInsanityStage();
             }
         }
     }

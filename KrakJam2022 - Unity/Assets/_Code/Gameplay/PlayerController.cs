@@ -1,19 +1,15 @@
 using System.Collections.Generic;
-using PartTimeKamikaze.KrakJam2022.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class PlayerController : MonoBehaviour {
-        public const int MEMORIES_TO_COLLECT = 2;
-        
         public static PlayerController Instance { get; private set; }
 
         [SerializeField] Rigidbody2D selfRigidbody2D;
-        [SerializeField] private int movementSpeed = 10;
+        [SerializeField] int movementSpeed = 10;
 
-        public Observable<int> MemoriesCollected { get; } = new(0);
-        List<IInteractable> InteractablesInRange { get; } = new();
+        List<IInteractable> InteractablesInRange { get; } = new List<IInteractable>();
 
         Vector3 move;
         
@@ -46,11 +42,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public void PickupCollectable(Collectable collectable) {
-            MemoriesCollected.Set(MemoriesCollected.Value + 1);
+            GameSystems.GetSystem<GameStateSystem>().CollectedMemoriesCount.Value += 1;
+            
         }
 
         public void ClearCollectables() {
-            MemoriesCollected.Set(0);
+            GameSystems.GetSystem<GameStateSystem>().CollectedMemoriesCount.Value = 0;
         }
     }
 }
