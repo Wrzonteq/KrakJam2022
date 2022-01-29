@@ -33,6 +33,17 @@ namespace PartTimeKamikaze.KrakJam2022 {
             Move();
         }
 
+        /*void OnCollisionEnter(Collision collision) {
+            if (collision.gameObject.name == "GiantHead") {
+                DecreaseSanity();
+            }
+        }*/
+
+        void DecreaseSanity() {
+            var playerDataSystem = GameSystems.GetSystem<PlayerDataSystem>();
+            playerDataSystem.Sanity.Value += damage;
+        }
+
         private void Move() {
             if (NextWaypoint == null) {
                 return;
