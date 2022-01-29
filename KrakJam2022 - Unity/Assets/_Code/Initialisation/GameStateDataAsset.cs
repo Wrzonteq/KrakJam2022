@@ -44,9 +44,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
     }
 
     public enum Emotion {
-        Anger = 0,
-        Fear = 1,
-        Sadness = 2,
+        Fear = 0,
+        Sadness = 1,
+        Anger = 2,
         Loneliness = 3,
         Despair = 4,
     }
