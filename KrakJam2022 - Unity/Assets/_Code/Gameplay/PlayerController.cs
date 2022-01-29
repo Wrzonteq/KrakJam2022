@@ -21,14 +21,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
         {
             if (Instance == null)
                 Instance = this;
-            else if (Instance != this)
-                Destroy(gameObject);
         }
-        
+
         void Update() {
             selfRigidbody2D.velocity = move * movementSpeed;
         }
-        
+
         public void OnMove(InputValue value) {
             move = value.Get<Vector2>();
         }
