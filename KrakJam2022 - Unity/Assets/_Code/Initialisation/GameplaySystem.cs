@@ -130,12 +130,14 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void HandleAllGatesClosed() {
+            GameSystems.GetSystem<GameStateSystem>().Stage.Value = GameStage.Sanity;
             Debug.LogError($"YOU WIN MAI BOI!!");
             GameSystems.GetSystem<InputSystem>().SwitchToInterfaceInput();
             GameSystems.GetSystem<UISystem>().ShowScreen<VictoryScreen>();
         }
 
         public void HandleGameOver() {
+            GameSystems.GetSystem<GameStateSystem>().Stage.Value = GameStage.Sanity;
             Debug.LogError("YOU LOOZE NOOB");
             GameSystems.GetSystem<InputSystem>().SwitchToInterfaceInput();
             GameSystems.GetSystem<UISystem>().ShowScreen<GameOverScreen>();
