@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 using PartTimeKamikaze.KrakJam2022.UI;
-=======
 using System;
->>>>>>> af47e45 (change ego on phase)
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
