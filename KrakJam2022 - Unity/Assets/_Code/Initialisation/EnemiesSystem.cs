@@ -5,6 +5,52 @@ using Cysharp.Threading.Tasks;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class EnemiesSystem : BaseGameSystem {
+        [SerializeField] List<EnemySettings> enemySettings = new List<EnemySettings>();
+
+        bool waypointsInitialised;
+        bool isSpawning;
+        MapWaypoints allWaypoints;
+        List<Waypoint> spawnPoints;
+
+        public override void OnCreate() { }
+
+        public override void Initialise() { }
+
+
+        void CalculateSpawnPoints() {
+            allWaypoints = FindObjectOfType<MapWaypoints>();
+            spawnPoints = allWaypoints.waypoints.Where(x => x.spawnPoint).ToList();
+            waypointsInitialised = true;
+        }
+
+        void SpawnEnemy() {
+            var spawningWaypoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+            var settings = enemySettings[Random.Range(0, enemySettings.Count)];
+            var enemy = Instantiate(settings.enemy);
+            enemy.Initialize(spawningWaypoint);
+            enemy.transform.position = new Vector3(
+                spawningWaypoint.transform.position.x,
+                spawningWaypoint.transform.position.y,
+                0f // TODO : maybe use const here
+                );
+        }
+
+        public async UniTaskVoid StartEnemySpawning() {
+            if(!waypointsInitialised)
+                CalculateSpawnPoints();
+            isSpawning = true;
+            while (isSpawning) {
+                SpawnEnemy();
+                await UniTask.Delay(1000);
+            }
+        }
+
+        public void StopEnemySpawning() {
+            isSpawning = false;
+            var enemies = FindObjectsOfType<Enemy>().Where(x => x.HealthPoints > 0).ToList();
+            foreach(var enemy in enemies)
+                enemy.Kill().Forget();
+        }
 
         [System.Serializable]
         public class EnemySettings {
@@ -24,53 +70,13 @@ namespace PartTimeKamikaze.KrakJam2022 {
             public int damage;
         }
 
-        [SerializeField]
-        List<EnemySettings> enemySettings = new List<EnemySettings>();
-
-        public override void OnCreate() { }
-
-        public override void Initialise() { }
+#if UNITY_EDITOR
 
         public void Test() {
             CalculateSpawnPoints();
-            StartEnemySpawning();
+            StartEnemySpawning().Forget();
         }
 
-        private List<Waypoint> spawningWaypoints;
-        private void CalculateSpawnPoints() {
-            if (spawningWaypoints == null) {
-                spawningWaypoints = FindObjectsOfType<Waypoint>().Where(w => w.spawnPoint).ToList();
-            }
-        }
-
-        private void SpawnEnemy() {
-            Waypoint spawningWaypoint = spawningWaypoints[Random.Range(0, spawningWaypoints.Count)];
-            EnemySettings settings = enemySettings[Random.Range(0, enemySettings.Count)];
-            Enemy enemy = Instantiate(settings.enemy);
-            enemy.Initialize(spawningWaypoint);
-            enemy.transform.position = new Vector3(
-                spawningWaypoint.transform.position.x,
-                spawningWaypoint.transform.position.y,
-                0f // TODO : maybe use const here
-                );
-        }
-
-        bool isSpawning = false;
-        public async UniTaskVoid StartEnemySpawning() {
-            //todo 
-            isSpawning = true;
-            while (isSpawning) {
-                SpawnEnemy();
-                await UniTask.Delay(1000);
-            }
-        }
-
-        public void StopEnemySpawning() {
-            isSpawning = false;
-            List<Enemy> enemies = FindObjectsOfType<Enemy>().ToList();
-            foreach(Enemy enemy in enemies) {
-                Destroy(enemy.gameObject);
-            }
-        }
+#endif
     }
 }

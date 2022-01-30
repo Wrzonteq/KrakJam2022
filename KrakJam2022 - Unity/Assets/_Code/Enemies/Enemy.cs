@@ -7,6 +7,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] int damage;
         [SerializeField] int insanityReduction;
         [SerializeField] float speed = 5f;
+        [SerializeField] Collider2D collider;
+
+        bool isAlive = true;
 
         public int HealthPoints => health;
         public int Damage => damage;
@@ -59,6 +62,10 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public async UniTaskVoid Kill() {
+            if (!isAlive)
+                return;
+            isAlive = false;
+            collider.enabled = false;
             var animTimeMiliseconds = 0;
             //todo perform animation
             await UniTask.Delay(animTimeMiliseconds);

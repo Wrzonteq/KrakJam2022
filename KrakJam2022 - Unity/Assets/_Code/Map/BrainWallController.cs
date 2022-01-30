@@ -7,7 +7,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public Sprite SanitySprite;
         public Sprite InsanitySprint;
 
-        void Init() {
+        public void Init() {
             GameSystems.GetSystem<GameStateSystem>().Stage.ChangedValue += HandleStageChanged;
         }
 

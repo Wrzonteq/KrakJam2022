@@ -23,6 +23,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             Insanity.ChangedValue += x => runtimeGameState.currentSanity = x;
             Stage.ChangedValue += x => runtimeGameState.stage = x;
             CollectedMemoriesCount.ChangedValue += HandleMemoryCollected; //mark proper level as complete when all memories are c
+            ClosedGatesCount.ChangedValue += x => runtimeGameState.completedLevelsCount = x;
         }
 
         void HandleMemoryCollected(int count) {

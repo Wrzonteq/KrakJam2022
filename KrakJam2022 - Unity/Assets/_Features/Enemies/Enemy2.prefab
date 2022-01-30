@@ -115,8 +115,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   damage: 20
-  insanityReduction: 20
+  insanityReduction: 8
   speed: 4
+  collider: {fileID: 7489972731799612708}
 --- !u!61 &7489972731799612708
 BoxCollider2D:
   m_ObjectHideFlags: 0

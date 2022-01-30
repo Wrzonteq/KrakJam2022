@@ -11,7 +11,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         Dictionary<Emotion, EmotionLevelArea> areasDict;
         Dictionary<Emotion, LevelGate> gatesDict;
 
-        public Emotion CurrentEmotionLevel => (Emotion)GameSystems.GetSystem<GameStateSystem>().runtimeGameState.completedLevelsCount;
+        public Emotion CurrentEmotionLevel => (Emotion)GameSystems.GetSystem<GameStateSystem>().ClosedGatesCount.Value;
         public PlayerController PlayerInstance { get; private set; }
 
         bool isInGameplay;
@@ -79,6 +79,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 area.Initialise();
                 area.LoadState(gameState.GetStateForEmotion(area.Emotion));
             }
+            FindObjectOfType<MapController>().Init();
+
             OpenNextUnopenedGate();
 
             IsInGameplay = true;
@@ -123,6 +125,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public void HandleGameOver() {
+            Debug.LogError("YOU LOOZE NOOB");
+            GameSystems.GetSystem<UISystem>().ShowScreen<PauseMenuScreen>();
             //TODO - WARUNKI PRZEGRANEJ
         }
 

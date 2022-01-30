@@ -1,15 +1,10 @@
-using PartTimeKamikaze.KrakJam2022.Utils;
+using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class InsanitySystem : BaseGameSystem {
-        public Observable<float> InsanityLevel { get; private set; }
+        public override void OnCreate() { }
 
-        public override void OnCreate() {
-            InsanityLevel = new Observable<float>();
-            InsanityLevel.ChangedValue += HandleInsanityValueChanged;
-        }
-
-        void HandleInsanityValueChanged(float insanity) {
+        void HandleInsanityValueChanged(int insanity) {
             if (insanity <= 0) {
                 GameSystems.GetSystem<GameplaySystem>().EndInsanityStage();
             } else if (insanity >= 100) {
@@ -18,7 +13,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public override void Initialise() {
-            GameSystems.GetSystem<GameStateSystem>().Stage.ChangedValue+= HandleStageChanged;
+            var stateSystem = GameSystems.GetSystem<GameStateSystem>();
+            stateSystem.Stage.ChangedValue += HandleStageChanged;
+            stateSystem.Insanity.ChangedValue += HandleInsanityValueChanged;
         }
 
         void HandleStageChanged(GameStage stage) {
@@ -30,11 +27,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         void InitInsanity() {
             GameSystems.GetSystem<EnemiesSystem>().StartEnemySpawning().Forget();
-            InsanityLevel.Value = 40 + 10 * GameSystems.GetSystem<GameStateSystem>().ClosedGatesCount.Value;
-
+            GameSystems.GetSystem<GameStateSystem>().Insanity.Value = 40 + 10 * GameSystems.GetSystem<GameStateSystem>().ClosedGatesCount.Value;
+            Debug.Log($"Insanity started!");
         }
 
         void EndInsanity() {
+            Debug.Log($"Insanity over!");
             GameSystems.GetSystem<EnemiesSystem>().StopEnemySpawning();
         }
     }
