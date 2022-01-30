@@ -100,6 +100,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void ResetFloorState() {
+            if (runningLevel) {
+                positiveMemory.gameObject.SetActive(false);
+            }
             leftToRight = true;
             collapsedTilesCol = tileMapSettings.min.x;
         }
