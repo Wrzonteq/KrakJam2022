@@ -2,33 +2,24 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using Time = UnityEngine.Time;
 
 namespace PartTimeKamikaze.KrakJam2022.UI {
-    public class PauseMenuScreen : UiScreenBase {
-        [SerializeField] Button continueButton;
-        [SerializeField] Button returnToMenuButton;
+    public class AuthorsScreen : UiScreenBase {
+        [SerializeField] Button returnButton;
 
         protected override float FadeInDuration => 0;
         protected override float FadeOutDuration => 0;
 
+
         protected override void OnInitialise() {
-            continueButton.onClick.AddListener(HandleContinueButton);
-            returnToMenuButton.onClick.AddListener(HandleReturnToMenuButton);
+            returnButton.onClick.AddListener(HandleReturnButton);
         }
 
-        void HandleContinueButton() {
+        void HandleReturnButton() {
             Hide().Forget();
-        }
-
-        void HandleReturnToMenuButton() {
-            Hide().Forget();
-            GameSystems.GetSystem<GameplaySystem>().ReturnToMenu().Forget();
         }
 
         protected override void OnShow() {
-            continueButton.Select();
-            Time.timeScale = 0;
             GameSystems.GetSystem<InputSystem>().Bindings.Interface.Cancel.performed += HandleCancelInput;
         }
 
@@ -37,8 +28,6 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
         }
 
         protected override void OnHide() {
-            Time.timeScale = 1;
-
             GameSystems.GetSystem<InputSystem>().Bindings.Interface.Cancel.performed -= HandleCancelInput;
         }
     }

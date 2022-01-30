@@ -23,7 +23,7 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
         }
 
         void HandleCredits() {
-            //todo show credits screen 
+            uiSystem.ShowScreen<AuthorsScreen>();
         }
 
         void HandleExit() {
