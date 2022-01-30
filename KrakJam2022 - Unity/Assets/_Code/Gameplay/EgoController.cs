@@ -1,13 +1,33 @@
+<<<<<<< HEAD
 using PartTimeKamikaze.KrakJam2022.UI;
+=======
+using System;
+>>>>>>> af47e45 (change ego on phase)
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class EgoController : MonoBehaviour, IInteractable {
         [SerializeField] MessagePopup message;
 
-
         void Awake() {
             message.Hide();
+        }
+
+        [SerializeField] GameObject saneVersion;
+        [SerializeField] GameObject insaneVersion;
+        
+        void Start() {
+            GameSystems.GetSystem<GameStateSystem>().Stage.ChangedValue += HandleStageChanged;
+        }
+
+        void HandleStageChanged(GameStage stage) {
+            if (stage == GameStage.Insanity) {
+                saneVersion.SetActive(false);
+                insaneVersion.SetActive(true);
+            } else {
+                saneVersion.SetActive(true);
+                insaneVersion.SetActive(false);
+            }
         }
 
         void OnTriggerEnter2D(Collider2D col) {
