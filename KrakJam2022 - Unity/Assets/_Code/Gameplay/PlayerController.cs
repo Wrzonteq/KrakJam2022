@@ -11,6 +11,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] Transform crosshairFollowTarget;
         [SerializeField] Bullet bulletPrefab;
         [SerializeField] CinemachineVirtualCamera playerCamera;
+        [SerializeField] Animator animatorController;
+        [SerializeField] SpriteRenderer headRenderer;
+        [SerializeField] Sprite saneHeadSprite;
+        [SerializeField] Sprite insaneHeadSprite;
+
         [SerializeField] float bulletSpeed = 6.66f;
         [SerializeField] float shotsInterval = 0.2f;
 
@@ -36,7 +41,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void HandleStageChanged(GameStage stage) {
-            //todo swap graphics
+            headRenderer.sprite = stage == GameStage.Sanity ? saneHeadSprite : insaneHeadSprite;
+            animatorController.SetBool("IsInsane", stage == GameStage.Insanity);
         }
 
         void HandleInteraction(InputAction.CallbackContext _) {
@@ -61,7 +67,10 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void UpdateMovement() {
-            selfRigidbody2D.velocity = move * movementSpeed;
+            var velocity = move * movementSpeed;
+            selfRigidbody2D.velocity = velocity;
+            var isWalking = velocity.sqrMagnitude > 0.01f;
+            animatorController.SetBool("IsWalking", isWalking);
         }
 
         void UpdateShooting() {
