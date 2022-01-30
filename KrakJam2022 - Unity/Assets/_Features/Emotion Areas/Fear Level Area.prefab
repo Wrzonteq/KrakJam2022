@@ -40739,6 +40739,10 @@ PrefabInstance:
       propertyPath: memoryData.sprite
       value: 
       objectReference: {fileID: 21300000, guid: d55d74c91f51a418591258e2ff44d5f1, type: 3}
+    - target: {fileID: 8484253446677096645, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
+      propertyPath: memoryData.description
+      value: 'But a friend is known in misfortune, worth more than anything else. '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
 --- !u!4 &1224501967483819795 stripped
@@ -43201,6 +43205,15 @@ PrefabInstance:
     - target: {fileID: 3466736382615576885, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
       propertyPath: m_Name
       value: Negative Collectible Memory
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484253446677096645, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
+      propertyPath: memoryData.sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484253446677096645, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
+      propertyPath: memoryData.description
+      value: On the first day of school, everyone laughed that my hair was like a
+        porcupine.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
