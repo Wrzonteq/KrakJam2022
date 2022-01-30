@@ -6877,6 +6877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ego
       objectReference: {fileID: 0}
+    - target: {fileID: 5315246207046401479, guid: 8676a401479f36a4bb05377ab1400737, type: 3}
+      propertyPath: m_Size.y
+      value: 5.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8676a401479f36a4bb05377ab1400737, type: 3}
 --- !u!1001 &7839566317245599199
