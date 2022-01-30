@@ -200,6 +200,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Negative Collectible Memory
       objectReference: {fileID: 0}
+    - target: {fileID: 8484253446677096645, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
+      propertyPath: memoryData.description
+      value: 'Those who compete with the world have experienced the salty taste of
+        defeat  '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
 --- !u!4 &3194240742351756441 stripped
@@ -437,6 +442,11 @@ PrefabInstance:
       propertyPath: memoryData.sprite
       value: 
       objectReference: {fileID: 21300000, guid: 22f265c44a40740acb10ae37515c030e, type: 3}
+    - target: {fileID: 8484253446677096645, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
+      propertyPath: memoryData.description
+      value: The most important word that adds wings, "And I believe in you, no matter
+        what!"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
 --- !u!114 &737431454620502828 stripped
