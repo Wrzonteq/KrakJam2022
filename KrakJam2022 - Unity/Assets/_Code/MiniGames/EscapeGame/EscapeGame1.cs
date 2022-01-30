@@ -30,7 +30,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
             tileMapSettings = tilemap.cellBounds;
             StoreOriginalTileMap();
             ResetFloorState();
-            collapsingFloor = false;
         }
 
         public override void OnPlayerEnterLevel() {
@@ -65,7 +64,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void StartCollapsingFloor(MemoryData memoryData) {
-            Debug.Log("start collapsing");
             collapsingFloor = true;
         }
 

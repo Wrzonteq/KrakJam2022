@@ -6,51 +6,41 @@ using System.Linq;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class EscapeGame2 : Minigame {
-        Transform mainCharacter;
+        Transform playerTransform;
 
-        [SerializeField]
-        MinigameTeleporter enterTeleport;
-
-        [SerializeField]
-        MinigameTeleporter exitTeleport;
-
+        [SerializeField] Transform entrancePoint;
         [SerializeField] CollectibleMemory positiveMemory;
-
         [SerializeField] CollectibleMemory negativeMemory;
-
-        [SerializeField]
-        Tilemap tilemap;
+        [SerializeField] Tilemap tilemap;
 
         BoundsInt tileMapSettings;
         bool runningLevel = false;
         bool collapsingFloor = false;
+        float miliseconds = 0;
 
         public override void Initialise() {
-//            exitTeleport.AddCollisionCallback(ExitMiniGame);
-            exitTeleport.gameObject.SetActive(false);
-
             positiveMemory.gameObject.SetActive(false); // show it after floor starts collapsing
-            positiveMemory.MemoryCollectedEvent += ShowExitAndStopCollapsing;
 
             negativeMemory.MemoryCollectedEvent += StartCollapsingFloor;
+            positiveMemory.MemoryOpenedEvent += ShowExitAndStopCollapsing;
 
             tilemap.CompressBounds();  // to recalculate cell bounds
             tileMapSettings = tilemap.cellBounds;
             StoreOriginalTileMap();
             ResetFloorState();
-            collapsingFloor = false;
-            runningLevel = true;
-            //MovePlayerToTeleport(enterTeleport);
-            mainCharacter = GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform;
         }
 
-        private void ExitMiniGame() {
+        public override void OnPlayerEnterLevel() {
+            runningLevel = true;
+            playerTransform = GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform;
+        }
+
+        void ExitMiniGame() {
             runningLevel = false;
             RestoreOriginalTileMap();
         }
 
-        float miliseconds = 0;
-        private void Update() {
+        void Update() {
             if (!runningLevel) return;
 
             miliseconds += Time.deltaTime;
@@ -61,32 +51,31 @@ namespace PartTimeKamikaze.KrakJam2022 {
             CheckIfPlayerStoppedOnCollapsedTileOrWall();
         }
 
-        private void CheckIfPlayerStoppedOnCollapsedTileOrWall() {
-            Vector3Int currentTilePosition = tilemap.WorldToCell(mainCharacter.transform.position);
+        void CheckIfPlayerStoppedOnCollapsedTileOrWall() {
+            Vector3Int currentTilePosition = tilemap.WorldToCell(playerTransform.transform.position);
             TileBase tile = tilemap.GetTile(currentTilePosition);
             if (tile == null) {
                 PlayerFailedMiniGame();
             }
         }
 
-        private void PlayerFailedMiniGame() {
+        void PlayerFailedMiniGame() {
             ResetFloorState();
-            MovePlayerToTeleport(enterTeleport);
+            MovePlayerToTeleport(entrancePoint);
         }
 
-        private void StartCollapsingFloor(MemoryData memoryData) {
-            Debug.Log("start collapsing");
+        void StartCollapsingFloor(MemoryData memoryData) {
             collapsingFloor = true;
         }
 
-        private void ShowExitAndStopCollapsing(MemoryData memoryData) {
+        void ShowExitAndStopCollapsing(MemoryData memoryData) {
             collapsingFloor = false;
             RestoreOriginalTileMap();
-            exitTeleport.gameObject.SetActive(true);
+            runningLevel = false;
         }
 
-        private void MovePlayerToTeleport(MinigameTeleporter teleport) {
-            mainCharacter.transform.position = new Vector3(teleport.transform.position.x, teleport.transform.position.y, teleport.transform.position.z);
+        private void MovePlayerToTeleport(Transform target) {
+            playerTransform.transform.position = target.position;
         }
 
         Dictionary<Vector3Int, TileBase> originalTilemap = new Dictionary<Vector3Int, TileBase>();
@@ -124,14 +113,14 @@ namespace PartTimeKamikaze.KrakJam2022 {
             snake3 = new List<Vector3Int>() {
                 new Vector3Int(tileMapSettings.max.x - 1, tileMapSettings.min.y)
             };
-            positiveMemory.gameObject.SetActive(false); // when snake is big show the exit
+            positiveMemory.gameObject.SetActive(false); // when snake is big -> show the exit
         }
 
         private void FollowThePlayer() {
             if (!collapsingFloor)
                 return;
 
-            Vector3Int playerTile = tilemap.WorldToCell(mainCharacter.transform.position);
+            Vector3Int playerTile = tilemap.WorldToCell(playerTransform.transform.position);
             MoveSnake(playerTile, snake1);
             MoveSnake(playerTile, snake2);
             MoveSnake(playerTile, snake3);
