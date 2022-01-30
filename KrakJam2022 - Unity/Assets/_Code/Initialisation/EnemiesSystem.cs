@@ -26,13 +26,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         void SpawnEnemy() {
             var spawningWaypoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
             var settings = enemySettings[Random.Range(0, enemySettings.Count)];
-            var enemy = Instantiate(settings.enemy);
+            var enemy = Instantiate(settings.enemy, spawningWaypoint.transform.position, Quaternion.identity);
             enemy.Initialize(spawningWaypoint);
-            enemy.transform.position = new Vector3(
-                spawningWaypoint.transform.position.x,
-                spawningWaypoint.transform.position.y,
-                0f // TODO : maybe use const here
-                );
         }
 
         public async UniTaskVoid StartEnemySpawning() {

@@ -91,6 +91,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         void SpawnPlayer() {
             PlayerInstance = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            PlayerInstance.Initialise();
             PlayerInstantiatedEvent?.Invoke(PlayerInstance);
         }
 

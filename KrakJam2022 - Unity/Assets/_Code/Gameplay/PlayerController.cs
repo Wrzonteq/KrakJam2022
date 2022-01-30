@@ -11,81 +11,97 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] Transform crosshairFollowTarget;
         [SerializeField] Bullet bulletPrefab;
         [SerializeField] CinemachineVirtualCamera playerCamera;
-
-        List<IInteractable> InteractablesInRange { get; } = new();
-        
         [SerializeField] float bulletSpeed = 6.66f;
-        [SerializeField] float shootEveryInSec = 0.5f;
+        [SerializeField] float shotsInterval = 0.2f;
 
         float shakeTimer;
-        float nextShotIn = 0;
-        bool isShooting = false;
-
+        float nextShotTime;
+        bool isShooting;
         Vector3 move;
+        List<IInteractable> interactablesInRange;
+        GameStateSystem gameStateSystem;
+        InputSystem inputSystem;
 
         public Transform CrosshairFollowTarget => crosshairFollowTarget;
 
 
         public void Initialise() {
-
+            gameStateSystem = GameSystems.GetSystem<GameStateSystem>();
+            inputSystem = GameSystems.GetSystem<InputSystem>();
+            inputSystem.Bindings.Gameplay.Interact.performed += HandleInteraction;
+            interactablesInRange = new List<IInteractable>();
+            gameStateSystem.Stage.ChangedValue += HandleStageChanged;
         }
 
+        void HandleStageChanged(GameStage stage) {
+            //todo swap graphics
+        }
+
+        void HandleInteraction(InputAction.CallbackContext _) {
+            if(interactablesInRange.Count > 0)
+                interactablesInRange[0].Interact();
+        }
 
         void Update() {
-            selfRigidbody2D.velocity = move * movementSpeed;
+            if (!inputSystem.PlayerInputEnabled) {
+                selfRigidbody2D.velocity = Vector2.zero;
+                return;
+            }
+            UpdateInputValues();
+            UpdateMovement();
+            UpdateShooting();
+            UpdateCamShake();
+        }
 
+        void UpdateInputValues() {
+            move = inputSystem.Bindings.Gameplay.Move.ReadValue<Vector2>();
+            isShooting = inputSystem.Bindings.Gameplay.Fire.IsPressed();
+        }
+
+        void UpdateMovement() {
+            selfRigidbody2D.velocity = move * movementSpeed;
+        }
+
+        void UpdateShooting() {
+            if (gameStateSystem.Stage.Value != GameStage.Insanity)
+                return;
+            if (!isShooting)
+                return;
+            if(nextShotTime <= Time.time)
+                Shoot();
+        }
+
+        void UpdateCamShake() {
             if (shakeTimer > 0) {
                 shakeTimer -= Time.deltaTime;
-            
+
                 if (shakeTimer <= 0) {
                     ShakeCamera(0, 0);
                 }
             }
-            
-            if (isShooting && nextShotIn <= 0) { // && GameSystems.GetSystem<GameStateSystem>().runtimeGameState.stage == GameStage.Insanity) {
-                Shoot();
-                nextShotIn = shootEveryInSec;
-            }
-
-            if (nextShotIn > 0) {
-                nextShotIn -= Time.deltaTime;
-            }
         }
 
-        public void OnMove(InputValue value) {
-            move = value.Get<Vector2>();
-        }
-
-        public void OnInteract(InputValue value) {
-            if (value.isPressed && InteractablesInRange.Count > 0) {
-                InteractablesInRange[0].Interact();
-            }
-        }
-
-        public void OnFire(InputValue value) {
-            isShooting = value.isPressed;
-        }
-
-        public void Shoot() {
-            Bullet bullet = Instantiate(bulletPrefab);
+        void Shoot() {
+            nextShotTime = Time.time + shotsInterval;
+            var bullet = Instantiate(bulletPrefab);
             bullet.transform.position = transform.position;
 
             bullet.Fire(GameSystems.GetSystem<CameraSystem>().CrosshairInstance.transform.localPosition, bulletSpeed);
             ShakeCamera(1f, .1f);
         }
 
-        public void ShakeCamera(float intensity, float time) {
+        void ShakeCamera(float intensity, float time) {
             var channelPerlin = playerCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
             channelPerlin.m_AmplitudeGain = intensity;
             shakeTimer = time;
         }
 
         public void RegisterInteractable(IInteractable interactable) {
-            InteractablesInRange.Insert(0, interactable);
+            interactablesInRange.Insert(0, interactable);
         }
 
         public void UnregisterInteractable(IInteractable interactable) {
-            InteractablesInRange.Remove(interactable);
+            interactablesInRange.Remove(interactable);
         }
     }
 }
