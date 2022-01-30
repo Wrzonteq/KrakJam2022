@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Cinemachine;
 using PartTimeKamikaze.KrakJam2022.Combat;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] SpriteRenderer headRenderer;
         [SerializeField] Sprite saneHeadSprite;
         [SerializeField] Sprite insaneHeadSprite;
+
+        [SerializeField] GameObject avatar;
 
         [SerializeField] float bulletSpeed = 6.66f;
         [SerializeField] float shotsInterval = 0.2f;
@@ -65,6 +68,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         void UpdateInputValues() {
             move = inputSystem.Bindings.Gameplay.Move.ReadValue<Vector2>();
             isShooting = inputSystem.Bindings.Gameplay.Fire.IsPressed();
+            
         }
 
         void UpdateMovement() {
@@ -72,6 +76,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
             selfRigidbody2D.velocity = velocity;
             var isWalking = velocity.sqrMagnitude > 0.01f;
             animatorController.SetBool("IsWalking", isWalking);
+
+            if (isWalking) {
+                int rot = (move.x < 0) ? 180 : 0;
+                avatar.transform.rotation = Quaternion.Euler(0, rot, 0);
+            }
         }
 
         void UpdateShooting() {
