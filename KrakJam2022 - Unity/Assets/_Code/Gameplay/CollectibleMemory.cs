@@ -7,8 +7,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public event Action<MemoryData> MemoryCollectedEvent;
 
         [SerializeField] MemoryData memoryData;
-
-
+        
         protected override void OnInteract() {
             GameSystems.GetSystem<UISystem>().GetScreen<MemoryScreen>().DisplayMemory(memoryData).Forget();
             MemoryCollectedEvent?.Invoke(memoryData);
