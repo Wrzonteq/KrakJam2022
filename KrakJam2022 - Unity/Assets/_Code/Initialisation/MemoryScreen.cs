@@ -28,12 +28,14 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
             input.SwitchToInterfaceInput();
             input.Bindings.Interface.Submit.performed += HandleInput;
             input.Bindings.Interface.Cancel.performed += HandleInput;
+            input.Bindings.Interface.Continue.performed += HandleInput;
         }
 
         void HandleInput(InputAction.CallbackContext _) {
             var input = GameSystems.GetSystem<InputSystem>();
             input.Bindings.Interface.Submit.performed -= HandleInput;
             input.Bindings.Interface.Cancel.performed -= HandleInput;
+            input.Bindings.Interface.Continue.performed -= HandleInput;
             input.DisableInput();
             Close().Forget();
         }

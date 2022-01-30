@@ -435,6 +435,15 @@ namespace UnityEngine.InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Continue"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea24ff98-a835-4a8d-a9d4-a732f1219d4c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -855,6 +864,17 @@ namespace UnityEngine.InputSystem
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c91b110a-9d74-4e5d-965a-c88ba2da103b"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -941,6 +961,7 @@ namespace UnityEngine.InputSystem
             m_Interface_RightClick = m_Interface.FindAction("RightClick", throwIfNotFound: true);
             m_Interface_TrackedDevicePosition = m_Interface.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_Interface_TrackedDeviceOrientation = m_Interface.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+            m_Interface_Continue = m_Interface.FindAction("Continue", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -1075,6 +1096,7 @@ namespace UnityEngine.InputSystem
         private readonly InputAction m_Interface_RightClick;
         private readonly InputAction m_Interface_TrackedDevicePosition;
         private readonly InputAction m_Interface_TrackedDeviceOrientation;
+        private readonly InputAction m_Interface_Continue;
         public struct InterfaceActions
         {
             private @InputMaps m_Wrapper;
@@ -1089,6 +1111,7 @@ namespace UnityEngine.InputSystem
             public InputAction @RightClick => m_Wrapper.m_Interface_RightClick;
             public InputAction @TrackedDevicePosition => m_Wrapper.m_Interface_TrackedDevicePosition;
             public InputAction @TrackedDeviceOrientation => m_Wrapper.m_Interface_TrackedDeviceOrientation;
+            public InputAction @Continue => m_Wrapper.m_Interface_Continue;
             public InputActionMap Get() { return m_Wrapper.m_Interface; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1128,6 +1151,9 @@ namespace UnityEngine.InputSystem
                     @TrackedDeviceOrientation.started -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnTrackedDeviceOrientation;
                     @TrackedDeviceOrientation.performed -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnTrackedDeviceOrientation;
                     @TrackedDeviceOrientation.canceled -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnTrackedDeviceOrientation;
+                    @Continue.started -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnContinue;
+                    @Continue.performed -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnContinue;
+                    @Continue.canceled -= m_Wrapper.m_InterfaceActionsCallbackInterface.OnContinue;
                 }
                 m_Wrapper.m_InterfaceActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1162,6 +1188,9 @@ namespace UnityEngine.InputSystem
                     @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                     @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                     @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                    @Continue.started += instance.OnContinue;
+                    @Continue.performed += instance.OnContinue;
+                    @Continue.canceled += instance.OnContinue;
                 }
             }
         }
@@ -1231,6 +1260,7 @@ namespace UnityEngine.InputSystem
             void OnRightClick(InputAction.CallbackContext context);
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+            void OnContinue(InputAction.CallbackContext context);
         }
     }
 }
