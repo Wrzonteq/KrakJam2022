@@ -32,6 +32,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
                 EscapeGame1 escapeGame1 = FindObjectOfType<EscapeGame1>();
                 escapeGame1.Initialise();
             }
+
+            if (GUILayout.Button("Move to Escape Game 2")) {
+                EscapeGame2 escapeGame2 = FindObjectOfType<EscapeGame2>();
+                escapeGame2.Initialise();
+            }
         }
 
         void DrawHotWaterHaxxes() {
