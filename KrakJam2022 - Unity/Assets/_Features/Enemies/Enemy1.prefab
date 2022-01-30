@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  damage: 10
+  damage: 8
   insanityReduction: 6
   speed: 5
   collider: {fileID: 5204272635672396251}

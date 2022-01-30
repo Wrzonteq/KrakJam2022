@@ -62,9 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  damage: 20
+  damage: 15
   insanityReduction: 8
-  speed: 4
+  speed: 3.5
   collider: {fileID: 7489972731799612708}
 --- !u!61 &7489972731799612708
 BoxCollider2D:
