@@ -7,8 +7,8 @@ using UnityEngine.UI;
 namespace PartTimeKamikaze.KrakJam2022.UI {
     public class TransitionScreen : UiScreenBase {
         [SerializeField] Image black;
-        [SerializeField] int fadeDurationMiliseconds = 500;
-        [SerializeField] int delayMiliseconds = 200;
+        int fadeDurationMiliseconds = 200;
+        int delayMiliseconds = 500;
 
         protected override float FadeInDuration => 0;
         protected override float FadeOutDuration => 0;

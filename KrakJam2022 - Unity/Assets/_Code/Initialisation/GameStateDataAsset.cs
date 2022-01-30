@@ -41,6 +41,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public bool positiveMemoryCollected;
         public bool insanityStarted;
         public bool insanitySurvived;
+
+        public bool CanStartInsanity => negativeMemoryCollected && positiveMemoryCollected;
     }
 
     public enum Emotion {

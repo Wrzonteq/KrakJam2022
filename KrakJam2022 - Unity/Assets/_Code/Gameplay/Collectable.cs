@@ -16,7 +16,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
             Debug.Log("Interacting with Collectable");
             
             GameSystems.GetSystem<GameplaySystem>().PlayerInstance.UnregisterInteractable(this);
-            GameSystems.GetSystem<GameplaySystem>().PlayerInstance.PickupCollectable(this);
 
             OnInteract();
             gameObject.SetActive(false);

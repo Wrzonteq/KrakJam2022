@@ -25,6 +25,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public Transform CrosshairFollowTarget => crosshairFollowTarget;
 
+
+        public void Initialise() {
+
+        }
+
+
         void Update() {
             selfRigidbody2D.velocity = move * movementSpeed;
 
@@ -80,15 +86,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public void UnregisterInteractable(IInteractable interactable) {
             InteractablesInRange.Remove(interactable);
-        }
-
-        public void PickupCollectable(Collectable collectable) {
-            GameSystems.GetSystem<GameStateSystem>().CollectedMemoriesCount.Value += 1;
-            
-        }
-
-        public void ClearCollectables() {
-            GameSystems.GetSystem<GameStateSystem>().CollectedMemoriesCount.Value = 0;
         }
     }
 }
