@@ -17,7 +17,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
         public void DisableInput() {
             PlayerInputEnabled = false;
             Bindings.Disable();
-            //todo disable mouse
         }
 
         public void SwitchToInterfaceInput() {
