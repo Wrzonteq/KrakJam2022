@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aef7faff77af94877b3674d12d1ed2da
+guid: e8e6ab5bef27dc342a7d15f3f808101f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -68,7 +68,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   spriteImportData:
-  - name: trauma_1
+  - name: PSYCHOZA_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -77,9 +77,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 276
-      height: 260
-    spriteID: f9adb6ae7c64842e49da8eeae51c4eaf
+      width: 302
+      height: 400
+    spriteID: b823205b65ed2e547bc76b0d7918375d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -91,18 +91,18 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: glowa prawa
+  - name: reka 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 62
-      y: 193
-      width: 29
-      height: 33
-    spriteID: 60607d8974eb24ff9b71153ac06fa2fa
+      x: 157
+      y: 229
+      width: 79
+      height: 235
+    spriteID: 7a2b37ab380ab60458786febb5ba0e5b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -111,19 +111,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 41, y: 117}
-  - name: reka lewa dolna
+    uvTransform: {x: -2, y: 229}
+  - name: reka 3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 160
-      width: 47
-      height: 30
-    spriteID: a263de1ecf741409b9724500d2a5a9b3
+      x: 244
+      y: 360
+      width: 83
+      height: 111
+    spriteID: 5f695ecd128200e4eadaa69a560966fa
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -132,7 +132,49 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -66, y: 130}
+    uvTransform: {x: 32, y: 236}
+  - name: reka 4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 202
+      y: 4
+      width: 211
+      height: 135
+    spriteID: 5fb2fee0522b2ab40b268d7297973874
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 202, y: -108}
+  - name: raczki tyranozaura
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 340
+      y: 229
+      width: 97
+      height: 87
+    spriteID: fed42cda508eeaa4cb988ce164f07841
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 277, y: 46}
   - name: cialo
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -142,9 +184,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 87
-      height: 105
-    spriteID: cc954184e880c4802b946156bde1c676
+      width: 190
+      height: 217
+    spriteID: b8823ae5d27ba2f4e8df8fea379d7113
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,8 +195,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -13, y: 4}
-  - name: reka prawa dolna
+    uvTransform: {x: -108, y: -179}
+  - name: reka1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -162,10 +204,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 117
-      width: 50
-      height: 35
-    spriteID: 73f69d2c3a3e044c59a05912013e06d6
+      y: 229
+      width: 145
+      height: 227
+    spriteID: 27f0407af96eebd4f87d6df98cd5c36a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -174,19 +216,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 2, y: 93}
-  - name: reka prawa gorna
+    uvTransform: {x: -59, y: 193}
+  - name: glowa
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 62
-      y: 117
-      width: 55
-      height: 26
-    spriteID: b301549c47eca4cc48c86e767a38a0f4
+      x: 244
+      y: 229
+      width: 88
+      height: 123
+    spriteID: 020c992a08495964d8324878817eb16b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -195,70 +237,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 62, y: 57}
-  - name: reka lewa gorna
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 198
-      width: 40
-      height: 29
-    spriteID: eddd75e60297b46a3a1abf9f737d74b5
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -81, y: 138}
-  - name: glowa lewa
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 99
-      y: 193
-      width: 25
-      height: 24
-    spriteID: 424223f06e0cc4a0496cb62cad32bbc6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 18, y: 109}
-  - name: glowa srodkowa
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 62
-      y: 151
-      width: 31
-      height: 34
-    spriteID: 107830b84db9d429d8e179e3ecf533d8
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 12, y: 67}
+    uvTransform: {x: 206, y: -41}
   characterData:
     bones: []
     parts: []
@@ -306,17 +285,6 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
-  - name: WebGL
-    overridden: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
   - name: Android
     overridden: 0
     maxTextureSize: 2048
@@ -344,23 +312,43 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: glowa prawa
-    spriteName: glowa prawa
+  - name: reka 2
+    spriteName: reka 2
     isGroup: 0
     parentIndex: -1
-    spriteID: 60607d8974eb24ff9b71153ac06fa2fa
-    layerID: 12
-    mosaicPosition: {x: 62, y: 193}
+    spriteID: 7a2b37ab380ab60458786febb5ba0e5b
+    layerID: 10
+    mosaicPosition: {x: 157, y: 229}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: reka lewa dolna
-    spriteName: reka lewa dolna
+  - name: reka 3
+    spriteName: reka 3
     isGroup: 0
     parentIndex: -1
-    spriteID: a263de1ecf741409b9724500d2a5a9b3
-    layerID: 11
-    mosaicPosition: {x: 4, y: 160}
+    spriteID: 5f695ecd128200e4eadaa69a560966fa
+    layerID: 9
+    mosaicPosition: {x: 244, y: 360}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: reka 4
+    spriteName: reka 4
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5fb2fee0522b2ab40b268d7297973874
+    layerID: 8
+    mosaicPosition: {x: 202, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: raczki tyranozaura
+    spriteName: raczki tyranozaura
+    isGroup: 0
+    parentIndex: -1
+    spriteID: fed42cda508eeaa4cb988ce164f07841
+    layerID: 7
+    mosaicPosition: {x: 340, y: 229}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -368,59 +356,29 @@ ScriptedImporter:
     spriteName: cialo
     isGroup: 0
     parentIndex: -1
-    spriteID: cc954184e880c4802b946156bde1c676
-    layerID: 10
+    spriteID: b8823ae5d27ba2f4e8df8fea379d7113
+    layerID: 6
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: reka prawa dolna
-    spriteName: reka prawa dolna
+  - name: reka1
+    spriteName: reka1
     isGroup: 0
     parentIndex: -1
-    spriteID: 73f69d2c3a3e044c59a05912013e06d6
-    layerID: 9
-    mosaicPosition: {x: 4, y: 117}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: reka prawa gorna
-    spriteName: reka prawa gorna
-    isGroup: 0
-    parentIndex: -1
-    spriteID: b301549c47eca4cc48c86e767a38a0f4
-    layerID: 8
-    mosaicPosition: {x: 62, y: 117}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: reka lewa gorna
-    spriteName: reka lewa gorna
-    isGroup: 0
-    parentIndex: -1
-    spriteID: eddd75e60297b46a3a1abf9f737d74b5
-    layerID: 7
-    mosaicPosition: {x: 4, y: 198}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: glowa lewa
-    spriteName: glowa lewa
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 424223f06e0cc4a0496cb62cad32bbc6
-    layerID: 6
-    mosaicPosition: {x: 99, y: 193}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: glowa srodkowa
-    spriteName: glowa srodkowa
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 107830b84db9d429d8e179e3ecf533d8
+    spriteID: 27f0407af96eebd4f87d6df98cd5c36a
     layerID: 5
-    mosaicPosition: {x: 62, y: 151}
+    mosaicPosition: {x: 4, y: 229}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: glowa
+    spriteName: glowa
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 020c992a08495964d8324878817eb16b
+    layerID: 4
+    mosaicPosition: {x: 244, y: 229}
     flatten: 0
     isImported: 1
     isVisible: 1
