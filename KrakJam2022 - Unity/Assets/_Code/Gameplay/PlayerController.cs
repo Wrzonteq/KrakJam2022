@@ -65,7 +65,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             bullet.transform.position = transform.position;
 
             bullet.Fire(GameSystems.GetSystem<CameraSystem>().CrosshairInstance.transform.localPosition, bulletSpeed);
-            ShakeCamera(2f, .1f);
+            ShakeCamera(1f, .1f);
         }
 
         public void ShakeCamera(float intensity, float time) {
