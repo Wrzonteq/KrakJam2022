@@ -40735,6 +40735,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Positive Collectible Memory
       objectReference: {fileID: 0}
+    - target: {fileID: 8484253446677096645, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
+      propertyPath: memoryData.sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d55d74c91f51a418591258e2ff44d5f1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
 --- !u!4 &1224501967483819795 stripped
