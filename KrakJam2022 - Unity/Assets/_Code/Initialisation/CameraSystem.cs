@@ -1,4 +1,5 @@
 using Cinemachine;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -41,6 +42,15 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public void SetupCrosshairFollowTarget(Transform followTarget) {
             CrosshairInstance.Setup(MainCamera, followTarget);
+        }
+
+        public async UniTaskVoid FocusOnMe(Transform target) {
+            GameSystems.GetSystem<InputSystem>().DisableInput();
+            var followBackup = virtualCamera.Follow;
+            virtualCamera.Follow = target;
+            await UniTask.Delay(2000);
+            virtualCamera.Follow = followBackup;
+            GameSystems.GetSystem<InputSystem>().SwitchToGameplayInput();
         }
     }
 }

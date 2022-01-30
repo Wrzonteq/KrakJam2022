@@ -111,7 +111,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public void EnableReward() {
-            reward.gameObject.SetActive(true);
+            reward.ShowAndFocusCameraOn();
         }
 
         public void MovePuzzlesToPosition(int row, int col) {

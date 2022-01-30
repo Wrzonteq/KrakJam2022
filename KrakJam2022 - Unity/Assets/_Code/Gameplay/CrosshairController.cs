@@ -24,6 +24,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
         void Update() {
             if (!followPointTransform)
                 return;
+            if(!GameSystems.GetSystem<InputSystem>().MouseLookEnabled)
+                return;
             Vector2 mousePosition = _camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
             if (Vector2.Distance(cachedTransform.position, mousePosition) > 0.01f) {

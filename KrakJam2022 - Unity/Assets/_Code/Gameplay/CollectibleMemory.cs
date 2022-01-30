@@ -21,5 +21,10 @@ namespace PartTimeKamikaze.KrakJam2022 {
             GameSystems.GetSystem<UISystem>().GetScreen<MemoryScreen>().ScreenClosedEvent -= HandleMemoryScreenClosed;
             MemoryCollectedEvent?.Invoke(memoryData);
         }
+
+        public void ShowAndFocusCameraOn() {
+            gameObject.SetActive(true);
+            GameSystems.GetSystem<CameraSystem>().FocusOnMe(transform).Forget();
+        }
     }
 }

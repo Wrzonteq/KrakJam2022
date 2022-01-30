@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 namespace PartTimeKamikaze.KrakJam2022 {
     public class InputSystem : BaseGameSystem {
         public bool PlayerInputEnabled { get; private set; }
+        public bool MouseLookEnabled { get; private set; }
         public InputMaps Bindings { get; private set; }
 
 
@@ -16,6 +17,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public void DisableInput() {
             PlayerInputEnabled = false;
+            MouseLookEnabled = false;
             Bindings.Disable();
         }
 
@@ -27,6 +29,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public void SwitchToGameplayInput() {
             PlayerInputEnabled = true;
+            MouseLookEnabled = true;
             Cursor.visible = false;
             Bindings.Interface.Disable();
             Bindings.Gameplay.Enable();
