@@ -9,10 +9,10 @@ namespace PartTimeKamikaze.KrakJam2022 {
         Transform mainCharacter;
 
         [SerializeField]
-        EscapeGameTeleport enterTeleport;
+        MinigameTeleporter enterTeleport;
 
         [SerializeField]
-        EscapeGameTeleport exitTeleport;
+        MinigameTeleporter exitTeleport;
 
         [SerializeField] CollectibleMemory positiveMemory;
 
@@ -26,7 +26,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         bool collapsingFloor = false;
 
         public override void Initialise() {
-            exitTeleport.AddCollisionCallback(ExitMiniGame);
+//            exitTeleport.AddCollisionCallback(ExitMiniGame);
             exitTeleport.gameObject.SetActive(false);
 
             positiveMemory.gameObject.SetActive(false); // show it after floor starts collapsing
@@ -85,7 +85,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             exitTeleport.gameObject.SetActive(true);
         }
 
-        private void MovePlayerToTeleport(EscapeGameTeleport teleport) {
+        private void MovePlayerToTeleport(MinigameTeleporter teleport) {
             mainCharacter.transform.position = new Vector3(teleport.transform.position.x, teleport.transform.position.y, teleport.transform.position.z);
         }
 

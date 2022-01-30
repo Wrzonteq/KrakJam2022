@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 
 namespace PartTimeKamikaze.KrakJam2022.UI {
     public class MemoryScreen : UiScreenBase {
+        public event Action ScreenClosedEvent;
+
         [SerializeField] Image memoryImage;
         [SerializeField] Image iconImage;
         [SerializeField] TextMeshProUGUI text;
@@ -39,6 +42,7 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
             await Hide();
             await uiSystem.GetScreen<HUDScreen>().Show();
             GameSystems.GetSystem<InputSystem>().SwitchToGameplayInput();
+            ScreenClosedEvent?.Invoke();
         }
     }
 }

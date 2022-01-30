@@ -4,10 +4,6 @@ using PartTimeKamikaze.KrakJam2022.SlidingPuzzles;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
-    public abstract class Minigame : MonoBehaviour {
-        public abstract void Initialise();
-    }
-
     public class SlidingPuzzleController : Minigame {
         [SerializeField] CollectibleMemory reward;
 

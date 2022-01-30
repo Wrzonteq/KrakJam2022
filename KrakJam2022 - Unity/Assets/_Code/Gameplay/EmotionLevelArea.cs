@@ -68,6 +68,8 @@ namespace PartTimeKamikaze.KrakJam2022 {
             GameSystems.GetSystem<GameplaySystem>().PlayerInstance.Teleport(playerSpawnPoint.position);
             exit.Close();
             IsPlayerInside = true;
+            foreach (var minigame in minigames)
+                minigame.OnPlayerEnterLevel();
         }
     }
 }
