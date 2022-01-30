@@ -151,6 +151,10 @@ namespace PartTimeKamikaze.KrakJam2022 {
             return gatesDict[emotion];
         }
 
+        public EmotionLevelState GetCurrentEmotionState() {
+            return GameSystems.GetSystem<GameStateSystem>().runtimeGameState.GetStateForEmotion(CurrentEmotionLevel);
+        }
+
         public async UniTaskVoid ReturnToMenu() {
             IsInGameplay = false;
             GameSystems.GetSystem<UISystem>().GetScreen<LoadingScreen>().Show(true).Forget();

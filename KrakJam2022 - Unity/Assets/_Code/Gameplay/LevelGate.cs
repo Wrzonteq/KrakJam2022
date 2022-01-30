@@ -1,9 +1,12 @@
+using System;
 using Cysharp.Threading.Tasks;
 using PartTimeKamikaze.KrakJam2022.UI;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class LevelGate : MonoBehaviour {
+        public event Action<GateState> GateStateChanged;
+        
         [SerializeField] Collider2D entranceTrigger;
         [SerializeField] GameObject inactive;
         [SerializeField] GameObject insane;
@@ -12,6 +15,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] Emotion emotion;
 
         public Emotion Emotion => emotion;
+        public GateState State { get; private set; }
 
 
         public void Close() {
@@ -61,12 +65,14 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void SetGateState(GateState state) {
+            State = state;
             inactive.SetActive(state == GateState.Inactive);
             active.SetActive(state == GateState.Active);
             insane.SetActive(state == GateState.Insane);
+            GateStateChanged?.Invoke(state);
         }
 
-        enum GateState {
+        public enum GateState {
             Inactive,
             Active,
             Insane

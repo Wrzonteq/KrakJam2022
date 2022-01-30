@@ -9,6 +9,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         [SerializeField] MemoryData memoryData;
         
+
         protected override void OnInteract() {
             MemoryOpenedEvent?.Invoke(memoryData);
             var memoryScreen = GameSystems.GetSystem<UISystem>().GetScreen<MemoryScreen>();

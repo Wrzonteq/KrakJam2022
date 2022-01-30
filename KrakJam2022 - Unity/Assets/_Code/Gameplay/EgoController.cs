@@ -1,9 +1,18 @@
+using PartTimeKamikaze.KrakJam2022.UI;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class EgoController : MonoBehaviour, IInteractable {
+        [SerializeField] MessagePopup message;
+
+
+        void Awake() {
+            message.Hide();
+        }
+
         void OnTriggerEnter2D(Collider2D col) {
             if (col.CompareTag("Player")) {
+                ShowMessageAccordingToState();
                 GameSystems.GetSystem<GameplaySystem>().PlayerInstance.RegisterInteractable(this);
             } else if (col.CompareTag("Enemy")) {
                 var enemy = col.GetComponent<Enemy>();
@@ -15,15 +24,29 @@ namespace PartTimeKamikaze.KrakJam2022 {
         void OnTriggerExit2D(Collider2D col) {
             if (col.CompareTag("Player")) {
                 GameSystems.GetSystem<GameplaySystem>().PlayerInstance.UnregisterInteractable(this);
+                message.Hide();
             }
         }
 
         public void Interact() {
             Debug.Log("Interacting with EGO");
             var gameplaySys = GameSystems.GetSystem<GameplaySystem>();
-            var currentState = GameSystems.GetSystem<GameStateSystem>().runtimeGameState.GetStateForEmotion(gameplaySys.CurrentEmotionLevel);
-            if (currentState.CanStartInsanity && !currentState.insanityStarted)
+            var currentState = gameplaySys.GetCurrentEmotionState();
+            if (currentState.CanStartInsanity && !currentState.insanityStarted) {
                 gameplaySys.BeginInsanityStage();
+                message.Hide();
+            }
+        }
+
+        void ShowMessageAccordingToState() {
+            var gameplaySys = GameSystems.GetSystem<GameplaySystem>();
+            var currentState = gameplaySys.GetCurrentEmotionState();
+            if (currentState.CanStartInsanity && !currentState.insanityStarted) {
+                message.SetText("[E] Go insane and fight your Traumas!");
+            } else {
+                message.SetText("Go through Gates to collect memories");
+            }
+            message.Show();
         }
     }
 }

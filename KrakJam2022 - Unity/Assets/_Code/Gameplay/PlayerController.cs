@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Cinemachine;
 using PartTimeKamikaze.KrakJam2022.Combat;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
