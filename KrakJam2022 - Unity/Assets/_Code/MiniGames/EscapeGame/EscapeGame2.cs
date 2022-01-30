@@ -35,11 +35,6 @@ namespace PartTimeKamikaze.KrakJam2022 {
             playerTransform = GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform;
         }
 
-        void ExitMiniGame() {
-            runningLevel = false;
-            RestoreOriginalTileMap();
-        }
-
         void Update() {
             if (!runningLevel) return;
 
