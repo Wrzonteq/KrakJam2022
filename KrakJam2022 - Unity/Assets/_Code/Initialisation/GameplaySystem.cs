@@ -130,13 +130,14 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         void HandleAllGatesClosed() {
             Debug.LogError($"YOU WIN MAI BOI!!");
-            //TODO - WIN, End game
+            GameSystems.GetSystem<InputSystem>().SwitchToInterfaceInput();
+            GameSystems.GetSystem<UISystem>().ShowScreen<VictoryScreen>();
         }
 
         public void HandleGameOver() {
             Debug.LogError("YOU LOOZE NOOB");
-            GameSystems.GetSystem<UISystem>().ShowScreen<PauseMenuScreen>();
-            //TODO - WARUNKI PRZEGRANEJ
+            GameSystems.GetSystem<InputSystem>().SwitchToInterfaceInput();
+            GameSystems.GetSystem<UISystem>().ShowScreen<GameOverScreen>();
         }
 
         public EmotionLevelArea GetLevelArea(Emotion emotion) {

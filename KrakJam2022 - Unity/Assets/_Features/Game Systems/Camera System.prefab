@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCameraPrefab: {fileID: 474934390154147796, guid: 505488535ed8cd644b89ffb3e568970f, type: 3}
   crosshairPrefab: {fileID: 5556317677695535480, guid: 5c10ed4468f4ee040941473357edfc2e, type: 3}
+  camSizeWhenSane: 6
+  camSizeWhenInsane: 9

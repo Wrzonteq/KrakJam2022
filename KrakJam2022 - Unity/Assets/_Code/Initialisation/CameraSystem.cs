@@ -1,4 +1,5 @@
 using Cinemachine;
+using DG.Tweening;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
@@ -26,7 +27,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void HandleStageChanged(GameStage stage) {
-            virtualCamera.m_Lens.OrthographicSize = stage == GameStage.Sanity ? camSizeWhenSane : camSizeWhenInsane;
+            var targetOrtho = stage == GameStage.Sanity ? camSizeWhenSane : camSizeWhenInsane;
+            DOTween.To(() => virtualCamera.m_Lens.OrthographicSize, x => virtualCamera.m_Lens.OrthographicSize = x, targetOrtho, .6f);
+            virtualCamera.m_Lens.OrthographicSize = targetOrtho;
             postprocesses.SetStage(stage);
         }
 

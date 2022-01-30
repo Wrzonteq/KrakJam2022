@@ -62,6 +62,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             var animDuration = instant ? 0 : FadeInDuration;
             canvasGroup.DOFade(1, animDuration);
             await UniTask.Delay((int)(animDuration * 1000));
+            OnFadeInComplete();
             IsVisible = true;
         }
 
@@ -86,6 +87,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         protected virtual void OnShow() { }
         protected virtual void OnHide() { }
+        protected virtual void OnFadeInComplete() { }
         protected virtual void OnInitialise() { }
     }
 }
