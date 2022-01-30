@@ -9,6 +9,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         [SerializeField] float camSizeWhenInsane = 8;
 
         CinemachineVirtualCamera virtualCamera;
+        PostprocessController postprocesses;
 
         public Camera MainCamera { get; private set; }
         public CrosshairController CrosshairInstance { get; private set; }
@@ -26,11 +27,13 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         void HandleStageChanged(GameStage stage) {
             virtualCamera.m_Lens.OrthographicSize = stage == GameStage.Sanity ? camSizeWhenSane : camSizeWhenInsane;
+            postprocesses.SetStage(stage);
         }
 
         void HandlePlayerInstantiated(PlayerController player) {
             virtualCamera = player.GetComponentInChildren<CinemachineVirtualCamera>();
             virtualCamera.m_Lens.OrthographicSize = camSizeWhenSane;
+            postprocesses = FindObjectOfType<PostprocessController>();
         }
 
         public void SetupCrosshairFollowTarget(Transform followTarget) {
