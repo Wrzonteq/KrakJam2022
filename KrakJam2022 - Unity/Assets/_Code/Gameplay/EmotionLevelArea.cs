@@ -55,7 +55,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
             void TeleportPlayer() {
                 var gatePosition = GameSystems.GetSystem<GameplaySystem>().GetGate(emotion).transform.position;
-                GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform.position = gatePosition;
+                GameSystems.GetSystem<GameplaySystem>().PlayerInstance.Teleport(gatePosition);
                 IsPlayerInside = false;
             }
 
@@ -65,7 +65,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         public void TeleportPlayerToArea() {
-            GameSystems.GetSystem<GameplaySystem>().PlayerInstance.transform.position = playerSpawnPoint.position;
+            GameSystems.GetSystem<GameplaySystem>().PlayerInstance.Teleport(playerSpawnPoint.position);
             exit.Close();
             IsPlayerInside = true;
         }

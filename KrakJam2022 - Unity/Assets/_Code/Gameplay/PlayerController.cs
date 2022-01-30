@@ -21,6 +21,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         List<IInteractable> interactablesInRange;
         GameStateSystem gameStateSystem;
         InputSystem inputSystem;
+        Transform cachedTransform;
 
         public Transform CrosshairFollowTarget => crosshairFollowTarget;
 
@@ -31,6 +32,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             inputSystem.Bindings.Gameplay.Interact.performed += HandleInteraction;
             interactablesInRange = new List<IInteractable>();
             gameStateSystem.Stage.ChangedValue += HandleStageChanged;
+            cachedTransform = transform;
         }
 
         void HandleStageChanged(GameStage stage) {
@@ -84,7 +86,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         void Shoot() {
             nextShotTime = Time.time + shotsInterval;
             var bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = transform.position;
+            bullet.transform.position = cachedTransform.position;
 
             bullet.Fire(GameSystems.GetSystem<CameraSystem>().CrosshairInstance.transform.localPosition, bulletSpeed);
             ShakeCamera(1f, .1f);
@@ -102,6 +104,13 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public void UnregisterInteractable(IInteractable interactable) {
             interactablesInRange.Remove(interactable);
+        }
+
+        public void Teleport(Vector3 position) {
+            var mainCameraTransform = GameSystems.GetSystem<CameraSystem>().MainCamera.transform;
+            var playerToCameraOffset = cachedTransform.position - mainCameraTransform.position;
+            cachedTransform.position = position;
+            mainCameraTransform.position = position - playerToCameraOffset;
         }
     }
 }
