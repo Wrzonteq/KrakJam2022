@@ -14,32 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: 0
   angerState:
-    doorUnlocked: 0
-    minigamesCount: 0
-    minigamesCompleted: 0
+    gateUnlocked: 0
+    negativeMemoryCollected: 0
+    positiveMemoryCollected: 0
     insanityStarted: 0
     insanitySurvived: 0
   fearState:
-    doorUnlocked: 0
-    minigamesCount: 0
-    minigamesCompleted: 0
+    gateUnlocked: 0
+    negativeMemoryCollected: 0
+    positiveMemoryCollected: 0
     insanityStarted: 0
     insanitySurvived: 0
   sadnessState:
-    doorUnlocked: 0
-    minigamesCount: 0
-    minigamesCompleted: 0
+    gateUnlocked: 0
+    negativeMemoryCollected: 0
+    positiveMemoryCollected: 0
     insanityStarted: 0
     insanitySurvived: 0
   lonelinessState:
-    doorUnlocked: 0
-    minigamesCount: 0
-    minigamesCompleted: 0
+    gateUnlocked: 0
+    negativeMemoryCollected: 0
+    positiveMemoryCollected: 0
     insanityStarted: 0
     insanitySurvived: 0
   despairState:
-    doorUnlocked: 0
-    minigamesCount: 0
-    minigamesCompleted: 0
+    gateUnlocked: 0
+    negativeMemoryCollected: 0
+    positiveMemoryCollected: 0
     insanityStarted: 0
     insanitySurvived: 0
+  currentSanity: 100
+  completedLevelsCount: 1
