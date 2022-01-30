@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 namespace PartTimeKamikaze.KrakJam2022 {
     public class GameplaySystem : BaseGameSystem {
         public event Action<PlayerController> PlayerInstantiatedEvent;
+        public event Action ReturnedToMainMenu;
 
         [SerializeField] PlayerController playerPrefab;
 
@@ -158,6 +159,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             sceneLoadingSystem.SceneLoadingProgress.ChangedValue -= DisplayProgress;
             GameSystems.GetSystem<UISystem>().GetScreen<MainMenuScreen>().Show(true).Forget();
             await GameSystems.GetSystem<UISystem>().GetScreen<LoadingScreen>().Hide();
+            ReturnedToMainMenu?.Invoke();
         }
     }
 }

@@ -14,7 +14,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
 
         public override void OnCreate() { }
 
-        public override void Initialise() { }
+        public override void Initialise() {
+            GameSystems.GetSystem<GameplaySystem>().ReturnedToMainMenu += () => waypointsInitialised = false;
+        }
 
 
         void CalculateSpawnPoints() {
