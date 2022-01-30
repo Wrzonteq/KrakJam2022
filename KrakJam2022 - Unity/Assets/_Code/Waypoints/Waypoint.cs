@@ -49,9 +49,9 @@ namespace PartTimeKamikaze.KrakJam2022 {
         void OnDrawGizmosSelected() {
         //void OnDrawGizmos() {
             Gizmos.DrawSphere(transform.position, 0.3f);
-            GUIStyle style = new GUIStyle();
-            Vector3 labelPosition = new Vector3(transform.position.x, transform.position.y + 2.2f, transform.position.z);
-            UnityEditor.Handles.Label(labelPosition, gameObject.name, style);
+            //GUIStyle style = new GUIStyle();
+            //Vector3 labelPosition = new Vector3(transform.position.x, transform.position.y + 2.2f, transform.position.z);
+            //UnityEditor.Handles.Label(labelPosition, gameObject.name, style);
 
             if (nextWaypoints.Count == 0)
                 return;
