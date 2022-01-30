@@ -1,30 +1,24 @@
 using PartTimeKamikaze.KrakJam2022.UI;
-using System;
 using UnityEngine;
 
 namespace PartTimeKamikaze.KrakJam2022 {
     public class EgoController : MonoBehaviour, IInteractable {
         [SerializeField] MessagePopup message;
+        [SerializeField] GameObject saneVersion;
+        [SerializeField] GameObject insaneVersion;
+
 
         void Awake() {
             message.Hide();
         }
 
-        [SerializeField] GameObject saneVersion;
-        [SerializeField] GameObject insaneVersion;
-        
         void Start() {
             GameSystems.GetSystem<GameStateSystem>().Stage.ChangedValue += HandleStageChanged;
         }
 
         void HandleStageChanged(GameStage stage) {
-            if (stage == GameStage.Insanity) {
-                saneVersion.SetActive(false);
-                insaneVersion.SetActive(true);
-            } else {
-                saneVersion.SetActive(true);
-                insaneVersion.SetActive(false);
-            }
+            saneVersion.SetActive(stage == GameStage.Sanity);
+            insaneVersion.SetActive(stage == GameStage.Insanity);
         }
 
         void OnTriggerEnter2D(Collider2D col) {
