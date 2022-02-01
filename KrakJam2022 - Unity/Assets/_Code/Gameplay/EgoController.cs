@@ -12,6 +12,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
             message.Hide();
         }
 
+        void OnDestroy() {
+            Debug.Log("Ego Destroyed");
+            GameSystems.GetSystem<GameStateSystem>().Stage.ChangedValue -= HandleStageChanged;
+        }
+
         void Start() {
             GameSystems.GetSystem<GameStateSystem>().Stage.ChangedValue += HandleStageChanged;
         }

@@ -21,6 +21,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
             MainCamera = Instantiate(mainCameraPrefab);
         }
 
+        void OnDestroy() {
+            GameSystems.GetSystem<GameStateSystem>().Stage.ChangedValue -= HandleStageChanged;
+            GameSystems.GetSystem<GameplaySystem>().PlayerInstantiatedEvent -= HandlePlayerInstantiated;
+        }
+
         public override void Initialise() {
             CrosshairInstance = Instantiate(crosshairPrefab, MainCamera.transform, false);
             GameSystems.GetSystem<GameplaySystem>().PlayerInstantiatedEvent += HandlePlayerInstantiated;

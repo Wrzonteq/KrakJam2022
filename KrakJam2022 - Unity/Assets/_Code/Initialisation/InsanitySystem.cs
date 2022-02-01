@@ -15,6 +15,10 @@ namespace PartTimeKamikaze.KrakJam2022 {
             GameSystems.GetSystem<GameStateSystem>().Stage.ChangedValue += HandleStageChanged;
         }
 
+        void OnDestroy() {
+            GameSystems.GetSystem<GameStateSystem>().Stage.ChangedValue -= HandleStageChanged;
+        }
+
         void HandleStageChanged(GameStage stage) {
             if(stage == GameStage.Insanity)
                 InitInsanity();
