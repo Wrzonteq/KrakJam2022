@@ -112,6 +112,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
             var gameStateSystem = GameSystems.GetSystem<GameStateSystem>();
             gameStateSystem.Stage.Value = GameStage.Insanity;
             gameStateSystem.runtimeGameState.GetStateForEmotion(CurrentEmotionLevel).insanityStarted = true;
+
+            foreach (var gate in gatesDict)
+            {
+                gate.Value.GoInsane();
+            }
         }
 
         public void EndInsanityStage() {
@@ -126,6 +131,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void HandleInsanityCompleted() {
+            foreach (var gate in gatesDict)
+            {
+                gate.Value.Close();
+            }
+
             OpenNextUnopenedGate();
         }
 
