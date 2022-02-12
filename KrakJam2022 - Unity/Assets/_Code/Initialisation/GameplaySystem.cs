@@ -151,6 +151,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             Debug.LogError("YOU LOOZE NOOB");
             GameSystems.GetSystem<InputSystem>().SwitchToInterfaceInput();
             GameSystems.GetSystem<UISystem>().ShowScreen<GameOverScreen>();
+            //Cursor.visible = true;
         }
 
         public EmotionLevelArea GetLevelArea(Emotion emotion) {
