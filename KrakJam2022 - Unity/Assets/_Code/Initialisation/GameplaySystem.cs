@@ -101,6 +101,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void OpenPauseScreen(InputAction.CallbackContext _) {
+            Cursor.visible = true;
             GameSystems.GetSystem<UISystem>().GetScreen<PauseMenuScreen>().Show().Forget();
         }
 
@@ -151,6 +152,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             Debug.LogError("YOU LOOZE NOOB");
             GameSystems.GetSystem<InputSystem>().SwitchToInterfaceInput();
             GameSystems.GetSystem<UISystem>().ShowScreen<GameOverScreen>();
+            Cursor.visible = true;
         }
 
         public EmotionLevelArea GetLevelArea(Emotion emotion) {
