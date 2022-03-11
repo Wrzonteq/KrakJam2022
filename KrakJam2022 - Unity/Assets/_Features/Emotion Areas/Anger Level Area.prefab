@@ -119,6 +119,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4624285543696623747, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4711445409355768016, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -126,6 +130,10 @@ PrefabInstance:
     - target: {fileID: 8975263245285009683, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
       propertyPath: m_Name
       value: Exit Container
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066656076908236606, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
@@ -202,8 +210,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8484253446677096645, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
       propertyPath: memoryData.description
-      value: 'Those who compete with the world have experienced the salty taste of
-        defeat  '
+      value: "I don\u2019t need this - work, plan boss, \r\nI will manage well alone\r\nSack
+        me, surly, be my guest,\r\nFuck yourself and keep the change!\r"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
@@ -444,8 +452,9 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 22f265c44a40740acb10ae37515c030e, type: 3}
     - target: {fileID: 8484253446677096645, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
       propertyPath: memoryData.description
-      value: The most important word that adds wings, "And I believe in you, no matter
-        what!"
+      value: "\u201CYou will manage, that i know \u201D\r\nHe tells you with kind
+        toned voice\r\n\u201CJust keep fishing, do your thing\u201D\r\nSo you keep
+        fishing - with him."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}

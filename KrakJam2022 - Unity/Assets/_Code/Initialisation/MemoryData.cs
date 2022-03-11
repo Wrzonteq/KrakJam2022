@@ -6,6 +6,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
     public class MemoryData {
         public Sprite sprite;
         public MemoryType type;
+        [TextArea]
         public string description;
     }
 

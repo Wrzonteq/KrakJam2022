@@ -47895,8 +47895,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8484253446677096645, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
       propertyPath: memoryData.description
-      value: 'Broken heart for those who leave, looking over their glasses from the
-        other side ..  '
+      value: "Gone are hands that held you close\r\nWise eyes and beloved voice\r\nEmpty
+        silence, gravestone cold\r\nStroke again the oldest foe\r."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
@@ -48101,8 +48101,8 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 2ed9b06a8289640c9ab6c27b9fd30976, type: 3}
     - target: {fileID: 8484253446677096645, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
       propertyPath: memoryData.description
-      value: 'Some were before us and others will remain after us, the greatest joy
-        is not to be alone in the world. '
+      value: "\u201CDad, come play\u201D your youngest yells\r\nAnd you feel that
+        life finds way\r\nAs your mother one time said\r\nSun has risen once again\r"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}

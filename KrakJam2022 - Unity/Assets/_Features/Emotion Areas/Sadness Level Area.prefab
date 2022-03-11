@@ -175,8 +175,8 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: a63e63696ba104fd5bb4b72096e0b1ca, type: 3}
     - target: {fileID: 8484253446677096645, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
       propertyPath: memoryData.description
-      value: 'In misfortune I''m not alone fortunately Without mom, this world would
-        be monstrous '
+      value: "\u201CLife and death go hand in hand \r\nSometimes time would take
+        a friend\r\nIt\u2019s important to feel sorrow\r\nBut the sun will rise tomorrow\u201D\r"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
@@ -253,7 +253,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8484253446677096645, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
       propertyPath: memoryData.description
-      value: He's wagging in canine heaven, my most faithful companion of mine.
+      value: "Farewell friend, dear and true\r\nit\u2019s so quiet without you \r\nEven
+        Though you\u2019ve gone so far \r\nWith your paw you hold my heart\r"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
@@ -340,6 +341,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4624285543696623747, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4711445409355768016, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -347,6 +352,10 @@ PrefabInstance:
     - target: {fileID: 8975263245285009683, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
       propertyPath: m_Name
       value: Exit Container
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066656076908236606, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d619b7e5bb8e98d4aa6292f9fc0e12d4, type: 3}

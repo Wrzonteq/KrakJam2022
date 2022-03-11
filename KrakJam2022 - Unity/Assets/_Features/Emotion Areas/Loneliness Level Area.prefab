@@ -277,8 +277,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8484253446677096645, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
       propertyPath: memoryData.description
-      value: 'Emptiness in the heart is a companion of those who are far from their
-        loved ones. '
+      value: "Clock is ticking loud and clear \r\nBut there is nobody near \r\nNo
+        one cares, and no one comes \r\nIs there meaning to it all?\r"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
@@ -426,8 +426,9 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 37a2ebc8380b84cc3a5daa6f7d5abd70, type: 3}
     - target: {fileID: 8484253446677096645, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
       propertyPath: memoryData.description
-      value: 'Luckily for everyone in the world, there will be someone who will chase
-        away the black clouds.  '
+      value: "\u201CNot alone\u201D she whispers softly\r\n\u201CI\u2019m not leaving
+        you\u201D she says \r\nWith her hand and hair and laughter\r\nshe makes things
+        fall into place\r"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
