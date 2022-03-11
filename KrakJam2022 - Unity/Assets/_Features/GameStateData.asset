@@ -44,4 +44,4 @@ MonoBehaviour:
     insanityStarted: 0
     insanitySurvived: 0
   currentSanity: 100
-  completedLevelsCount: 4
+  completedLevelsCount: 0
