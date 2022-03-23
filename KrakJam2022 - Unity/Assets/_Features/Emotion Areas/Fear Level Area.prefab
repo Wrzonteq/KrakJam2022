@@ -40741,7 +40741,8 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: d55d74c91f51a418591258e2ff44d5f1, type: 3}
     - target: {fileID: 8484253446677096645, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
       propertyPath: memoryData.description
-      value: 'But a friend is known in misfortune, worth more than anything else. '
+      value: "But in darkness of the day,\r\nSomeone lends a helping hand\r\nBack
+        and forth the play goes on \r\n\u201CMaybe I am not alone!\u201D\r"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78419dbb660c6fc4daf240a5ec3a9fab, type: 3}
@@ -43212,8 +43213,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8484253446677096645, guid: 446e10cd267fda946a1220227bfd385c, type: 3}
       propertyPath: memoryData.description
-      value: On the first day of school, everyone laughed that my hair was like a
-        porcupine.
+      value: "\u201CSpiky, weirdo, porcupine\u201D\r\nFear enfolding your young mind\r\n\u201CLoner
+        with a stupid hair\u201D\r\nthey all laugh and shout and yell\r."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 446e10cd267fda946a1220227bfd385c, type: 3}

@@ -101,6 +101,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void OpenPauseScreen(InputAction.CallbackContext _) {
+            Cursor.visible = true;
             GameSystems.GetSystem<UISystem>().GetScreen<PauseMenuScreen>().Show().Forget();
         }
 
@@ -112,6 +113,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
             var gameStateSystem = GameSystems.GetSystem<GameStateSystem>();
             gameStateSystem.Stage.Value = GameStage.Insanity;
             gameStateSystem.runtimeGameState.GetStateForEmotion(CurrentEmotionLevel).insanityStarted = true;
+
+            foreach (var gate in gatesDict)
+            {
+                gate.Value.GoInsane();
+            }
         }
 
         public void EndInsanityStage() {
@@ -126,6 +132,11 @@ namespace PartTimeKamikaze.KrakJam2022 {
         }
 
         void HandleInsanityCompleted() {
+            foreach (var gate in gatesDict)
+            {
+                gate.Value.Close();
+            }
+
             OpenNextUnopenedGate();
         }
 
@@ -141,6 +152,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             Debug.LogError("YOU LOOZE NOOB");
             GameSystems.GetSystem<InputSystem>().SwitchToInterfaceInput();
             GameSystems.GetSystem<UISystem>().ShowScreen<GameOverScreen>();
+            Cursor.visible = true;
         }
 
         public EmotionLevelArea GetLevelArea(Emotion emotion) {

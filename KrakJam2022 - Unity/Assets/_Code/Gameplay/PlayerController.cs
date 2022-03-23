@@ -42,6 +42,12 @@ namespace PartTimeKamikaze.KrakJam2022 {
             cachedTransform = transform;
         }
 
+        void OnDestroy() {
+            gameStateSystem = GameSystems.GetSystem<GameStateSystem>();
+            inputSystem.Bindings.Gameplay.Interact.performed -= HandleInteraction;
+            gameStateSystem.Stage.ChangedValue -= HandleStageChanged;
+        }
+
         void HandleStageChanged(GameStage stage) {
             headRenderer.sprite = stage == GameStage.Sanity ? saneHeadSprite : insaneHeadSprite;
             animatorController.SetBool("IsInsane", stage == GameStage.Insanity);

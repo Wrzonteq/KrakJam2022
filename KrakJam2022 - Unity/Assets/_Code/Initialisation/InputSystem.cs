@@ -25,6 +25,7 @@ namespace PartTimeKamikaze.KrakJam2022 {
             Bindings.Gameplay.Disable();
             Bindings.Interface.Enable();
             PlayerInputEnabled = false;
+            Cursor.visible = true;
         }
 
         public void SwitchToGameplayInput() {

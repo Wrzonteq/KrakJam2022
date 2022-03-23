@@ -18,7 +18,9 @@ namespace PartTimeKamikaze.KrakJam2022.UI {
         }
 
         void HandleContinueButton() {
+            Cursor.visible = false;
             Hide().Forget();
+
         }
 
         void HandleReturnToMenuButton() {

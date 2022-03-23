@@ -5469,6 +5469,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6022352299318997173, guid: f8fcd5922e3c810428e2eb6d1ff29ed6, type: 3}
+      propertyPath: memoryData.sprite
+      value: 
+      objectReference: {fileID: 5547823038289305649, guid: de30eecbc755c21418918229c832cb12, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8fcd5922e3c810428e2eb6d1ff29ed6, type: 3}
 --- !u!114 &393316194 stripped
@@ -5693,9 +5697,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 737431454620502828, guid: aafe05a0a0ebc5a4b9f9cdbc4f2b705c, type: 3}
+      propertyPath: memoryData.description
+      value: "\u201CYou will manage, that I know \u201D\r\nHe tells you with kind
+        toned voice\r\n\u201CJust keep fishing, do your thing\u201D\r\nSo you keep
+        fishing - with him."
+      objectReference: {fileID: 0}
     - target: {fileID: 3700384227530008197, guid: aafe05a0a0ebc5a4b9f9cdbc4f2b705c, type: 3}
       propertyPath: m_Name
-      value: Sadness  Level Area
+      value: Anger  Level Area
       objectReference: {fileID: 0}
     - target: {fileID: 5702089898459559193, guid: aafe05a0a0ebc5a4b9f9cdbc4f2b705c, type: 3}
       propertyPath: m_RootOrder
@@ -5741,6 +5751,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6773181154477771723, guid: aafe05a0a0ebc5a4b9f9cdbc4f2b705c, type: 3}
+      propertyPath: memoryData.sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0b07146aaa0d14bb68bc0214c7ddc054, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aafe05a0a0ebc5a4b9f9cdbc4f2b705c, type: 3}
 --- !u!114 &762941998 stripped
@@ -6059,9 +6073,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2843030271882017125, guid: b17358549b25a7245a9a9a4e1ae402a1, type: 3}
+      propertyPath: memoryData.sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ed8873e488854d745a70e838bc131a31, type: 3}
     - target: {fileID: 3700384227530008197, guid: b17358549b25a7245a9a9a4e1ae402a1, type: 3}
       propertyPath: m_Name
-      value: Fear Level Area
+      value: Sadness Level Area
       objectReference: {fileID: 0}
     - target: {fileID: 5702089898459559193, guid: b17358549b25a7245a9a9a4e1ae402a1, type: 3}
       propertyPath: m_RootOrder
@@ -6311,6 +6329,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7565409715581867890, guid: 3091971ad3975e74b940d558428cd1f6, type: 3}
+      propertyPath: memoryData.sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b3a86ce975cdeb942a09802a13e0056f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3091971ad3975e74b940d558428cd1f6, type: 3}
 --- !u!114 &1433974246 stripped
@@ -6567,9 +6589,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1783190532642938607, guid: b3daebaf5bdba594897fc375e1fb8af3, type: 3}
+      propertyPath: memoryData.sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a5d7aad9d7aef824dba6d2b274827445, type: 3}
     - target: {fileID: 3700384227530008197, guid: b3daebaf5bdba594897fc375e1fb8af3, type: 3}
       propertyPath: m_Name
-      value: Anger Level Area
+      value: Fear Level Area
       objectReference: {fileID: 0}
     - target: {fileID: 5702089898459559193, guid: b3daebaf5bdba594897fc375e1fb8af3, type: 3}
       propertyPath: m_RootOrder
